@@ -10,10 +10,31 @@
       "editor": "select",
       "items": {
         "type": "string",
-        "enum": ["app_store", "google_play", "reddit", "facebook", "instagram", "linkedin"],
-        "enumTitles": ["App Store", "Google Play", "Reddit", "Facebook", "Instagram", "LinkedIn"]
+        "enum": [
+          "app_store",
+          "google_play",
+          "reddit",
+          "facebook",
+          "instagram",
+          "linkedin"
+        ],
+        "enumTitles": [
+          "App Store",
+          "Google Play",
+          "Reddit",
+          "Facebook",
+          "Instagram",
+          "LinkedIn"
+        ]
       },
-      "default": ["app_store", "google_play", "reddit", "facebook", "instagram", "linkedin"]
+      "default": [
+        "app_store",
+        "google_play",
+        "reddit",
+        "facebook",
+        "instagram",
+        "linkedin"
+      ]
     },
     "lookbackDays": {
       "title": "Look back (days)",
@@ -34,12 +55,14 @@
     "dropEmojiOnly": {
       "title": "Drop emoji-only comments",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "description": "Leave out comments that contain only emoji or no text."
     },
     "skipAlreadyDelivered": {
       "title": "Skip items delivered by earlier runs",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "description": "Leave out items that an earlier run already delivered, so the overlap between weekly runs never produces duplicates."
     },
     "deleteRawData": {
       "title": "Delete raw scraper data after cleaning",
@@ -66,13 +89,15 @@
       "type": "string",
       "editor": "textfield",
       "sectionCaption": "App stores",
-      "default": "1163368801"
+      "default": "1163368801",
+      "description": "Numeric app ID from the App Store URL."
     },
     "appStoreCountry": {
       "title": "App Store country",
       "type": "string",
       "editor": "textfield",
-      "default": "cz"
+      "default": "cz",
+      "description": "Two-letter App Store country code."
     },
     "appStoreMaxReviews": {
       "title": "App Store reviews to check",
@@ -84,65 +109,86 @@
       "title": "Google Play package name",
       "type": "string",
       "editor": "textfield",
-      "default": "cz.csas.georgego"
+      "default": "cz.csas.georgego",
+      "description": "Package name from the Google Play URL (the id= parameter)."
     },
     "googlePlayMaxReviews": {
       "title": "Google Play max reviews",
       "type": "integer",
-      "default": 2000
+      "default": 2000,
+      "description": "Newest reviews to fetch before filtering by date."
     },
     "redditQueries": {
       "title": "Reddit search phrases",
       "type": "array",
       "editor": "stringList",
       "sectionCaption": "Reddit",
-      "default": ["\"česká spořitelna\"", "\"ceska sporitelna\"", "spořitelna george"]
+      "default": [
+        "\"česká spořitelna\"",
+        "\"ceska sporitelna\"",
+        "spořitelna george"
+      ],
+      "description": "Phrases to search Reddit for. Use quotes for an exact phrase."
     },
     "redditCzechSubreddits": {
       "title": "Czech subreddits",
       "type": "array",
       "description": "Threads from these subreddits are always kept. Elsewhere, a thread is kept only if the post itself names the bank.",
       "editor": "stringList",
-      "default": ["czech", "Prague", "czechfinance", "Brno", "Czechia", "czechrepublic"]
+      "default": [
+        "czech",
+        "Prague",
+        "czechfinance",
+        "Brno",
+        "Czechia",
+        "czechrepublic"
+      ]
     },
     "redditMaxPostsPerQuery": {
       "title": "Reddit threads per phrase",
       "type": "integer",
-      "default": 50
+      "default": 50,
+      "description": "Maximum threads to fetch per search phrase."
     },
     "redditMaxCommentsPerPost": {
       "title": "Reddit comments per thread",
       "type": "integer",
-      "default": 500
+      "default": 500,
+      "description": "Maximum comments to fetch per thread."
     },
     "facebookPageUrl": {
       "title": "Facebook page",
       "type": "string",
       "editor": "textfield",
       "sectionCaption": "Social media",
-      "default": "https://www.facebook.com/ceskasporitelna/"
+      "default": "https://www.facebook.com/ceskasporitelna/",
+      "description": "Facebook page whose post comments are collected."
     },
     "instagramProfileUrl": {
       "title": "Instagram profile",
       "type": "string",
       "editor": "textfield",
-      "default": "https://www.instagram.com/ceskasporitelna/"
+      "default": "https://www.instagram.com/ceskasporitelna/",
+      "description": "Instagram profile whose post comments are collected."
     },
     "linkedinCompanyUrl": {
       "title": "LinkedIn company page",
       "type": "string",
       "editor": "textfield",
-      "default": "https://www.linkedin.com/company/10700/"
+      "default": "https://www.linkedin.com/company/10700/",
+      "description": "LinkedIn company page whose post comments are collected."
     },
     "maxPostsPerPage": {
       "title": "Posts per page to check",
       "type": "integer",
-      "default": 50
+      "default": 50,
+      "description": "Newest posts per social media page to check for comments."
     },
     "maxCommentsPerPost": {
       "title": "Comments per post",
       "type": "integer",
-      "default": 500
+      "default": 500,
+      "description": "Maximum comments to fetch per social media post."
     }
   }
 }
