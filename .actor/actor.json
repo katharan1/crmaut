@@ -1,0 +1,13 @@
+{
+  "actorSpecification": 1,
+  "name": "customer-insights",
+  "title": "Customer Insights",
+  "description": "Collects customer feedback about Česká spořitelna from the App Store, Google Play, Reddit, Facebook, Instagram and LinkedIn into one anonymised dataset.",
+  "version": "1.0",
+  "buildTag": "latest",
+  "input": "./input_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
+  "dockerfile": "../Dockerfile"
+}

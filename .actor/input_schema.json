@@ -1,0 +1,148 @@
+{
+  "title": "Customer Insights input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "sources": {
+      "title": "Sources",
+      "type": "array",
+      "description": "Which sources to collect in this run.",
+      "editor": "select",
+      "items": {
+        "type": "string",
+        "enum": ["app_store", "google_play", "reddit", "facebook", "instagram", "linkedin"],
+        "enumTitles": ["App Store", "Google Play", "Reddit", "Facebook", "Instagram", "LinkedIn"]
+      },
+      "default": ["app_store", "google_play", "reddit", "facebook", "instagram", "linkedin"]
+    },
+    "lookbackDays": {
+      "title": "Look back (days)",
+      "type": "integer",
+      "description": "Collect items created in the last N days. 8 for a weekly schedule leaves a one-day overlap; items already delivered are skipped.",
+      "minimum": 1,
+      "maximum": 31,
+      "default": 8
+    },
+    "threadMaxAgeDays": {
+      "title": "Watch posts and threads up to (days old)",
+      "type": "integer",
+      "description": "New comments often land on older posts. Posts and Reddit threads up to this age are checked for new comments.",
+      "minimum": 1,
+      "maximum": 365,
+      "default": 30
+    },
+    "dropEmojiOnly": {
+      "title": "Drop emoji-only comments",
+      "type": "boolean",
+      "default": true
+    },
+    "skipAlreadyDelivered": {
+      "title": "Skip items delivered by earlier runs",
+      "type": "boolean",
+      "default": true
+    },
+    "deleteRawData": {
+      "title": "Delete raw scraper data after cleaning",
+      "type": "boolean",
+      "description": "Raw scraper output contains author names and profile links. Keep this on.",
+      "default": true
+    },
+    "historyDatasetName": {
+      "title": "History dataset name",
+      "type": "string",
+      "description": "Every run also appends its items to this named dataset, so you have the full history in one place. Leave empty to turn off.",
+      "editor": "textfield",
+      "default": "customer-insights"
+    },
+    "maxCostPerSourceUsd": {
+      "title": "Cost cap per scraper run (USD)",
+      "type": "integer",
+      "description": "Safety limit passed to each Store Actor run.",
+      "minimum": 1,
+      "default": 2
+    },
+    "appStoreAppId": {
+      "title": "App Store app ID",
+      "type": "string",
+      "editor": "textfield",
+      "sectionCaption": "App stores",
+      "default": "1163368801"
+    },
+    "appStoreCountry": {
+      "title": "App Store country",
+      "type": "string",
+      "editor": "textfield",
+      "default": "cz"
+    },
+    "appStoreMaxReviews": {
+      "title": "App Store reviews to check",
+      "type": "integer",
+      "description": "Newest reviews to fetch before filtering by date.",
+      "default": 500
+    },
+    "googlePlayAppId": {
+      "title": "Google Play package name",
+      "type": "string",
+      "editor": "textfield",
+      "default": "cz.csas.georgego"
+    },
+    "googlePlayMaxReviews": {
+      "title": "Google Play max reviews",
+      "type": "integer",
+      "default": 2000
+    },
+    "redditQueries": {
+      "title": "Reddit search phrases",
+      "type": "array",
+      "editor": "stringList",
+      "sectionCaption": "Reddit",
+      "default": ["\"česká spořitelna\"", "\"ceska sporitelna\"", "spořitelna george"]
+    },
+    "redditCzechSubreddits": {
+      "title": "Czech subreddits",
+      "type": "array",
+      "description": "Threads from these subreddits are always kept. Elsewhere, a thread is kept only if the post itself names the bank.",
+      "editor": "stringList",
+      "default": ["czech", "Prague", "czechfinance", "Brno", "Czechia", "czechrepublic"]
+    },
+    "redditMaxPostsPerQuery": {
+      "title": "Reddit threads per phrase",
+      "type": "integer",
+      "default": 50
+    },
+    "redditMaxCommentsPerPost": {
+      "title": "Reddit comments per thread",
+      "type": "integer",
+      "default": 500
+    },
+    "facebookPageUrl": {
+      "title": "Facebook page",
+      "type": "string",
+      "editor": "textfield",
+      "sectionCaption": "Social media",
+      "default": "https://www.facebook.com/ceskasporitelna/"
+    },
+    "instagramProfileUrl": {
+      "title": "Instagram profile",
+      "type": "string",
+      "editor": "textfield",
+      "default": "https://www.instagram.com/ceskasporitelna/"
+    },
+    "linkedinCompanyUrl": {
+      "title": "LinkedIn company page",
+      "type": "string",
+      "editor": "textfield",
+      "default": "https://www.linkedin.com/company/10700/"
+    },
+    "maxPostsPerPage": {
+      "title": "Posts per page to check",
+      "type": "integer",
+      "default": 50
+    },
+    "maxCommentsPerPost": {
+      "title": "Comments per post",
+      "type": "integer",
+      "default": 500
+    }
+  }
+}
