@@ -121,7 +121,8 @@ export async function collectLinkedIn({ input, lookbackDays, runActor }) {
         postedLimit: linkedinPeriod(input.threadMaxAgeDays),
         scrapeComments: true,
         maxComments: input.maxCommentsPerPost,
-        commentsPostedLimit: linkedinPeriod(Math.min(lookbackDays, 31)),
+        // This filter stops at 'month'; longer windows rely on our own date filter.
+        commentsPostedLimit: lookbackDays <= 31 ? linkedinPeriod(lookbackDays) : 'any',
         scrapeReactions: false,
         includeReposts: false,
     });

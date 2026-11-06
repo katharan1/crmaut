@@ -41,7 +41,7 @@
       "type": "integer",
       "description": "Collect items created in the last N days. 8 for a weekly schedule leaves a one-day overlap; items already delivered are skipped.",
       "minimum": 1,
-      "maximum": 31,
+      "maximum": 365,
       "default": 8
     },
     "threadMaxAgeDays": {

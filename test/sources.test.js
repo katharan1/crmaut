@@ -101,6 +101,12 @@ test('linkedin: comments get the post text as context', async () => {
     assert.equal(calls[0].actorInput.commentsPostedLimit, 'month');
 });
 
+test('linkedin: a window longer than a month fetches all comments', async () => {
+    const { calls, runActor } = fakeRunner();
+    await COLLECTORS.linkedin({ input, since, lookbackDays: 90, runActor });
+    assert.equal(calls[0].actorInput.commentsPostedLimit, 'any');
+});
+
 test('google_play: seconds timestamp becomes the right date', async () => {
     const { runActor } = fakeRunner();
     const [record] = await COLLECTORS.google_play({ input, since, lookbackDays: 8, runActor });
