@@ -1,0 +1,53 @@
+{
+  "pattern": "bullet_list",
+  "headline": "Shared rules for capacity keep the priorities from eroding",
+  "columns": 2,
+  "bullets": [
+    {
+      "text": "One domain priority forum",
+      "sub": [
+        "Monthly; public P&I backlog"
+      ],
+      "emphasis": true
+    },
+    {
+      "text": "Explicit capacity rule",
+      "sub": [
+        "60% plan, 25% requests, 15% buffer"
+      ]
+    },
+    {
+      "text": "Named analysts per squad",
+      "sub": [
+        "Klient and Bankéř; one intake"
+      ]
+    },
+    {
+      "text": "Book partner capacity early",
+      "sub": [
+        "Data eng., George, CRM planning"
+      ]
+    },
+    {
+      "text": "One metric tree in all OKRs",
+      "sub": [
+        "Squads and Finance steer alike"
+      ]
+    },
+    {
+      "text": "Early wins build credibility",
+      "sub": [
+        "Pilot learnings, at-risk list"
+      ]
+    }
+  ],
+  "annotation": "New requests are welcome; they compete openly for the same capacity.",
+  "page_number": 11,
+  "source": "Source: case study brief (Nov 2026); P&I proposal.",
+  "notes": [
+    "How the priorities survive many stakeholders. One forum with the domain lead decides the order; the P&I backlog is public, so a new request visibly displaces something else.",
+    "Capacity is explicit: 60% on priorities, 25% on requests, 15% buffer. Two of the five analysts are named for squad Klient and squad Bankéř; they take requests and work on priorities for that squad.",
+    "Every permanent report needs an owner and the decision it serves. Our needs from data engineering, George and CRM go into their planning early. All squads use the same metric tree in their OKRs. And early wins buy credibility to say no later."
+  ],
+  "theme": "executive"
+}

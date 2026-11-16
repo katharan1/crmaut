@@ -1,0 +1,47 @@
+{
+  "pattern": "process_flow",
+  "headline": "The top 5 build the P&I loop from the bottom up",
+  "subline": "The P&I loop · P&I recommends, squads decide",
+  "steps": [
+    {
+      "label": "Measure",
+      "detail": "P1 Metric truth, P2 Volatility",
+      "owner": "P&I",
+      "duration": "Dec–Jan"
+    },
+    {
+      "label": "Find",
+      "detail": "P3 Pilot, P4 Segments, P5 At-risk",
+      "owner": "P&I",
+      "duration": "Dec–Jan"
+    },
+    {
+      "label": "Decide",
+      "detail": "Brain v1 + personas",
+      "owner": "P&I",
+      "duration": "From Feb"
+    },
+    {
+      "label": "Act",
+      "detail": "Campaigns, branches, George",
+      "owner": "Squads, DG&E",
+      "duration": "Go Big"
+    },
+    {
+      "label": "Prove & learn",
+      "detail": "Holdouts on level-ups, SoW, CM3",
+      "owner": "P&I, Finance",
+      "duration": "From Feb"
+    }
+  ],
+  "highlight": 0,
+  "annotation": "Results flow back into Measure; one full turn of the loop is complete before 30 June.",
+  "page_number": 6,
+  "source": "Source: case study brief (Nov 2026); P&I proposal.",
+  "notes": [
+    "This is how the three pillars fit together: a loop. Measure, find, decide, act, prove, and back.",
+    "The top 5 deliberately sit at the start: you cannot close the loop without trusted measurement. Act belongs to the squads; P&I recommends, they decide.",
+    "Prove is not a separate project: every segment and every at-risk list ships with a holdout group. That is the experimentation framework missing from the list, built in from day one. The same loop can later be copied to other domains."
+  ],
+  "theme": "executive"
+}

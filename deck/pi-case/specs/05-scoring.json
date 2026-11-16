@@ -1,0 +1,82 @@
+{
+  "pattern": "heatmap",
+  "headline": "The top 5 score highest on impact and feasibility",
+  "subline": "Leading workstreams scored 1 (low) to 3 (high) per criterion",
+  "unit": "",
+  "rows": [
+    "P1 Metric truth",
+    "P2 Volatility",
+    "P3 Pilot learnings",
+    "P4 Segments",
+    "P5 At-risk list",
+    "Finance report",
+    "Brain v1"
+  ],
+  "columns": [
+    "North Star",
+    "Proof / CM3",
+    "Time-critical",
+    "Unlocks others",
+    "Feasible now"
+  ],
+  "values": [
+    [
+      2,
+      3,
+      3,
+      3,
+      3
+    ],
+    [
+      3,
+      2,
+      3,
+      2,
+      3
+    ],
+    [
+      2,
+      1,
+      3,
+      3,
+      3
+    ],
+    [
+      3,
+      1,
+      3,
+      2,
+      2
+    ],
+    [
+      3,
+      2,
+      2,
+      1,
+      3
+    ],
+    [
+      1,
+      3,
+      1,
+      1,
+      2
+    ],
+    [
+      3,
+      2,
+      1,
+      2,
+      1
+    ]
+  ],
+  "annotation": "Brain v1 and the Finance report follow from February, built on P1 and P4.",
+  "page_number": 5,
+  "source": "Source: P&I judgement based on the brief; to be validated with squad leads in week 2.",
+  "notes": [
+    "These are the nine workstreams after merging, scored on five criteria. The top five are all three-heavy on time-criticality and feasibility.",
+    "Brain v1 has the highest potential North Star impact, but nothing is in development and George releases depend on Vienna, so it scores low on feasibility before Go Big. It starts in February in FIT+, on the segments we build now.",
+    "The Finance report needs the one metric truth first, so it follows in Q1. The collaboration model is how we work, which I cover in the governance part."
+  ],
+  "theme": "executive"
+}

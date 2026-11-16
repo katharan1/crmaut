@@ -1,0 +1,38 @@
+{
+  "pattern": "funnel",
+  "headline": "Five filters narrow 30 areas to 5 priorities",
+  "subline": "Number of areas left after each filter",
+  "unit": "",
+  "stages": [
+    {
+      "label": "All areas in the brief",
+      "value": 30
+    },
+    {
+      "label": "P&I owns the outcome",
+      "value": 25
+    },
+    {
+      "label": "Needed before 30 June",
+      "value": 14
+    },
+    {
+      "label": "After merging overlaps",
+      "value": 9
+    },
+    {
+      "label": "Top impact x feasibility",
+      "value": 5
+    }
+  ],
+  "annotation": "Out first: UX and rule decisions owned by others (4, 9, 14, 19, 30); later: 2, 6, 13, 17, 21-23, 25, 27-29.",
+  "page_number": 4,
+  "source": "Source: P&I assessment of the 30 areas; merges listed on the next page.",
+  "notes": [
+    "Criteria, in knock-out order. One: does P&I own the outcome? The savings calculator, reward selection and native entry are squad Klient's; new scoring rules are the council's decision; CRM implementation is the CRM team's. P&I feeds them evidence.",
+    "Two: cost of delay. What must exist before Go Big or 30 June? Fénix has a floating deadline, agentic CRM and the self-learning Brain need foundations first.",
+    "Three: merge overlaps. Segment definitions and new money vs transfers are part of one metric truth; the dashboard is its output; young clients are one segment.",
+    "Four: impact on North Star and CM3, times feasibility with five analysts and our dependency on other teams."
+  ],
+  "theme": "executive"
+}

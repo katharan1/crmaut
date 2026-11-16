@@ -1,0 +1,31 @@
+{
+  "pattern": "closing",
+  "headline": "Three decisions let P&I start on 1 December",
+  "takeaways": [
+    "Trusted numbers first: remove balance noise",
+    "Act before Go Big with pilot-proven segments",
+    "Holdouts let P&I prove value to Finance"
+  ],
+  "next_steps": [
+    {
+      "action": "Confirm the top 5 priorities",
+      "owner": "Domain lead",
+      "timing": "This week"
+    },
+    {
+      "action": "Reserve data-eng. capacity for P1",
+      "owner": "Head of Product",
+      "timing": "By 1 Dec"
+    },
+    {
+      "action": "Put balance rules on council agenda",
+      "owner": "Domain lead",
+      "timing": "January"
+    }
+  ],
+  "call_to_action": "Decision requested: confirm the top 5 and the capacity behind them.",
+  "page_number": 12,
+  "source": "Source: case study brief (Nov 2026); P&I proposal.",
+  "notes": "To wrap up: trusted numbers first, learn from the pilot, act before Go Big, and prove every step. I need three things from you: confirm the five priorities, help me secure data-engineering capacity, and put the balance-linked rules on the council agenda in January. Thank you, happy to take questions.",
+  "theme": "executive"
+}

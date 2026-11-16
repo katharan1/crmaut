@@ -1,0 +1,81 @@
+{
+  "pattern": "gantt",
+  "headline": "The top 5 land before Go Big; Brain follows",
+  "subline": "P&I roadmap, December 2026 to June 2027",
+  "periods": [
+    "Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun"
+  ],
+  "bars": [
+    {
+      "label": "P1 Metric truth",
+      "start": 0,
+      "end": 1,
+      "highlight": true,
+      "note": "foundation"
+    },
+    {
+      "label": "P2 Volatility",
+      "start": 0,
+      "end": 1,
+      "note": "to council"
+    },
+    {
+      "label": "P3 Pilot learnings",
+      "start": 0,
+      "end": 0
+    },
+    {
+      "label": "P4 Go Big segments",
+      "start": 0,
+      "end": 1
+    },
+    {
+      "label": "P5 At-risk list",
+      "start": 1,
+      "end": 6,
+      "note": "weekly, with holdout"
+    },
+    {
+      "label": "Finance SoW / CM3",
+      "start": 2,
+      "end": 6,
+      "note": "monthly"
+    },
+    {
+      "label": "Brain v1 in FIT+",
+      "start": 2,
+      "end": 6,
+      "note": "rules first, then George"
+    },
+    {
+      "label": "Persona pilot",
+      "start": 3,
+      "end": 4
+    }
+  ],
+  "gates": [
+    {
+      "label": "Go Big 1 Feb",
+      "period": 1
+    },
+    {
+      "label": "30 Jun",
+      "period": 6
+    }
+  ],
+  "annotation": "Data-engineering capacity for P1 must be booked in December; it is the critical path.",
+  "page_number": 7,
+  "source": "Source: P&I plan; dates depend on partner-team capacity.",
+  "notes": [
+    "Everything in the top 5 lands before Go Big on 1 February. Pilot learnings in December feed the Go Big segments in January.",
+    "After Go Big, the Finance report runs monthly on the new definitions, and Brain v1 starts in FIT+ with rules from the Go Big segments, then moves to George once Vienna capacity is secured. A small persona pilot runs in March and April, validated against real campaign results.",
+    "The critical path is data-engineering capacity for the metric truth. That is my first ask."
+  ],
+  "theme": "executive"
+}

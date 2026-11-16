@@ -1,0 +1,30 @@
+{
+  "pattern": "summary_strip",
+  "headline": "P&I should make the numbers trustworthy before scaling AI",
+  "subline": "The proposal in one page · Five priorities in three moves",
+  "blocks": [
+    {
+      "metric": "Clarity",
+      "claim": "One truth, minus the noise",
+      "proof": "P1 One metric truth. P2 Evidence on balance-driven drops.",
+      "implication": "Everyone steers on the same, honest number."
+    },
+    {
+      "metric": "Learn",
+      "claim": "Copy what already worked",
+      "proof": "P3 Why the pilot nearly doubled enrolment.",
+      "implication": "Go Big starts from a proven playbook."
+    },
+    {
+      "metric": "Act",
+      "claim": "Give squads targets for Go Big",
+      "proof": "P4 Go Big segments. P5 Weekly at-risk list.",
+      "implication": "Every list carries a holdout, so impact is proven."
+    }
+  ],
+  "focus_block": 0,
+  "page_number": 2,
+  "source": "Source: case study brief (Nov 2026); P&I proposal.",
+  "notes": "Here is the answer up front. Five priorities, grouped into three moves: clarity, learn, act. The thread through all of them: we cannot grow a North Star 4.5 times if we do not trust what it measures. Brain and personas are in the plan, but they come right after, on top of trusted data.",
+  "theme": "executive"
+}

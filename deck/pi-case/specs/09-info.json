@@ -1,0 +1,55 @@
+{
+  "pattern": "benchmark_table",
+  "headline": "Five unknowns close within three weeks",
+  "subline": "What I still need to know, and how I will get it",
+  "columns": [
+    "How I get it",
+    "By"
+  ],
+  "rows": [
+    {
+      "label": "Balance drops",
+      "values": [
+        "Split drops by point type",
+        "Week 2"
+      ]
+    },
+    {
+      "label": "Partner capacity",
+      "values": [
+        "Data eng., George, CRM planning",
+        "Week 2"
+      ]
+    },
+    {
+      "label": "CM3 method",
+      "values": [
+        "Workshop with Finance",
+        "Week 3"
+      ]
+    },
+    {
+      "label": "Pilot design",
+      "values": [
+        "Pilot owners and data",
+        "Week 3"
+      ]
+    },
+    {
+      "label": "Squad needs",
+      "values": [
+        "Interviews: squads, council",
+        "Week 2"
+      ]
+    }
+  ],
+  "annotation": "Answers go back into the scoring; priorities are re-checked at the end of week 3.",
+  "page_number": 9,
+  "source": "Source: case study brief (Nov 2026); P&I proposal.",
+  "notes": [
+    "What I do not know yet, and how I close it. The biggest is how much of the drops is balance movement: that is a data decomposition my team can do in two weeks.",
+    "Then partner capacity: George in Vienna, FIT+, CRM, data engineering. I need their planning cycles, because our dependencies sit there.",
+    "Finance's CM3 method, the pilot design to check for selection bias, and what squads and branches actually need. By week 3 I re-run the scoring with real data."
+  ],
+  "theme": "executive"
+}

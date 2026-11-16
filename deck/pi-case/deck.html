@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance &amp; Intelligence — P&amp;I proposal</title>
+<style>
+:root { color-scheme: light; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; background: #0B1220; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif; }
+.deck { position: relative; height: 100%; display: flex; align-items: center; justify-content: center; }
+.slide {
+  position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.slide.active { display: flex; }
+.frame {
+  width: min(96vw, calc(96vh * 16 / 9)); aspect-ratio: 16 / 9;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55); border-radius: 6px; overflow: hidden; background: #fff;
+}
+.frame svg { display: block; width: 100%; height: 100%; }
+.slide.active .frame { animation: slidein 480ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.slide.active svg .el { opacity: 0; animation: reveal 420ms ease-out both; }
+@keyframes slidein { from { opacity: 0; transform: translateY(14px) scale(0.992); } to { opacity: 1; transform: none; } }
+@keyframes reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .slide.active .frame, .slide.active svg .el { animation: none; opacity: 1; }
+}
+.hud {
+  position: fixed; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 14px;
+  padding: 12px 20px; color: #93A3BC; font-size: 12px; user-select: none;
+  transition: opacity 320ms ease;
+}
+/* Presenting: chrome gets out of the way. The HUD fades after a short idle
+   (or instantly on keyboard navigation) and returns on mouse movement. */
+body.hud-hidden .hud { opacity: 0; pointer-events: none; }
+body.hud-hidden { cursor: none; }
+.hud .dots { display: flex; gap: 7px; }
+.hud .dot { width: 7px; height: 7px; border-radius: 50%; background: #33415C; cursor: pointer; border: 0; padding: 0; }
+.hud .dot.on { background: #E5E7EB; }
+.hud .counter { margin-left: auto; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; }
+.progress { position: fixed; top: 0; left: 0; height: 2px; background: #E5E7EB; width: 0; transition: width 240ms ease; }
+/* Embedded in the landing site: no presentation chrome.
+   Keep the frame entrance; skip per-element opacity:0 reveals — those
+   freeze invisible when the iframe is display:none during chat choreography. */
+body.embed .hud,
+body.embed .progress { display: none !important; }
+body.embed { cursor: default; }
+body.embed .slide.active svg .el {
+  opacity: 1 !important;
+  animation: none !important;
+}
+body.embed .frame {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+@media print {
+  /* One 16:9 page per slide. The deck must stop being a flex container:
+     flex items ignore forced page breaks, which collapsed the whole deck
+     onto a single page. */
+  @page { size: 13.333in 7.5in; margin: 0; }
+  html, body { background: #fff; height: auto; }
+  .hud, .progress { display: none; }
+  .deck { display: block; height: auto; }
+  .slide { display: block !important; position: static; padding: 0; page-break-after: always; break-after: page; }
+  .slide:last-of-type { page-break-after: auto; break-after: auto; }
+  .frame { width: 100%; box-shadow: none; border-radius: 0; }
+  .slide svg .el, .slide .frame { opacity: 1 !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="progress"></div>
+<main class="deck">
+<section class="slide" aria-label="Performance &amp; Intelligence"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Performance &amp; Intelligence">
+  <rect x="0.0" y="0.0" width="1280.0" height="720.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="264.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="54" fill="#FFFFFF" font-weight="600" text-anchor="start">Performance &amp; Intelligence</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="338.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#E5E7EB" font-weight="normal" text-anchor="start">Turning domain data into decisions: the first six months of Level Up</text>
+  <text class="el" style="animation-delay:56ms" x="80.0" y="370.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#E5E7EB" font-weight="normal" text-anchor="start">Advisory</text>
+  <text class="el" style="animation-delay:84ms" x="80.0" y="640.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#E5E7EB" font-weight="normal" text-anchor="start">PM proposal, P&amp;I squad · November 2026</text>
+  <text class="el" style="animation-delay:112ms" x="1200.0" y="640.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#E5E7EB" font-weight="normal" text-anchor="end">INTERNAL — CASE STUDY</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="P&amp;I should make the numbers trustworthy before scaling AI"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="P&amp;I should make the numbers trustworthy before scaling AI">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">P&amp;I should make the numbers trustworthy before</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="148.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">scaling AI</text>
+  <text class="el" style="animation-delay:56ms" x="80.0" y="188.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#6B7280" font-weight="normal" text-anchor="start">The proposal in one page · Five priorities in three moves</text>
+  <rect class="el" style="animation-delay:84ms" x="88.0" y="208.0" width="357.3" height="376.0" fill="#F3F5FA" stroke="none"/>
+  <rect class="el" style="animation-delay:112ms" x="88.0" y="208.0" width="357.3" height="3.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:140ms" x="108.0" y="272.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#15296B" font-weight="bold" text-anchor="start">Clarity</text>
+  <text class="el" style="animation-delay:168ms" x="108.0" y="320.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">One truth, minus</text>
+  <text class="el" style="animation-delay:196ms" x="108.0" y="355.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">the noise</text>
+  <text class="el" style="animation-delay:224ms" x="108.0" y="400.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P1 One metric truth. P2</text>
+  <text class="el" style="animation-delay:252ms" x="108.0" y="429.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Evidence on</text>
+  <text class="el" style="animation-delay:280ms" x="108.0" y="458.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">balance-driven drops.</text>
+  <text class="el" style="animation-delay:308ms" x="108.0" y="500.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">Everyone steers on the</text>
+  <text class="el" style="animation-delay:336ms" x="108.0" y="529.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">same, honest number.</text>
+  <text class="el" style="animation-delay:364ms" x="481.3" y="272.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#000000" font-weight="bold" text-anchor="start">Learn</text>
+  <text class="el" style="animation-delay:392ms" x="481.3" y="320.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">Copy what already</text>
+  <text class="el" style="animation-delay:420ms" x="481.3" y="355.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">worked</text>
+  <text class="el" style="animation-delay:448ms" x="481.3" y="400.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P3 Why the pilot nearly</text>
+  <text class="el" style="animation-delay:476ms" x="481.3" y="429.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">doubled enrolment.</text>
+  <text class="el" style="animation-delay:504ms" x="481.3" y="500.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">Go Big starts from a</text>
+  <text class="el" style="animation-delay:532ms" x="481.3" y="529.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">proven playbook.</text>
+  <text class="el" style="animation-delay:560ms" x="854.7" y="272.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#000000" font-weight="bold" text-anchor="start">Act</text>
+  <text class="el" style="animation-delay:588ms" x="854.7" y="320.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">Give squads targets</text>
+  <text class="el" style="animation-delay:616ms" x="854.7" y="355.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">for Go Big</text>
+  <text class="el" style="animation-delay:644ms" x="854.7" y="400.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P4 Go Big segments. P5</text>
+  <text class="el" style="animation-delay:672ms" x="854.7" y="429.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Weekly at-risk list.</text>
+  <text class="el" style="animation-delay:700ms" x="854.7" y="500.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">Every list carries a</text>
+  <text class="el" style="animation-delay:728ms" x="854.7" y="529.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">holdout, so impact is</text>
+  <text class="el" style="animation-delay:756ms" x="854.7" y="558.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">proven.</text>
+  <text class="el" style="animation-delay:784ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: case study brief (Nov 2026); P&amp;I proposal.</text>
+  <text class="el" style="animation-delay:812ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">2</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="The North Star must grow 4.5x on a base that is partly noise"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="The North Star must grow 4.5x on a base that is partly noise">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">The North Star must grow 4.5x on a base that is</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="148.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">partly noise</text>
+  <text class="el" style="animation-delay:56ms" x="80.0" y="188.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#6B7280" font-weight="normal" text-anchor="start">Three signals from the brief</text>
+  <text class="el" style="animation-delay:84ms" x="108.0" y="272.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#000000" font-weight="bold" text-anchor="start">4.5x</text>
+  <text class="el" style="animation-delay:112ms" x="108.0" y="320.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">North Star gap</text>
+  <text class="el" style="animation-delay:140ms" x="108.0" y="400.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">28k to 125k net</text>
+  <text class="el" style="animation-delay:168ms" x="108.0" y="429.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">level-ups by 30 June,</text>
+  <text class="el" style="animation-delay:196ms" x="108.0" y="458.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">while clients grow only</text>
+  <text class="el" style="animation-delay:224ms" x="108.0" y="487.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">2.1x (598k to 1.25M).</text>
+  <text class="el" style="animation-delay:252ms" x="108.0" y="529.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">Existing clients must</text>
+  <text class="el" style="animation-delay:280ms" x="108.0" y="558.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">climb faster and drop</text>
+  <text class="el" style="animation-delay:308ms" x="108.0" y="587.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">less.</text>
+  <rect class="el" style="animation-delay:336ms" x="461.3" y="208.0" width="357.3" height="376.0" fill="#F3F5FA" stroke="none"/>
+  <rect class="el" style="animation-delay:364ms" x="461.3" y="208.0" width="357.3" height="3.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:392ms" x="481.3" y="272.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#15296B" font-weight="bold" text-anchor="start">22.6k</text>
+  <text class="el" style="animation-delay:420ms" x="481.3" y="320.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">Level drops since 1</text>
+  <text class="el" style="animation-delay:448ms" x="481.3" y="355.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">Oct</text>
+  <text class="el" style="animation-delay:476ms" x="481.3" y="400.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Balance-linked points</text>
+  <text class="el" style="animation-delay:504ms" x="481.3" y="429.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">make clients bounce</text>
+  <text class="el" style="animation-delay:532ms" x="481.3" y="458.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">across levels.</text>
+  <text class="el" style="animation-delay:560ms" x="481.3" y="529.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">Part of the North Star</text>
+  <text class="el" style="animation-delay:588ms" x="481.3" y="558.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">is noise.</text>
+  <text class="el" style="animation-delay:616ms" x="854.7" y="272.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#000000" font-weight="bold" text-anchor="start">2x</text>
+  <text class="el" style="animation-delay:644ms" x="854.7" y="320.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">Pilot vs silent</text>
+  <text class="el" style="animation-delay:672ms" x="854.7" y="355.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="bold" text-anchor="start">start</text>
+  <text class="el" style="animation-delay:700ms" x="854.7" y="400.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Targeted communication:</text>
+  <text class="el" style="animation-delay:728ms" x="854.7" y="429.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">24.6% vs 13% enrolment;</text>
+  <text class="el" style="animation-delay:756ms" x="854.7" y="458.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">63% vs 34% reward</text>
+  <text class="el" style="animation-delay:784ms" x="854.7" y="487.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">choice.</text>
+  <text class="el" style="animation-delay:812ms" x="854.7" y="529.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">Execution, not product,</text>
+  <text class="el" style="animation-delay:840ms" x="854.7" y="558.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="start">made the gap.</text>
+  <text class="el" style="animation-delay:868ms" x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Finance does not yet see CM3 value, so proving impact matters as much as growth.</title>Finance does not yet see CM3 value, so proving impact matters as much as</text>
+  <text class="el" style="animation-delay:896ms" x="80.0" y="660.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Finance does not yet see CM3 value, so proving impact matters as much as growth.</title>growth.</text>
+  <text class="el" style="animation-delay:924ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: case study brief; 28k counted since the silent launch.</text>
+  <text class="el" style="animation-delay:952ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">3</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="Five filters narrow 30 areas to 5 priorities"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Five filters narrow 30 areas to 5 priorities">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">Five filters narrow 30 areas to 5 priorities</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="136.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#6B7280" font-weight="normal" text-anchor="start">Number of areas left after each filter</text>
+  <rect class="el" style="animation-delay:56ms" x="290.0" y="229.2" width="790.0" height="28.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:84ms" x="80.0" y="236.2" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">All areas in the</text>
+  <text class="el" style="animation-delay:112ms" x="80.0" y="265.2" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">brief</text>
+  <text class="el" style="animation-delay:140ms" x="1091.0" y="251.2" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="bold" text-anchor="start">30</text>
+  <rect class="el" style="animation-delay:168ms" x="355.8" y="299.6" width="658.3" height="28.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:196ms" x="80.0" y="320.6" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P&amp;I owns the outcome</text>
+  <text class="el" style="animation-delay:224ms" x="1025.2" y="321.6" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="bold" text-anchor="start">25</text>
+  <text class="el" style="animation-delay:252ms" x="1108.0" y="283.4" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="16" fill="#2563EB" font-weight="600" text-anchor="start">↓ 83%</text>
+  <rect class="el" style="animation-delay:280ms" x="500.7" y="370.0" width="368.7" height="28.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:308ms" x="80.0" y="377.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Needed before 30</text>
+  <text class="el" style="animation-delay:336ms" x="80.0" y="406.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">June</text>
+  <text class="el" style="animation-delay:364ms" x="880.3" y="392.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="bold" text-anchor="start">14</text>
+  <text class="el" style="animation-delay:392ms" x="1108.0" y="353.8" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="16" fill="#2563EB" font-weight="600" text-anchor="start">↓ 56%</text>
+  <rect class="el" style="animation-delay:420ms" x="566.5" y="440.4" width="237.0" height="28.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:448ms" x="80.0" y="447.4" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">After merging</text>
+  <text class="el" style="animation-delay:476ms" x="80.0" y="476.4" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">overlaps</text>
+  <text class="el" style="animation-delay:504ms" x="814.5" y="462.4" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="bold" text-anchor="start">9</text>
+  <text class="el" style="animation-delay:532ms" x="1108.0" y="424.2" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="16" fill="#2563EB" font-weight="600" text-anchor="start">↓ 64%</text>
+  <rect class="el" style="animation-delay:560ms" x="619.2" y="510.8" width="131.7" height="28.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:588ms" x="80.0" y="517.8" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Top impact x</text>
+  <text class="el" style="animation-delay:616ms" x="80.0" y="546.8" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">feasibility</text>
+  <text class="el" style="animation-delay:644ms" x="761.8" y="532.8" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="bold" text-anchor="start">5</text>
+  <text class="el" style="animation-delay:672ms" x="1108.0" y="494.6" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="16" fill="#2563EB" font-weight="600" text-anchor="start">↓ 56%</text>
+  <text class="el" style="animation-delay:700ms" x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Out first: UX and rule decisions owned by others (4, 9, 14, 19, 30); later: 2, 6, 13, 17, 21-23, 25, 27-29.</title>Out first: UX and rule decisions owned by others (4, 9, 14, 19, 30);</text>
+  <text class="el" style="animation-delay:728ms" x="80.0" y="660.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Out first: UX and rule decisions owned by others (4, 9, 14, 19, 30); later: 2, 6, 13, 17, 21-23, 25, 27-29.</title>later: 2, 6, 13, 17, 21-23, 25, 27-29.</text>
+  <text class="el" style="animation-delay:756ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: P&amp;I assessment of the 30 areas; merges listed on the next page.</text>
+  <text class="el" style="animation-delay:784ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">4</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="The top 5 score highest on impact and feasibility"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="The top 5 score highest on impact and feasibility">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">The top 5 score highest on impact and</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="148.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">feasibility</text>
+  <text class="el" style="animation-delay:56ms" x="80.0" y="188.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#6B7280" font-weight="normal" text-anchor="start">Leading workstreams scored 1 (low) to 3 (high) per criterion</text>
+  <text class="el" style="animation-delay:84ms" x="381.0" y="223.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">North Star</text>
+  <text class="el" style="animation-delay:112ms" x="563.0" y="223.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Proof / CM3</text>
+  <text class="el" style="animation-delay:140ms" x="745.0" y="223.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Time-critical</text>
+  <text class="el" style="animation-delay:168ms" x="927.0" y="223.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Unlocks others</text>
+  <text class="el" style="animation-delay:196ms" x="1109.0" y="223.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Feasible now</text>
+  <text class="el" style="animation-delay:224ms" x="80.0" y="264.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start"><title>P1 Metric truth</title>P1 Metric truth</text>
+  <rect class="el" style="animation-delay:252ms" x="292.0" y="236.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:280ms" x="381.0" y="265.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <rect class="el" style="animation-delay:308ms" x="474.0" y="236.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:336ms" x="563.0" y="265.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:364ms" x="656.0" y="236.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:392ms" x="745.0" y="265.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:420ms" x="838.0" y="236.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:448ms" x="927.0" y="265.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:476ms" x="1020.0" y="236.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:504ms" x="1109.0" y="265.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <text class="el" style="animation-delay:532ms" x="80.0" y="310.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start"><title>P2 Volatility</title>P2 Volatility</text>
+  <rect class="el" style="animation-delay:560ms" x="292.0" y="282.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:588ms" x="381.0" y="311.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:616ms" x="474.0" y="282.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:644ms" x="563.0" y="311.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <rect class="el" style="animation-delay:672ms" x="656.0" y="282.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:700ms" x="745.0" y="311.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:728ms" x="838.0" y="282.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:756ms" x="927.0" y="311.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <rect class="el" style="animation-delay:784ms" x="1020.0" y="282.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:812ms" x="1109.0" y="311.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <text class="el" style="animation-delay:840ms" x="80.0" y="356.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start"><title>P3 Pilot learnings</title>P3 Pilot learnings</text>
+  <rect class="el" style="animation-delay:868ms" x="292.0" y="328.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:896ms" x="381.0" y="357.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <rect class="el" style="animation-delay:924ms" x="474.0" y="328.0" width="178.0" height="42.0" fill="#EFF3FB" stroke="none"/>
+  <text class="el" style="animation-delay:952ms" x="563.0" y="357.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">1</text>
+  <rect class="el" style="animation-delay:980ms" x="656.0" y="328.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:1008ms" x="745.0" y="357.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:1036ms" x="838.0" y="328.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:1064ms" x="927.0" y="357.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:1092ms" x="1020.0" y="328.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="1109.0" y="357.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="402.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start"><title>P4 Segments</title>P4 Segments</text>
+  <rect class="el" style="animation-delay:1100ms" x="292.0" y="374.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="381.0" y="403.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:1100ms" x="474.0" y="374.0" width="178.0" height="42.0" fill="#EFF3FB" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="563.0" y="403.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">1</text>
+  <rect class="el" style="animation-delay:1100ms" x="656.0" y="374.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="745.0" y="403.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:1100ms" x="838.0" y="374.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="927.0" y="403.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <rect class="el" style="animation-delay:1100ms" x="1020.0" y="374.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="1109.0" y="403.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="448.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start"><title>P5 At-risk list</title>P5 At-risk list</text>
+  <rect class="el" style="animation-delay:1100ms" x="292.0" y="420.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="381.0" y="449.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:1100ms" x="474.0" y="420.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="563.0" y="449.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <rect class="el" style="animation-delay:1100ms" x="656.0" y="420.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="745.0" y="449.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <rect class="el" style="animation-delay:1100ms" x="838.0" y="420.0" width="178.0" height="42.0" fill="#EFF3FB" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="927.0" y="449.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">1</text>
+  <rect class="el" style="animation-delay:1100ms" x="1020.0" y="420.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="1109.0" y="449.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start"><title>Finance report</title>Finance report</text>
+  <rect class="el" style="animation-delay:1100ms" x="292.0" y="466.0" width="178.0" height="42.0" fill="#EFF3FB" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="381.0" y="495.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">1</text>
+  <rect class="el" style="animation-delay:1100ms" x="474.0" y="466.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="563.0" y="495.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:1100ms" x="656.0" y="466.0" width="178.0" height="42.0" fill="#EFF3FB" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="745.0" y="495.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">1</text>
+  <rect class="el" style="animation-delay:1100ms" x="838.0" y="466.0" width="178.0" height="42.0" fill="#EFF3FB" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="927.0" y="495.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">1</text>
+  <rect class="el" style="animation-delay:1100ms" x="1020.0" y="466.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="1109.0" y="495.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="540.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start"><title>Brain v1</title>Brain v1</text>
+  <rect class="el" style="animation-delay:1100ms" x="292.0" y="512.0" width="178.0" height="42.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="381.0" y="541.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+  <rect class="el" style="animation-delay:1100ms" x="474.0" y="512.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="563.0" y="541.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <rect class="el" style="animation-delay:1100ms" x="656.0" y="512.0" width="178.0" height="42.0" fill="#EFF3FB" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="745.0" y="541.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">1</text>
+  <rect class="el" style="animation-delay:1100ms" x="838.0" y="512.0" width="178.0" height="42.0" fill="#828EB3" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="927.0" y="541.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">2</text>
+  <rect class="el" style="animation-delay:1100ms" x="1020.0" y="512.0" width="178.0" height="42.0" fill="#EFF3FB" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="1109.0" y="541.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#000000" font-weight="600" text-anchor="middle">1</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Brain v1 and the Finance report follow from February, built on P1 and P4.</title>Brain v1 and the Finance report follow from February, built on P1 and P4.</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: P&amp;I judgement based on the brief; to be validated with squad leads in week 2.</text>
+  <text class="el" style="animation-delay:1100ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">5</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="The top 5 build the P&amp;I loop from the bottom up"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="The top 5 build the P&amp;I loop from the bottom up">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">The top 5 build the P&amp;I loop from the bottom up</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="136.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#6B7280" font-weight="normal" text-anchor="start">The P&amp;I loop · P&amp;I recommends, squads decide</text>
+  <rect class="el" style="animation-delay:56ms" x="80.0" y="224.0" width="204.8" height="320.0" fill="#F3F5FA" stroke="none"/>
+  <rect class="el" style="animation-delay:84ms" x="80.0" y="224.0" width="204.8" height="3.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:112ms" x="98.0" y="258.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="28" fill="#000000" font-weight="normal" text-anchor="start">01</text>
+  <text class="el" style="animation-delay:140ms" x="98.0" y="308.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start">Measure</text>
+  <text class="el" style="animation-delay:168ms" x="98.0" y="392.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P1 Metric</text>
+  <text class="el" style="animation-delay:196ms" x="98.0" y="421.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">truth, P2</text>
+  <text class="el" style="animation-delay:224ms" x="98.0" y="450.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Volatility</text>
+  <text class="el" style="animation-delay:252ms" x="98.0" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P&amp;I ·</text>
+  <text class="el" style="animation-delay:280ms" x="98.0" y="523.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Dec–Jan</text>
+  <path class="el" style="animation-delay:308ms" d="M 292.8 378.0 L 299.8 384.0 L 292.8 390.0" fill="none" stroke="#6B7280" stroke-width="2"/>
+  <rect class="el" style="animation-delay:336ms" x="308.8" y="224.0" width="204.8" height="3.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:364ms" x="326.8" y="258.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="28" fill="#000000" font-weight="normal" text-anchor="start">02</text>
+  <text class="el" style="animation-delay:392ms" x="326.8" y="308.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start">Find</text>
+  <text class="el" style="animation-delay:420ms" x="326.8" y="392.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P3 Pilot, P4</text>
+  <text class="el" style="animation-delay:448ms" x="326.8" y="421.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Segments, P5</text>
+  <text class="el" style="animation-delay:476ms" x="326.8" y="450.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">At-risk</text>
+  <text class="el" style="animation-delay:504ms" x="326.8" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P&amp;I ·</text>
+  <text class="el" style="animation-delay:532ms" x="326.8" y="523.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Dec–Jan</text>
+  <path class="el" style="animation-delay:560ms" d="M 521.6 378.0 L 528.6 384.0 L 521.6 390.0" fill="none" stroke="#6B7280" stroke-width="2"/>
+  <rect class="el" style="animation-delay:588ms" x="537.6" y="224.0" width="204.8" height="3.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:616ms" x="555.6" y="258.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="28" fill="#000000" font-weight="normal" text-anchor="start">03</text>
+  <text class="el" style="animation-delay:644ms" x="555.6" y="308.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start">Decide</text>
+  <text class="el" style="animation-delay:672ms" x="555.6" y="392.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Brain v1 +</text>
+  <text class="el" style="animation-delay:700ms" x="555.6" y="421.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">personas</text>
+  <text class="el" style="animation-delay:728ms" x="555.6" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P&amp;I · From</text>
+  <text class="el" style="animation-delay:756ms" x="555.6" y="523.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Feb</text>
+  <path class="el" style="animation-delay:784ms" d="M 750.4000000000001 378.0 L 757.4000000000001 384.0 L 750.4000000000001 390.0" fill="none" stroke="#6B7280" stroke-width="2"/>
+  <rect class="el" style="animation-delay:812ms" x="766.4" y="224.0" width="204.8" height="3.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:840ms" x="784.4" y="258.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="28" fill="#000000" font-weight="normal" text-anchor="start">04</text>
+  <text class="el" style="animation-delay:868ms" x="784.4" y="308.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start">Act</text>
+  <text class="el" style="animation-delay:896ms" x="784.4" y="392.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Campaigns,</text>
+  <text class="el" style="animation-delay:924ms" x="784.4" y="421.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">branches,</text>
+  <text class="el" style="animation-delay:952ms" x="784.4" y="450.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">George</text>
+  <text class="el" style="animation-delay:980ms" x="784.4" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Squads, DG&amp;E</text>
+  <text class="el" style="animation-delay:1008ms" x="784.4" y="523.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">· Go Big</text>
+  <path class="el" style="animation-delay:1036ms" d="M 979.2 378.0 L 986.2 384.0 L 979.2 390.0" fill="none" stroke="#6B7280" stroke-width="2"/>
+  <rect class="el" style="animation-delay:1064ms" x="995.2" y="224.0" width="204.8" height="3.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:1092ms" x="1013.2" y="258.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="28" fill="#000000" font-weight="normal" text-anchor="start">05</text>
+  <text class="el" style="animation-delay:1100ms" x="1013.2" y="308.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start">Prove &amp;</text>
+  <text class="el" style="animation-delay:1100ms" x="1013.2" y="343.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start">learn</text>
+  <text class="el" style="animation-delay:1100ms" x="1013.2" y="392.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Holdouts on</text>
+  <text class="el" style="animation-delay:1100ms" x="1013.2" y="421.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">level-ups,</text>
+  <text class="el" style="animation-delay:1100ms" x="1013.2" y="450.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">SoW, CM3</text>
+  <text class="el" style="animation-delay:1100ms" x="1013.2" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P&amp;I, Finance</text>
+  <text class="el" style="animation-delay:1100ms" x="1013.2" y="523.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">· From Feb</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Results flow back into Measure; one full turn of the loop is complete before 30 June.</title>Results flow back into Measure; one full turn of the loop is complete</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="660.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Results flow back into Measure; one full turn of the loop is complete before 30 June.</title>before 30 June.</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: case study brief (Nov 2026); P&amp;I proposal.</text>
+  <text class="el" style="animation-delay:1100ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">6</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="The top 5 land before Go Big; Brain follows"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="The top 5 land before Go Big; Brain follows">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">The top 5 land before Go Big; Brain follows</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="136.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#6B7280" font-weight="normal" text-anchor="start">P&amp;I roadmap, December 2026 to June 2027</text>
+  <text class="el" style="animation-delay:56ms" x="392.1" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Dec</text>
+  <line class="el" style="animation-delay:84ms" x1="330.0" y1="222.0" x2="330.0" y2="534.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:112ms" x="516.4" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Jan</text>
+  <line class="el" style="animation-delay:140ms" x1="454.3" y1="222.0" x2="454.3" y2="534.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:168ms" x="640.7" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Feb</text>
+  <line class="el" style="animation-delay:196ms" x1="578.6" y1="222.0" x2="578.6" y2="534.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:224ms" x="765.0" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Mar</text>
+  <line class="el" style="animation-delay:252ms" x1="702.9" y1="222.0" x2="702.9" y2="534.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:280ms" x="889.3" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Apr</text>
+  <line class="el" style="animation-delay:308ms" x1="827.1" y1="222.0" x2="827.1" y2="534.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:336ms" x="1013.6" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">May</text>
+  <line class="el" style="animation-delay:364ms" x1="951.4" y1="222.0" x2="951.4" y2="534.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:392ms" x="1137.9" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Jun</text>
+  <line class="el" style="animation-delay:420ms" x1="1075.7" y1="222.0" x2="1075.7" y2="534.0" stroke="#D1D5DB"/>
+  <line class="el" style="animation-delay:448ms" x1="1200.0" y1="222.0" x2="1200.0" y2="534.0" stroke="#D1D5DB"/>
+  <line class="el" style="animation-delay:476ms" x1="80.0" y1="222.0" x2="1200.0" y2="222.0" stroke="#374151"/>
+  <text class="el" style="animation-delay:504ms" x="80.0" y="248.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P1 Metric truth</text>
+  <rect class="el" style="animation-delay:532ms" x="333.0" y="229.5" width="242.6" height="24.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:560ms" x="341.0" y="248.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="normal" text-anchor="start">foundation</text>
+  <line class="el" style="animation-delay:588ms" x1="80.0" y1="261.0" x2="1200.0" y2="261.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:616ms" x="80.0" y="287.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P2 Volatility</text>
+  <rect class="el" style="animation-delay:644ms" x="333.0" y="268.5" width="242.6" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:672ms" x="341.0" y="287.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">to council</text>
+  <line class="el" style="animation-delay:700ms" x1="80.0" y1="300.0" x2="1200.0" y2="300.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:728ms" x="80.0" y="326.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P3 Pilot learnings</text>
+  <rect class="el" style="animation-delay:756ms" x="333.0" y="307.5" width="118.3" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <line class="el" style="animation-delay:784ms" x1="80.0" y1="339.0" x2="1200.0" y2="339.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:812ms" x="80.0" y="365.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P4 Go Big segments</text>
+  <rect class="el" style="animation-delay:840ms" x="333.0" y="346.5" width="242.6" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <line class="el" style="animation-delay:868ms" x1="80.0" y1="378.0" x2="1200.0" y2="378.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:896ms" x="80.0" y="404.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P5 At-risk list</text>
+  <rect class="el" style="animation-delay:924ms" x="457.3" y="385.5" width="739.7" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:952ms" x="465.3" y="404.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">weekly, with holdout</text>
+  <line class="el" style="animation-delay:980ms" x1="80.0" y1="417.0" x2="1200.0" y2="417.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:1008ms" x="80.0" y="443.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Finance SoW / CM3</text>
+  <rect class="el" style="animation-delay:1036ms" x="581.6" y="424.5" width="615.4" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:1064ms" x="589.6" y="443.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">monthly</text>
+  <line class="el" style="animation-delay:1092ms" x1="80.0" y1="456.0" x2="1200.0" y2="456.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="482.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Brain v1 in FIT+</text>
+  <rect class="el" style="animation-delay:1100ms" x="581.6" y="463.5" width="615.4" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <text class="el" style="animation-delay:1100ms" x="589.6" y="482.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">rules first, then George</text>
+  <line class="el" style="animation-delay:1100ms" x1="80.0" y1="495.0" x2="1200.0" y2="495.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="521.5" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Persona pilot</text>
+  <rect class="el" style="animation-delay:1100ms" x="705.9" y="502.5" width="242.6" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <line class="el" style="animation-delay:1100ms" x1="80.0" y1="534.0" x2="1200.0" y2="534.0" stroke="#D1D5DB"/>
+  <path class="el" style="animation-delay:1100ms" d="M 578.6 538.0 L 586.6 546.0 L 578.6 554.0 L 570.6 546.0 Z" fill="#15296B"/>
+  <text class="el" style="animation-delay:1100ms" x="578.6" y="582.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="middle">Go Big 1 Feb</text>
+  <path class="el" style="animation-delay:1100ms" d="M 1200.0 538.0 L 1208.0 546.0 L 1200.0 554.0 L 1192.0 546.0 Z" fill="#15296B"/>
+  <text class="el" style="animation-delay:1100ms" x="1200.0" y="582.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="middle">30 Jun</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Data-engineering capacity for P1 must be booked in December; it is the critical path.</title>Data-engineering capacity for P1 must be booked in December; it is the</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="660.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Data-engineering capacity for P1 must be booked in December; it is the critical path.</title>critical path.</text>
+  <text class="el" style="animation-delay:1100ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: P&amp;I plan; dates depend on partner-team capacity.</text>
+  <text class="el" style="animation-delay:1100ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">7</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="The list lacks a way to prove what P&amp;I changes"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="The list lacks a way to prove what P&amp;I changes">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">The list lacks a way to prove what P&amp;I changes</text>
+  <rect class="el" style="animation-delay:28ms" x="80.0" y="214.0" width="6.0" height="6.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:56ms" x="102.0" y="228.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#15296B" font-weight="600" text-anchor="start">Experimentation framework with holdout groups</text>
+  <text class="el" style="animation-delay:84ms" x="126.0" y="269.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">– Without it, SoW and CM3 gains cannot be attributed to the programme</text>
+  <rect class="el" style="animation-delay:112ms" x="80.0" y="297.0" width="6.0" height="6.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:140ms" x="102.0" y="311.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">North Star driver tree and forecast</text>
+  <text class="el" style="animation-delay:168ms" x="126.0" y="352.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">– Enrolment x activation x level-up rate minus drops: is 125k reachable?</text>
+  <rect class="el" style="animation-delay:196ms" x="80.0" y="380.0" width="6.0" height="6.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:224ms" x="102.0" y="394.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">Analysis of level volatility, not just data quality</text>
+  <text class="el" style="animation-delay:252ms" x="126.0" y="435.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">– How much of the 22.6k drops is balance movement, not behaviour</text>
+  <rect class="el" style="animation-delay:280ms" x="80.0" y="463.0" width="6.0" height="6.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:308ms" x="102.0" y="477.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">AI compliance: GDPR and the AI Act</text>
+  <text class="el" style="animation-delay:336ms" x="126.0" y="518.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">– Banker notes, Brain and personas need a legal basis before scale</text>
+  <text class="el" style="animation-delay:364ms" x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>I would add the first three to P&amp;I's scope now; compliance runs alongside Brain v1.</title>I would add the first three to P&amp;I's scope now; compliance runs alongside</text>
+  <text class="el" style="animation-delay:392ms" x="80.0" y="660.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>I would add the first three to P&amp;I's scope now; compliance runs alongside Brain v1.</title>Brain v1.</text>
+  <text class="el" style="animation-delay:420ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: case study brief (Nov 2026); P&amp;I proposal.</text>
+  <text class="el" style="animation-delay:448ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">8</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="Five unknowns close within three weeks"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Five unknowns close within three weeks">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">Five unknowns close within three weeks</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="136.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#6B7280" font-weight="normal" text-anchor="start">What I still need to know, and how I will get it</text>
+  <text class="el" style="animation-delay:56ms" x="532.5" y="226.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">How I get it</text>
+  <text class="el" style="animation-delay:84ms" x="977.5" y="226.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">By</text>
+  <line class="el" style="animation-delay:112ms" x1="80.0" y1="262.0" x2="1200.0" y2="262.0" stroke="#374151"/>
+  <rect class="el" style="animation-delay:140ms" x="80.0" y="262.0" width="1120.0" height="64.4" fill="#F3F4F6" stroke="none"/>
+  <text class="el" style="animation-delay:168ms" x="80.0" y="305.2" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start"><title>Balance drops</title>Balance drops</text>
+  <text class="el" style="animation-delay:196ms" x="532.5" y="303.2" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Split drops by point type</title>Split drops by point type</text>
+  <text class="el" style="animation-delay:224ms" x="977.5" y="303.2" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Week 2</title>Week 2</text>
+  <line class="el" style="animation-delay:252ms" x1="80.0" y1="326.4" x2="1200.0" y2="326.4" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:280ms" x="80.0" y="369.6" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start"><title>Partner capacity</title>Partner capacity</text>
+  <text class="el" style="animation-delay:308ms" x="532.5" y="353.6" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Data eng., George, CRM planning</title>Data eng., George, CRM</text>
+  <text class="el" style="animation-delay:336ms" x="532.5" y="381.6" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Data eng., George, CRM planning</title>planning</text>
+  <text class="el" style="animation-delay:364ms" x="977.5" y="367.6" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Week 2</title>Week 2</text>
+  <line class="el" style="animation-delay:392ms" x1="80.0" y1="390.8" x2="1200.0" y2="390.8" stroke="#D1D5DB"/>
+  <rect class="el" style="animation-delay:420ms" x="80.0" y="390.8" width="1120.0" height="64.4" fill="#F3F4F6" stroke="none"/>
+  <text class="el" style="animation-delay:448ms" x="80.0" y="434.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start"><title>CM3 method</title>CM3 method</text>
+  <text class="el" style="animation-delay:476ms" x="532.5" y="432.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Workshop with Finance</title>Workshop with Finance</text>
+  <text class="el" style="animation-delay:504ms" x="977.5" y="432.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Week 3</title>Week 3</text>
+  <line class="el" style="animation-delay:532ms" x1="80.0" y1="455.2" x2="1200.0" y2="455.2" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:560ms" x="80.0" y="498.4" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start"><title>Pilot design</title>Pilot design</text>
+  <text class="el" style="animation-delay:588ms" x="532.5" y="496.4" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Pilot owners and data</title>Pilot owners and data</text>
+  <text class="el" style="animation-delay:616ms" x="977.5" y="496.4" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Week 3</title>Week 3</text>
+  <line class="el" style="animation-delay:644ms" x1="80.0" y1="519.6" x2="1200.0" y2="519.6" stroke="#D1D5DB"/>
+  <rect class="el" style="animation-delay:672ms" x="80.0" y="519.6" width="1120.0" height="64.4" fill="#F3F4F6" stroke="none"/>
+  <text class="el" style="animation-delay:700ms" x="80.0" y="562.8" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start"><title>Squad needs</title>Squad needs</text>
+  <text class="el" style="animation-delay:728ms" x="532.5" y="560.8" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Interviews: squads, council</title>Interviews: squads, council</text>
+  <text class="el" style="animation-delay:756ms" x="977.5" y="560.8" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#374151" font-weight="normal" text-anchor="middle"><title>Week 2</title>Week 2</text>
+  <line class="el" style="animation-delay:784ms" x1="80.0" y1="584.0" x2="1200.0" y2="584.0" stroke="#D1D5DB"/>
+  <text class="el" style="animation-delay:812ms" x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Answers go back into the scoring; priorities are re-checked at the end of week 3.</title>Answers go back into the scoring; priorities are re-checked at the end of</text>
+  <text class="el" style="animation-delay:840ms" x="80.0" y="660.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Answers go back into the scoring; priorities are re-checked at the end of week 3.</title>week 3.</text>
+  <text class="el" style="animation-delay:868ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: case study brief (Nov 2026); P&amp;I proposal.</text>
+  <text class="el" style="animation-delay:896ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">9</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="P&amp;I is judged by what others do with its output"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="P&amp;I is judged by what others do with its output">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">P&amp;I is judged by what others do with its output</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="136.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#6B7280" font-weight="normal" text-anchor="start">Proposed squad KPIs; targets set after the December baseline</text>
+  <rect class="el" style="animation-delay:56ms" x="80.0" y="208.0" width="357.3" height="150.0" fill="#FFFFFF" stroke="none"/>
+  <text class="el" style="animation-delay:84ms" x="104.0" y="238.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="start">ONE NORTH STAR NUMBER</text>
+  <text class="el" style="animation-delay:112ms" x="104.0" y="296.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#000000" font-weight="bold" text-anchor="start">100%</text>
+  <text class="el" style="animation-delay:140ms" x="419.3" y="296.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#2563EB" font-weight="600" text-anchor="end">Measure</text>
+  <text class="el" style="animation-delay:168ms" x="104.0" y="342.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="normal" text-anchor="start">Target: squads + Finance by Feb</text>
+  <rect class="el" style="animation-delay:196ms" x="461.3" y="208.0" width="357.3" height="150.0" fill="#FFFFFF" stroke="none"/>
+  <text class="el" style="animation-delay:224ms" x="485.3" y="238.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="start">NOISE IN LEVEL DROPS</text>
+  <text class="el" style="animation-delay:252ms" x="485.3" y="296.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#000000" font-weight="bold" text-anchor="start">−50%</text>
+  <text class="el" style="animation-delay:280ms" x="800.7" y="296.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#2563EB" font-weight="600" text-anchor="end">Measure</text>
+  <text class="el" style="animation-delay:308ms" x="485.3" y="342.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="normal" text-anchor="start">Target: after rule change</text>
+  <rect class="el" style="animation-delay:336ms" x="842.7" y="208.0" width="357.3" height="150.0" fill="#FFFFFF" stroke="none"/>
+  <text class="el" style="animation-delay:364ms" x="866.7" y="238.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="start">OUTPUTS ACTED ON</text>
+  <text class="el" style="animation-delay:392ms" x="866.7" y="296.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#000000" font-weight="bold" text-anchor="start">≥70%</text>
+  <text class="el" style="animation-delay:420ms" x="1182.0" y="296.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#2563EB" font-weight="600" text-anchor="end">Find</text>
+  <text class="el" style="animation-delay:448ms" x="866.7" y="342.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="normal" text-anchor="start">Target: decided within 2 weeks</text>
+  <rect class="el" style="animation-delay:476ms" x="80.0" y="376.0" width="357.3" height="150.0" fill="#FFFFFF" stroke="none"/>
+  <text class="el" style="animation-delay:504ms" x="104.0" y="406.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="start">INCREMENTAL LEVEL-UPS</text>
+  <text class="el" style="animation-delay:532ms" x="104.0" y="464.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#000000" font-weight="bold" text-anchor="start">≥10k</text>
+  <text class="el" style="animation-delay:560ms" x="419.3" y="464.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#2563EB" font-weight="600" text-anchor="end">Prove</text>
+  <text class="el" style="animation-delay:588ms" x="104.0" y="510.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="normal" text-anchor="start">Target: vs holdout, by 30 Jun</text>
+  <rect class="el" style="animation-delay:616ms" x="461.3" y="376.0" width="357.3" height="150.0" fill="#FFFFFF" stroke="none"/>
+  <text class="el" style="animation-delay:644ms" x="485.3" y="406.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="start">DROPS PREVENTED</text>
+  <text class="el" style="animation-delay:672ms" x="485.3" y="464.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#000000" font-weight="bold" text-anchor="start">≥5k</text>
+  <text class="el" style="animation-delay:700ms" x="800.7" y="464.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#2563EB" font-weight="600" text-anchor="end">Prove</text>
+  <text class="el" style="animation-delay:728ms" x="485.3" y="510.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="normal" text-anchor="start">Target: vs holdout, at-risk list</text>
+  <rect class="el" style="animation-delay:756ms" x="842.7" y="376.0" width="357.3" height="150.0" fill="#FFFFFF" stroke="none"/>
+  <text class="el" style="animation-delay:784ms" x="866.7" y="406.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="start">SQUAD SATISFACTION</text>
+  <text class="el" style="animation-delay:812ms" x="866.7" y="464.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="44" fill="#000000" font-weight="bold" text-anchor="start">≥8/10</text>
+  <text class="el" style="animation-delay:840ms" x="1182.0" y="464.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#2563EB" font-weight="600" text-anchor="end">Trust</text>
+  <text class="el" style="animation-delay:868ms" x="866.7" y="510.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="normal" text-anchor="start">Target: quarterly survey</text>
+  <text class="el" style="animation-delay:896ms" x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>P&amp;I contributes to the North Star; it does not own it. These KPIs measure that contribution.</title>P&amp;I contributes to the North Star; it does not own it. These KPIs measure</text>
+  <text class="el" style="animation-delay:924ms" x="80.0" y="660.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>P&amp;I contributes to the North Star; it does not own it. These KPIs measure that contribution.</title>that contribution.</text>
+  <text class="el" style="animation-delay:952ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: proposed targets; illustrative until baselined.</text>
+  <text class="el" style="animation-delay:980ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">10</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="Shared rules for capacity keep the priorities from eroding"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Shared rules for capacity keep the priorities from eroding">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">Shared rules for capacity keep the priorities</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="148.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">from eroding</text>
+  <rect class="el" style="animation-delay:56ms" x="80.0" y="214.0" width="6.0" height="6.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:84ms" x="102.0" y="228.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#15296B" font-weight="600" text-anchor="start">One domain priority forum</text>
+  <text class="el" style="animation-delay:112ms" x="126.0" y="269.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">– Monthly; public P&amp;I backlog</text>
+  <rect class="el" style="animation-delay:140ms" x="80.0" y="324.7" width="6.0" height="6.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:168ms" x="102.0" y="338.7" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">Explicit capacity rule</text>
+  <text class="el" style="animation-delay:196ms" x="126.0" y="379.7" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">– 60% plan, 25% requests, 15% buffer</text>
+  <rect class="el" style="animation-delay:224ms" x="80.0" y="435.3" width="6.0" height="6.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:252ms" x="102.0" y="449.3" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">Named analysts per squad</text>
+  <text class="el" style="animation-delay:280ms" x="126.0" y="490.3" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">– Klient and Bankéř; one intake</text>
+  <rect class="el" style="animation-delay:308ms" x="670.0" y="214.0" width="6.0" height="6.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:336ms" x="692.0" y="228.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">Book partner capacity early</text>
+  <text class="el" style="animation-delay:364ms" x="716.0" y="269.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">– Data eng., George, CRM planning</text>
+  <rect class="el" style="animation-delay:392ms" x="670.0" y="324.7" width="6.0" height="6.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:420ms" x="692.0" y="338.7" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">One metric tree in all OKRs</text>
+  <text class="el" style="animation-delay:448ms" x="716.0" y="379.7" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">– Squads and Finance steer alike</text>
+  <rect class="el" style="animation-delay:476ms" x="670.0" y="435.3" width="6.0" height="6.0" fill="#15296B" stroke="none"/>
+  <text class="el" style="animation-delay:504ms" x="692.0" y="449.3" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">Early wins build credibility</text>
+  <text class="el" style="animation-delay:532ms" x="716.0" y="490.3" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">– Pilot learnings, at-risk list</text>
+  <text class="el" style="animation-delay:560ms" x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>New requests are welcome; they compete openly for the same capacity.</title>New requests are welcome; they compete openly for the same capacity.</text>
+  <text class="el" style="animation-delay:588ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: case study brief (Nov 2026); P&amp;I proposal.</text>
+  <text class="el" style="animation-delay:616ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">11</text>
+</svg>
+</div></section>
+<section class="slide" aria-label="Three decisions let P&amp;I start on 1 December"><div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Three decisions let P&amp;I start on 1 December">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text class="el" style="animation-delay:0ms" x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">Three decisions let P&amp;I start on 1 December</text>
+  <text class="el" style="animation-delay:28ms" x="80.0" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="16" fill="#6B7280" font-weight="600" text-anchor="start">KEY TAKEAWAYS</text>
+  <text class="el" style="animation-delay:56ms" x="80.0" y="242.0" font-family="Georgia, 'Times New Roman', 'Hiragino Mincho ProN', 'Yu Mincho', serif" font-size="26" fill="#15296B" font-weight="bold" text-anchor="start">1</text>
+  <text class="el" style="animation-delay:84ms" x="122.0" y="242.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">Trusted numbers first:</text>
+  <text class="el" style="animation-delay:112ms" x="122.0" y="277.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">remove balance noise</text>
+  <text class="el" style="animation-delay:140ms" x="80.0" y="348.0" font-family="Georgia, 'Times New Roman', 'Hiragino Mincho ProN', 'Yu Mincho', serif" font-size="26" fill="#15296B" font-weight="bold" text-anchor="start">2</text>
+  <text class="el" style="animation-delay:168ms" x="122.0" y="348.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">Act before Go Big with</text>
+  <text class="el" style="animation-delay:196ms" x="122.0" y="383.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">pilot-proven segments</text>
+  <text class="el" style="animation-delay:224ms" x="80.0" y="454.0" font-family="Georgia, 'Times New Roman', 'Hiragino Mincho ProN', 'Yu Mincho', serif" font-size="26" fill="#15296B" font-weight="bold" text-anchor="start">3</text>
+  <text class="el" style="animation-delay:252ms" x="122.0" y="454.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">Holdouts let P&amp;I prove value</text>
+  <text class="el" style="animation-delay:280ms" x="122.0" y="489.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="normal" text-anchor="start">to Finance</text>
+  <text class="el" style="animation-delay:308ms" x="624.0" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="16" fill="#6B7280" font-weight="600" text-anchor="start">NEXT STEPS</text>
+  <text class="el" style="animation-delay:336ms" x="624.0" y="242.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start">Confirm the top 5 priorities</text>
+  <text class="el" style="animation-delay:364ms" x="624.0" y="281.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="normal" text-anchor="start">Domain lead · This week</text>
+  <text class="el" style="animation-delay:392ms" x="624.0" y="348.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start">Reserve data-eng. capacity for P1</text>
+  <text class="el" style="animation-delay:420ms" x="624.0" y="387.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="normal" text-anchor="start">Head of Product · By 1 Dec</text>
+  <text class="el" style="animation-delay:448ms" x="624.0" y="454.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="26" fill="#000000" font-weight="600" text-anchor="start">Put balance rules on council agenda</text>
+  <text class="el" style="animation-delay:476ms" x="624.0" y="493.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="normal" text-anchor="start">Domain lead · January</text>
+  <text class="el" style="animation-delay:504ms" x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>Decision requested: confirm the top 5 and the capacity behind them.</title>Decision requested: confirm the top 5 and the capacity behind them.</text>
+  <text class="el" style="animation-delay:532ms" x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: case study brief (Nov 2026); P&amp;I proposal.</text>
+  <text class="el" style="animation-delay:560ms" x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">12</text>
+</svg>
+</div></section>
+</main>
+<footer class="hud">
+  <button type="button" onclick="window.print()">Save as PDF</button>
+  <div class="dots"><button class="dot" aria-label="Slide 1"></button><button class="dot" aria-label="Slide 2"></button><button class="dot" aria-label="Slide 3"></button><button class="dot" aria-label="Slide 4"></button><button class="dot" aria-label="Slide 5"></button><button class="dot" aria-label="Slide 6"></button><button class="dot" aria-label="Slide 7"></button><button class="dot" aria-label="Slide 8"></button><button class="dot" aria-label="Slide 9"></button><button class="dot" aria-label="Slide 10"></button><button class="dot" aria-label="Slide 11"></button><button class="dot" aria-label="Slide 12"></button></div>
+  <span>&#8592; &#8594; navigate &middot; p = print / PDF</span>
+  <span class="counter"></span>
+</footer>
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('.dot'));
+  var bar = document.querySelector('.progress');
+  var counter = document.querySelector('.counter');
+  var embed = /(?:^|[?&])embed=1(?:&|$)/.test(location.search);
+  if (embed) document.body.classList.add('embed');
+  var current = Math.min(Math.max((parseInt(location.hash.slice(1), 10) || 1) - 1, 0), slides.length - 1);
+  function show(index) {
+    current = Math.min(Math.max(index, 0), slides.length - 1);
+    slides.forEach(function (slide, i) {
+      slide.classList.toggle('active', i === current);
+      if (i === current) {
+        // restart the reveal animation on revisit
+        slide.querySelectorAll('.el').forEach(function (el) {
+          el.style.animation = 'none';
+          void el.getBoundingClientRect();
+          el.style.animation = '';
+        });
+      }
+    });
+    dots.forEach(function (dot, i) { dot.classList.toggle('on', i === current); });
+    if (bar) bar.style.width = (100 * (current + 1) / slides.length) + '%';
+    if (counter) counter.textContent = (current + 1) + ' / ' + slides.length;
+    history.replaceState(null, '', location.pathname + location.search + '#' + (current + 1));
+  }
+  // Presentation chrome: fade the HUD after a short idle, bring it back on
+  // mouse movement, and drop it instantly when the keyboard takes over.
+  // Skipped entirely in embed mode (landing-page iframes).
+  var hudTimer = null;
+  function hideHud() {
+    if (document.querySelector('.hud').contains(document.activeElement)) return;
+    document.body.classList.add('hud-hidden');
+  }
+  function wakeHud() {
+    if (embed) return;
+    document.body.classList.remove('hud-hidden');
+    clearTimeout(hudTimer);
+    hudTimer = setTimeout(hideHud, 2500);
+  }
+  if (!embed) document.addEventListener('mousemove', wakeHud);
+  document.querySelector('.hud').addEventListener('focusin', wakeHud);
+  document.querySelector('.hud').addEventListener('focusout', wakeHud);
+  document.addEventListener('keydown', function (event) {
+    if (event.target.closest('button, a, input, textarea, select, [contenteditable]')) return;
+    var navigated = true;
+    if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'PageDown') { show(current + 1); event.preventDefault(); }
+    else if (event.key === 'ArrowLeft' || event.key === 'PageUp') { show(current - 1); event.preventDefault(); }
+    else if (event.key === 'Home') show(0);
+    else if (event.key === 'End') show(slides.length - 1);
+    else if (event.key === 'p' && !embed) window.print();
+    else navigated = false;
+    if (navigated && !embed) { clearTimeout(hudTimer); hideHud(); }
+  });
+  document.querySelector('.deck').addEventListener('click', function (event) {
+    if (event.target.closest('.hud')) return;
+    var x = event.clientX / window.innerWidth;
+    show(x < 0.33 ? current - 1 : current + 1);
+  });
+  dots.forEach(function (dot, i) { dot.addEventListener('click', function () { show(i); }); });
+  // Parent pages (landing theater) can drive the deck without reloading.
+  window.addEventListener('hashchange', function () {
+    var n = parseInt(location.hash.slice(1), 10);
+    if (!isNaN(n)) show(n - 1);
+  });
+  window.addEventListener('message', function (event) {
+    var data = event.data;
+    if (!data || data.type !== 'deck-control') return;
+    if (data.action === 'next') show(current + 1 >= slides.length ? 0 : current + 1);
+    else if (data.action === 'prev') show(current <= 0 ? slides.length - 1 : current - 1);
+    else if (data.action === 'goto' && typeof data.index === 'number') show(data.index);
+  });
+  show(current);
+  if (!embed) wakeHud();
+  else hideHud();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "pattern": "summary_strip",
+  "headline": "The North Star must grow 4.5x on a base that is partly noise",
+  "subline": "Three signals from the brief",
+  "blocks": [
+    {
+      "metric": "4.5x",
+      "claim": "North Star gap",
+      "proof": "28k to 125k net level-ups by 30 June, while clients grow only 2.1x (598k to 1.25M).",
+      "implication": "Existing clients must climb faster and drop less."
+    },
+    {
+      "metric": "22.6k",
+      "claim": "Level drops since 1 Oct",
+      "proof": "Balance-linked points make clients bounce across levels.",
+      "implication": "Part of the North Star is noise."
+    },
+    {
+      "metric": "2x",
+      "claim": "Pilot vs silent start",
+      "proof": "Targeted communication: 24.6% vs 13% enrolment; 63% vs 34% reward choice.",
+      "implication": "Execution, not product, made the gap."
+    }
+  ],
+  "focus_block": 1,
+  "annotation": "Finance does not yet see CM3 value, so proving impact matters as much as growth.",
+  "page_number": 3,
+  "source": "Source: case study brief; 28k counted since the silent launch.",
+  "notes": [
+    "The North Star has to grow 4.5x while the client base only doubles. So growth cannot come from enrolment alone; existing clients must level up faster and drop less.",
+    "The most important signal is the drops. Because points depend on balances, every 500k CZK or a closed term deposit moves points. Clients near a threshold bounce up and down without changing behaviour, and their savings rate bounces with them. So part of our North Star is balance noise.",
+    "The pilot shows execution matters: targeted communication almost doubled enrolment. And Finance does not yet see the value, which makes proof a survival issue for the programme."
+  ],
+  "theme": "executive"
+}
