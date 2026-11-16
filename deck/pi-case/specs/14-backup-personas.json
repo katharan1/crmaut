@@ -1,0 +1,46 @@
+{
+  "pattern": "process_flow",
+  "headline": "Personas earn a wider role only if they predict Go Big",
+  "subline": "Backup · Persona validation plan",
+  "steps": [
+    {
+      "label": "Finish",
+      "detail": "Final touches on the tool",
+      "owner": "Eng. D",
+      "duration": "Dec"
+    },
+    {
+      "label": "Build",
+      "detail": "Personas for P4 segments",
+      "owner": "Eng. D",
+      "duration": "Jan"
+    },
+    {
+      "label": "Pre-test",
+      "detail": "Go Big messages",
+      "owner": "Eng. D, DG&E",
+      "duration": "Jan"
+    },
+    {
+      "label": "Compare",
+      "detail": "Predicted vs holdout results",
+      "owner": "Eng. A, D",
+      "duration": "Feb–Mar"
+    },
+    {
+      "label": "Decide",
+      "detail": "Scale to all campaigns?",
+      "owner": "Domain lead",
+      "duration": "End Mar"
+    }
+  ],
+  "highlight": 3,
+  "annotation": "Personas complement real client interviews; they never replace them.",
+  "page_number": 14,
+  "source": "Source: case study brief (Nov 2026); P&I proposal.",
+  "notes": [
+    "If asked about personas: the tool is nearly finished. We build personas for the Go Big segments, pre-test the messages in January, then compare what they predicted with what actually happened in the holdout groups.",
+    "Only if the predictions are close do we use personas to pre-test every campaign. Either way, they complement real client interviews, never replace them."
+  ],
+  "theme": "executive"
+}

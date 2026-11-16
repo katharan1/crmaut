@@ -17,7 +17,7 @@
       ]
     },
     {
-      "text": "Named analysts per squad",
+      "text": "Named contacts per squad",
       "sub": [
         "Klient and Bankéř; one intake"
       ]
@@ -25,7 +25,7 @@
     {
       "text": "Book partner capacity early",
       "sub": [
-        "Data eng., George, CRM planning"
+        "George, FIT+, CRM planning"
       ]
     },
     {
@@ -42,12 +42,12 @@
     }
   ],
   "annotation": "New requests are welcome; they compete openly for the same capacity.",
-  "page_number": 11,
+  "page_number": 12,
   "source": "Source: case study brief (Nov 2026); P&I proposal.",
   "notes": [
     "How the priorities survive many stakeholders. One forum with the domain lead decides the order; the P&I backlog is public, so a new request visibly displaces something else.",
-    "Capacity is explicit: 60% on priorities, 25% on requests, 15% buffer. Two of the five analysts are named for squad Klient and squad Bankéř; they take requests and work on priorities for that squad.",
-    "Every permanent report needs an owner and the decision it serves. Our needs from data engineering, George and CRM go into their planning early. All squads use the same metric tree in their OKRs. And early wins buy credibility to say no later."
+    "Capacity is explicit: 60% on priorities, 25% on requests, 15% buffer. Two AI engineers are named contacts: the one on segments for squad Klient, the one on the at-risk list for squad Bankéř. They take requests and work on priorities for that squad.",
+    "Every permanent report needs an owner and the decision it serves. Our needs from George, FIT+ and CRM go into their planning early. All squads use the same metric tree in their OKRs. And early wins buy credibility to say no later."
   ],
   "theme": "executive"
 }

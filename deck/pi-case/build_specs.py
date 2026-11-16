@@ -16,7 +16,7 @@ add("02-answer", {"pattern":"summary_strip","headline":"P&I should make the numb
   {"metric":"Learn","claim":"Copy what already worked","proof":"P3 Why the pilot nearly doubled enrolment.","implication":"Go Big starts from a proven playbook."},
   {"metric":"Act","claim":"Give squads targets for Go Big","proof":"P4 Go Big segments. P5 Weekly at-risk list.","implication":"Every list carries a holdout, so impact is proven."}],
  "focus_block":0,"page_number":2,"source":SRC,
- "notes":"Here is the answer up front. Five priorities, grouped into three moves: clarity, learn, act. The thread through all of them: we cannot grow a North Star 4.5 times if we do not trust what it measures. Brain and personas are in the plan, but they come right after, on top of trusted data."})
+ "notes":"Here is the answer up front. Five priorities, grouped into three moves: clarity, learn, act. The thread through all of them: we cannot grow a North Star 4.5 times if we do not trust what it measures. Brain comes right after, on top of trusted data. Personas are already nearly finished; we use Go Big to validate them."})
 
 add("03-situation", {"pattern":"summary_strip","headline":"The North Star must grow 4.5x on a base that is partly noise",
  "subline":"Three signals from the brief",
@@ -43,10 +43,10 @@ add("04-filter", {"pattern":"funnel","headline":"Five filters narrow 30 areas to
 add("05-scoring", {"pattern":"heatmap","headline":"The top 5 score highest on impact and feasibility",
  "subline":"Leading workstreams scored 1 (low) to 3 (high) per criterion",
  "unit":"",
- "rows":["P1 Metric truth","P2 Volatility","P3 Pilot learnings","P4 Segments","P5 At-risk list","Finance report","Brain v1"],
+ "rows":["P1 Metric truth","P2 Volatility","P3 Pilot learnings","P4 Segments","P5 At-risk list","Finance report","Brain v1","Personas"],
  "columns":["North Star","Proof / CM3","Time-critical","Unlocks others","Feasible now"],
- "values":[[2,3,3,3,3],[3,2,3,2,3],[2,1,3,3,3],[3,1,3,2,2],[3,2,2,1,3],[1,3,1,1,2],[3,2,1,2,1]],
- "annotation":"Brain v1 and the Finance report follow from February, built on P1 and P4.",
+ "values":[[2,3,3,3,3],[3,2,3,2,3],[2,1,3,3,3],[3,1,3,2,2],[3,2,2,1,3],[1,3,1,1,2],[3,2,1,2,1],[1,1,2,1,3]],
+ "annotation":"Personas run alongside: the tool is nearly finished and Go Big validates it.",
  "page_number":5,"source":"Source: P&I judgement based on the brief; to be validated with squad leads in week 2.",
  "notes":["These are the nine workstreams after merging, scored on five criteria. The top five are all three-heavy on time-criticality and feasibility.","Brain v1 has the highest potential North Star impact, but nothing is in development and George releases depend on Vienna, so it scores low on feasibility before Go Big. It starts in February in FIT+, on the segments we build now.","The Finance report needs the one metric truth first, so it follows in Q1. The collaboration model is how we work, which I cover in the governance part."]})
 
@@ -74,23 +74,37 @@ add("07-roadmap", {"pattern":"gantt","headline":"The top 5 land before Go Big; B
   {"label":"P5 At-risk list","start":1,"end":6,"note":"weekly, with holdout"},
   {"label":"Finance SoW / CM3","start":2,"end":6,"note":"monthly"},
   {"label":"Brain v1 in FIT+","start":2,"end":6,"note":"rules first, then George"},
-  {"label":"Persona pilot","start":3,"end":4}],
+  {"label":"Personas: Go Big test","start":0,"end":1,"note":"pre-test"},
+  {"label":"Personas: validation","start":2,"end":3,"note":"vs holdouts"}],
  "gates":[{"label":"Go Big 1 Feb","period":1},{"label":"30 Jun","period":6}],
- "annotation":"Data-engineering capacity for P1 must be booked in December; it is the critical path.",
+ "annotation":"P1 rests on one reporting lead and one data engineer; their time is the critical path.",
  "page_number":7,"source":"Source: P&I plan; dates depend on partner-team capacity.",
- "notes":["Everything in the top 5 lands before Go Big on 1 February. Pilot learnings in December feed the Go Big segments in January.","After Go Big, the Finance report runs monthly on the new definitions, and Brain v1 starts in FIT+ with rules from the Go Big segments, then moves to George once Vienna capacity is secured. A small persona pilot runs in March and April, validated against real campaign results.","The critical path is data-engineering capacity for the metric truth. That is my first ask."]})
+ "notes":["Everything in the top 5 lands before Go Big on 1 February. Pilot learnings in December feed the Go Big segments in January.","After Go Big, the Finance report runs monthly on the new definitions, and Brain v1 starts in FIT+ with rules from the Go Big segments, then moves to George once Vienna capacity is secured. Personas are nearly finished: in January we pre-test the Go Big messages on them, and in February and March we compare their predictions with the real holdout results. Only if they predict well do we use them to pre-test every campaign.","The critical path is P1: it rests on one reporting lead and one data engineer. Protecting their time is my first ask."]})
 
-add("08-missing", {"pattern":"bullet_list","headline":"The list lacks a way to prove what P&I changes",
+add("08-team", {"pattern":"benchmark_table","headline":"Six people cover the top 5 as personas wrap up",
+ "subline":"P&I team allocation · AI engineers move from personas to modelling",
+ "columns":["Dec–Jan","From Feb"],
+ "rows":[
+  {"label":"Data eng. + reporting","values":["P1 truth, dashboard, P2 data","Finance report, Brain data"]},
+  {"label":"AI engineer A","values":["P2 volatility, P3 pilot","Holdouts, experiments"]},
+  {"label":"AI engineer B","values":["P4 segments (Klient)","Brain v1 rules"]},
+  {"label":"AI engineer C","values":["Personas, then P5 (Bankéř)","Brain v1 in FIT+"]},
+  {"label":"AI engineer D","values":["Personas: Go Big pre-test","Persona validation"]}],
+ "annotation":"Reporting is the thinnest skill; AI engineers learn the reporting stack in Q1.",
+ "page_number":8,"source":"Source: planned team of six; personas project closing in the coming weeks.",
+ "notes":["This is the real team: four AI engineers from the synthetic personas project, one reporting lead from financial health and one data engineer from Level Up.","The persona tool is nearly finished, so the AI engineers move onto the modelling work in the top 5: volatility simulation, pilot uplift, segments and the at-risk model. P4 and P5 are the first building blocks of Brain, so they are building Brain from day one.","One engineer finishes personas and uses them on Go Big. The thinnest skill is reporting: one person. That is a single point of failure, so the AI engineers learn the reporting stack in Q1."]})
+
+add("09-missing", {"pattern":"bullet_list","headline":"The list lacks a way to prove what P&I changes",
  "bullets":[
   {"text":"Experimentation framework with holdout groups","sub":["Without it, SoW and CM3 gains cannot be attributed to the programme"],"emphasis":True},
   {"text":"North Star driver tree and forecast","sub":["Enrolment x activation x level-up rate minus drops: is 125k reachable?"]},
   {"text":"Analysis of level volatility, not just data quality","sub":["How much of the 22.6k drops is balance movement, not behaviour"]},
   {"text":"AI compliance: GDPR and the AI Act","sub":["Banker notes, Brain and personas need a legal basis before scale"]}],
  "annotation":"I would add the first three to P&I's scope now; compliance runs alongside Brain v1.",
- "page_number":8,"source":SRC,
+ "page_number":9,"source":SRC,
  "notes":["Four things I would add. First and most important: a way to prove impact. Holdout groups for every campaign and list. Without that, we will never convince Finance.","Second, a driver tree that shows whether 125k is reachable and which lever gets us there.","Third, the list has data quality and new rules, but not the question in between: how much of the drops is pure balance movement. That is the evidence the council needs.","Fourth, AI compliance. Banker notes in particular are personal data."]})
 
-add("09-info", {"pattern":"benchmark_table","headline":"Five unknowns close within three weeks",
+add("10-info", {"pattern":"benchmark_table","headline":"Five unknowns close within three weeks",
  "subline":"What I still need to know, and how I will get it",
  "columns":["How I get it","By"],
  "rows":[
@@ -100,10 +114,10 @@ add("09-info", {"pattern":"benchmark_table","headline":"Five unknowns close with
   {"label":"Pilot design","values":["Pilot owners and data","Week 3"]},
   {"label":"Squad needs","values":["Interviews: squads, council","Week 2"]}],
  "annotation":"Answers go back into the scoring; priorities are re-checked at the end of week 3.",
- "page_number":9,"source":SRC,
+ "page_number":10,"source":SRC,
  "notes":["What I do not know yet, and how I close it. The biggest is how much of the drops is balance movement: that is a data decomposition my team can do in two weeks.","Then partner capacity: George in Vienna, FIT+, CRM, data engineering. I need their planning cycles, because our dependencies sit there.","Finance's CM3 method, the pilot design to check for selection bias, and what squads and branches actually need. By week 3 I re-run the scoring with real data."]})
 
-add("10-kpis", {"pattern":"kpi_scorecard","headline":"P&I is judged by what others do with its output",
+add("11-kpis", {"pattern":"kpi_scorecard","headline":"P&I is judged by what others do with its output",
  "subline":"Proposed squad KPIs; targets set after the December baseline",
  "columns":3,
  "metrics":[
@@ -114,31 +128,45 @@ add("10-kpis", {"pattern":"kpi_scorecard","headline":"P&I is judged by what othe
   {"label":"DROPS PREVENTED","value":"≥5k","target":"vs holdout, at-risk list","trend":"Prove"},
   {"label":"SQUAD SATISFACTION","value":"≥8/10","target":"quarterly survey","trend":"Trust"}],
  "annotation":"P&I contributes to the North Star; it does not own it. These KPIs measure that contribution.",
- "page_number":10,"source":"Source: proposed targets; illustrative until baselined.",
+ "page_number":11,"source":"Source: proposed targets; illustrative until baselined.",
  "notes":["P&I recommends and squads decide, so we are judged on what others do with our work, not on how many reports we ship.","Measure: one number for the North Star used by everyone, and less noise in level drops. Find: share of our outputs that lead to a decision. Prove: incremental level-ups and prevented drops, measured against holdouts. Trust: how satisfied the squads are with us.","Targets are proposals; I would set them after the December baseline."]})
 
-add("11-governance", {"pattern":"bullet_list","headline":"Shared rules for capacity keep the priorities from eroding",
+add("12-governance", {"pattern":"bullet_list","headline":"Shared rules for capacity keep the priorities from eroding",
  "columns":2,
  "bullets":[
   {"text":"One domain priority forum","sub":["Monthly; public P&I backlog"],"emphasis":True},
   {"text":"Explicit capacity rule","sub":["60% plan, 25% requests, 15% buffer"]},
-  {"text":"Named analysts per squad","sub":["Klient and Bankéř; one intake"]},
-  {"text":"Book partner capacity early","sub":["Data eng., George, CRM planning"]},
+  {"text":"Named contacts per squad","sub":["Klient and Bankéř; one intake"]},
+  {"text":"Book partner capacity early","sub":["George, FIT+, CRM planning"]},
   {"text":"One metric tree in all OKRs","sub":["Squads and Finance steer alike"]},
   {"text":"Early wins build credibility","sub":["Pilot learnings, at-risk list"]}],
  "annotation":"New requests are welcome; they compete openly for the same capacity.",
- "page_number":11,"source":SRC,
- "notes":["How the priorities survive many stakeholders. One forum with the domain lead decides the order; the P&I backlog is public, so a new request visibly displaces something else.","Capacity is explicit: 60% on priorities, 25% on requests, 15% buffer. Two of the five analysts are named for squad Klient and squad Bankéř; they take requests and work on priorities for that squad.","Every permanent report needs an owner and the decision it serves. Our needs from data engineering, George and CRM go into their planning early. All squads use the same metric tree in their OKRs. And early wins buy credibility to say no later."]})
+ "page_number":12,"source":SRC,
+ "notes":["How the priorities survive many stakeholders. One forum with the domain lead decides the order; the P&I backlog is public, so a new request visibly displaces something else.","Capacity is explicit: 60% on priorities, 25% on requests, 15% buffer. Two AI engineers are named contacts: the one on segments for squad Klient, the one on the at-risk list for squad Bankéř. They take requests and work on priorities for that squad.","Every permanent report needs an owner and the decision it serves. Our needs from George, FIT+ and CRM go into their planning early. All squads use the same metric tree in their OKRs. And early wins buy credibility to say no later."]})
 
-add("12-closing", {"pattern":"closing","headline":"Three decisions let P&I start on 1 December",
+add("13-closing", {"pattern":"closing","headline":"Three decisions let P&I start on 1 December",
  "takeaways":["Trusted numbers first: remove balance noise","Act before Go Big with pilot-proven segments","Holdouts let P&I prove value to Finance"],
  "next_steps":[
   {"action":"Confirm the top 5 priorities","owner":"Domain lead","timing":"This week"},
-  {"action":"Reserve data-eng. capacity for P1","owner":"Head of Product","timing":"By 1 Dec"},
+  {"action":"Protect reporting and data eng. for P1","owner":"Head of Product","timing":"By 1 Dec"},
   {"action":"Put balance rules on council agenda","owner":"Domain lead","timing":"January"}],
  "call_to_action":"Decision requested: confirm the top 5 and the capacity behind them.",
- "page_number":12,"source":SRC,
- "notes":"To wrap up: trusted numbers first, learn from the pilot, act before Go Big, and prove every step. I need three things from you: confirm the five priorities, help me secure data-engineering capacity, and put the balance-linked rules on the council agenda in January. Thank you, happy to take questions."})
+ "page_number":13,"source":SRC,
+ "notes":"To wrap up: trusted numbers first, learn from the pilot, act before Go Big, and prove every step. I need three things from you: confirm the five priorities, protect the reporting lead and the data engineer for P1 while Level Up hands over their routine work, and put the balance-linked rules on the council agenda in January. Thank you, happy to take questions."})
+
+
+add("14-backup-personas", {"pattern":"process_flow","headline":"Personas earn a wider role only if they predict Go Big",
+ "subline":"Backup · Persona validation plan",
+ "steps":[
+  {"label":"Finish","detail":"Final touches on the tool","owner":"Eng. D","duration":"Dec"},
+  {"label":"Build","detail":"Personas for P4 segments","owner":"Eng. D","duration":"Jan"},
+  {"label":"Pre-test","detail":"Go Big messages","owner":"Eng. D, DG&E","duration":"Jan"},
+  {"label":"Compare","detail":"Predicted vs holdout results","owner":"Eng. A, D","duration":"Feb–Mar"},
+  {"label":"Decide","detail":"Scale to all campaigns?","owner":"Domain lead","duration":"End Mar"}],
+ "highlight":3,
+ "annotation":"Personas complement real client interviews; they never replace them.",
+ "page_number":14,"source":SRC,
+ "notes":["If asked about personas: the tool is nearly finished. We build personas for the Go Big segments, pre-test the messages in January, then compare what they predicted with what actually happened in the holdout groups.","Only if the predictions are close do we use personas to pre-test every campaign. Either way, they complement real client interviews, never replace them."]})
 
 os.makedirs("specs", exist_ok=True)
 paths=[]

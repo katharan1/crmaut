@@ -1,0 +1,55 @@
+{
+  "pattern": "benchmark_table",
+  "headline": "Six people cover the top 5 as personas wrap up",
+  "subline": "P&I team allocation · AI engineers move from personas to modelling",
+  "columns": [
+    "Dec–Jan",
+    "From Feb"
+  ],
+  "rows": [
+    {
+      "label": "Data eng. + reporting",
+      "values": [
+        "P1 truth, dashboard, P2 data",
+        "Finance report, Brain data"
+      ]
+    },
+    {
+      "label": "AI engineer A",
+      "values": [
+        "P2 volatility, P3 pilot",
+        "Holdouts, experiments"
+      ]
+    },
+    {
+      "label": "AI engineer B",
+      "values": [
+        "P4 segments (Klient)",
+        "Brain v1 rules"
+      ]
+    },
+    {
+      "label": "AI engineer C",
+      "values": [
+        "Personas, then P5 (Bankéř)",
+        "Brain v1 in FIT+"
+      ]
+    },
+    {
+      "label": "AI engineer D",
+      "values": [
+        "Personas: Go Big pre-test",
+        "Persona validation"
+      ]
+    }
+  ],
+  "annotation": "Reporting is the thinnest skill; AI engineers learn the reporting stack in Q1.",
+  "page_number": 8,
+  "source": "Source: planned team of six; personas project closing in the coming weeks.",
+  "notes": [
+    "This is the real team: four AI engineers from the synthetic personas project, one reporting lead from financial health and one data engineer from Level Up.",
+    "The persona tool is nearly finished, so the AI engineers move onto the modelling work in the top 5: volatility simulation, pilot uplift, segments and the at-risk model. P4 and P5 are the first building blocks of Brain, so they are building Brain from day one.",
+    "One engineer finishes personas and uses them on Go Big. The thinnest skill is reporting: one person. That is a single point of failure, so the AI engineers learn the reporting stack in Q1."
+  ],
+  "theme": "executive"
+}

@@ -9,10 +9,12 @@
     "specs/05-scoring.json",
     "specs/06-loop.json",
     "specs/07-roadmap.json",
-    "specs/08-missing.json",
-    "specs/09-info.json",
-    "specs/10-kpis.json",
-    "specs/11-governance.json",
-    "specs/12-closing.json"
+    "specs/08-team.json",
+    "specs/09-missing.json",
+    "specs/10-info.json",
+    "specs/11-kpis.json",
+    "specs/12-governance.json",
+    "specs/13-closing.json",
+    "specs/14-backup-personas.json"
   ]
 }

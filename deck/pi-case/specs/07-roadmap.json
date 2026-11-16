@@ -54,9 +54,16 @@
       "note": "rules first, then George"
     },
     {
-      "label": "Persona pilot",
-      "start": 3,
-      "end": 4
+      "label": "Personas: Go Big test",
+      "start": 0,
+      "end": 1,
+      "note": "pre-test"
+    },
+    {
+      "label": "Personas: validation",
+      "start": 2,
+      "end": 3,
+      "note": "vs holdouts"
     }
   ],
   "gates": [
@@ -69,13 +76,13 @@
       "period": 6
     }
   ],
-  "annotation": "Data-engineering capacity for P1 must be booked in December; it is the critical path.",
+  "annotation": "P1 rests on one reporting lead and one data engineer; their time is the critical path.",
   "page_number": 7,
   "source": "Source: P&I plan; dates depend on partner-team capacity.",
   "notes": [
     "Everything in the top 5 lands before Go Big on 1 February. Pilot learnings in December feed the Go Big segments in January.",
-    "After Go Big, the Finance report runs monthly on the new definitions, and Brain v1 starts in FIT+ with rules from the Go Big segments, then moves to George once Vienna capacity is secured. A small persona pilot runs in March and April, validated against real campaign results.",
-    "The critical path is data-engineering capacity for the metric truth. That is my first ask."
+    "After Go Big, the Finance report runs monthly on the new definitions, and Brain v1 starts in FIT+ with rules from the Go Big segments, then moves to George once Vienna capacity is secured. Personas are nearly finished: in January we pre-test the Go Big messages on them, and in February and March we compare their predictions with the real holdout results. Only if they predict well do we use them to pre-test every campaign.",
+    "The critical path is P1: it rests on one reporting lead and one data engineer. Protecting their time is my first ask."
   ],
   "theme": "executive"
 }
