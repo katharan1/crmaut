@@ -1,0 +1,31 @@
+{
+  "pattern": "summary_strip",
+  "headline": "次四半期の成長に向け、導入能力を増強する",
+  "subline": "取締役会向け要約（2026年7月）",
+  "blocks": [
+    {
+      "metric": "+5億円",
+      "claim": "ARRが増加",
+      "proof": "10億円から15億円へ。新規大企業契約の寄与は3億円。",
+      "implication": "大企業向けの成長を継続。"
+    },
+    {
+      "metric": "64%",
+      "claim": "導入が拡大",
+      "proof": "AIワークフローの導入率は18%から64%に上昇。",
+      "implication": "横展開に必要な体制を確認。"
+    },
+    {
+      "metric": "60%",
+      "claim": "受注に対する導入能力",
+      "proof": "受注済み案件に対し、導入能力は60%にとどまる。",
+      "implication": "今四半期の増強投資を承認。"
+    }
+  ],
+  "source": "出所: ユーザー提供の四半期業績データ。",
+  "classification": "社外秘",
+  "page_number": 3,
+  "theme": "executive",
+  "lang": "ja",
+  "focus_block": 2
+}

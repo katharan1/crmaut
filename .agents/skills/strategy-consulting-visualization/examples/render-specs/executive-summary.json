@@ -1,0 +1,30 @@
+{
+  "pattern": "summary_strip",
+  "headline": "Build capacity for the next growth phase",
+  "subline": "FY26 operating review · Three signals for the board",
+  "blocks": [
+    {
+      "metric": "+50%",
+      "claim": "ARR growth",
+      "proof": "$10M to $15M. New enterprise customers contributed $3M.",
+      "implication": "Protect the enterprise growth engine."
+    },
+    {
+      "metric": "6 / 6",
+      "claim": "Segments growing",
+      "proof": "Adoption rose across all six segments. Healthcare reached 28%.",
+      "implication": "Investigate the rollout gap."
+    },
+    {
+      "metric": "60%",
+      "claim": "Capacity coverage",
+      "proof": "Onboarding capacity covers 60% of signed commitments.",
+      "implication": "Close the delivery gap before scaling."
+    }
+  ],
+  "source": "Source: illustrative operating data; not a real company.",
+  "page_number": 4,
+  "classification": "Illustrative example",
+  "theme": "executive",
+  "focus_block": 2
+}

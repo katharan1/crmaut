@@ -1,0 +1,642 @@
+# Usage Examples
+
+## Marketplace Proof Set
+
+For marketplace review or buyer diligence, start with this reproducible proof set:
+
+- [Board update input](examples/board-update-input.md)
+- [Expected board update slide spec](examples/board-update-slide-spec.md)
+- [Evaluation report](examples/evaluation-report.md)
+
+These files show the intended workflow: raw business notes become structured executive slide specs, then the output is scored against the quality rubric.
+
+This document provides practical examples of using the Strategy Consulting Visualization Skill.
+
+## Table of Contents
+
+- [Basic Usage](#basic-usage)
+- [Instant Deck and Report Mode](#instant-deck-and-report-mode)
+- [Interactive Project Relay](#interactive-project-relay)
+- [Visualization Type Examples](#visualization-type-examples)
+- [Structural Slide Examples](#structural-slide-examples)
+- [Real-World Scenarios](#real-world-scenarios)
+- [Advanced Techniques](#advanced-techniques)
+
+## Interactive Project Relay
+
+For the **Japanese, click-through motion presentation**, open
+[the six-page motion story](examples/interactive-deck/deck.motion.html) or its
+[static reading version](examples/interactive-deck/deck.motion.static.html).
+It includes overview-to-page navigation, direct chart/number evidence drawers,
+animated ranking with base differences, a visible what-if equation, shortage
+actions, a conditional timeline, and a cursor-led demo ending in the overview.
+Build both with `scripts/build_motion_deck.py`; see
+[the motion story guide](references/motion-story.md).
+
+The earlier contract-backed eight-page example remains available below.
+
+**Scenario:** A steering committee must test a bounded pilot recommendation,
+inspect evidence, and see whether changing adoption or readiness changes the
+decision.
+
+```bash
+python3 scripts/build_html_deck.py --manifest examples/interactive-deck/deck.json -o deck.html
+python3 scripts/build_interactive_deck.py --manifest examples/interactive-deck/deck.json -o deck.interactive.html
+```
+
+The first file is the static/quiet-reveal baseline. The second adds four
+story-relevant interactive pages while preserving the same eight-page story.
+All Project Relay values are **illustrative**. Open the reviewed
+[classic artifact](examples/interactive-deck/deck.html),
+[interactive artifact](examples/interactive-deck/deck.interactive.html), or
+[static PDF](examples/interactive-deck/deck.pdf).
+
+Use this route only when operation changes verification or a decision. Generic
+“engagement” is not enough; see [interaction selection](references/interaction-selection.md).
+
+## Instant Deck and Report Mode
+
+### Scaffold a Complete Deck
+
+**Scenario:** You need a full board-update deck fast, not one slide at a time.
+
+```bash
+python3 scripts/scaffold_deck.py --list
+python3 scripts/scaffold_deck.py board-update -o q3-board-update --title "Q3 Board Update"
+# edit q3-board-update/specs/*.json with real numbers
+python3 scripts/build_html_deck.py --manifest q3-board-update/deck.json -o q3-board-update/deck.html
+```
+
+**Use case:** Recurring board or steering updates where the storyline (cover, agenda, KPIs, bridge, trend, risk, closing) rarely changes, only the numbers do. Five more archetypes cover strategy recommendations, project status, market entry, sales proposals, and a Japanese board update — see the [README template gallery](README.md#template-gallery).
+
+### Build a Report Document
+
+**Scenario:** A pre-read memo for the board, not a slide deck.
+
+```bash
+python3 scripts/build_html_report.py board-pre-read.md -o board-pre-read.html --lang en
+```
+
+**Use case:** Internal reports, one-pagers, and proposal memos where prose carries the argument and charts are numbered exhibits, not full slides. Start from `templates/reports/board-pre-read.md`, `templates/reports/one-pager.md`, or `templates/reports/proposal-memo.md`; see the committed [examples/demo-report.html](examples/demo-report.html) for the full shape of the output.
+
+### Build a Speaker Script
+
+**Scenario:** You are presenting the deck yourself and need a paper script for the podium.
+
+```bash
+# add a top-level "notes" field (string, or list of paragraphs) to each spec first
+python3 scripts/build_speaker_script.py --manifest my-deck/deck.json -o my-deck/script.html --lang en
+```
+
+**Use case:** Conference talks and board presentations where the presenter reads prepared narration slide by slide. The SVG renderer ignores `notes` entirely, so adding it never changes the rendered deck; a slide with no notes still gets its own printed page with a muted "(no script)" marker rather than being skipped. See the committed [examples/demo-script.html](examples/demo-script.html) (built with `--lang ja` from [templates/decks/board-update-ja/deck.json](templates/decks/board-update-ja/deck.json)).
+
+### Build a Deck-as-an-Article Page
+
+**Scenario:** The deck also needs to work as a page people read on their own, not click through live.
+
+```bash
+python3 scripts/build_html_article.py --manifest my-deck/deck.json -o my-deck/article.html --lang en
+```
+
+**Use case:** Publishing a deck as a self-serve web page — the M3-series reading experience — where every slide is followed by its `notes` as narrative prose and a "Contents" list jumps to each content slide's headline. See the committed [examples/demo-article.html](examples/demo-article.html) (built from [templates/decks/board-update/deck.json](templates/decks/board-update/deck.json)).
+
+## Basic Usage
+
+### Automatic Invocation
+
+Compatible agents can use this skill when you ask for consulting-style visualizations:
+
+```
+Create a professional consulting-style chart showing our Q4 revenue growth
+```
+
+```
+Generate a strategy consulting-style competitive analysis comparing these three companies
+```
+
+```
+Build a strategic framework visualization for market positioning
+```
+
+### Manual Invocation
+
+You can also invoke the skill directly using the slash command:
+
+```
+/strategy-consulting-visualization Create a timeline showing our product milestones for 2025
+```
+
+## Visualization Type Examples
+
+### 1. Time-Series Growth Chart
+
+**Scenario:** Show AI adoption growth over time
+
+**Prompt:**
+
+```
+Create a professional consulting-style time-series growth chart in landscape 16:9 format.
+White background, black text, navy (#15296B) line chart.
+Serif headline in bold: "AI Adoption Accelerates: From Experimentation to Enterprise Scale"
+X-axis: 2023, 2024, 2025
+Y-axis: Adoption Rate (%) with gridlines every 20%
+Large percentage labels above data points: 38% (2023), 55% (2024), 72% (2025)
+Annotation box in top right: "2x growth in 2 years"
+Clean, minimal, institutional aesthetic. No gradients, no decorative elements.
+```
+
+**Use case:** Quarterly business reviews, investor presentations, strategic planning
+
+---
+
+### 2. Gap/Funnel Visualization
+
+**Scenario:** Highlight the maturity gap in AI implementation
+
+**Prompt:**
+
+```
+Create a professional consulting-style gap visualization in landscape 16:9 format.
+White background, black text. Serif headline in bold: "The AI Maturity Gap: Most Organizations Stuck in Pilot Phase"
+Two horizontal bars:
+- Top bar (navy #15296B): 90% - "Organizations using AI"
+- Bottom bar (light grey #D1D5DB): 1% - "Organizations with mature AI operations"
+Extreme contrast in bar lengths to emphasize gap.
+Large percentage labels on right side of each bar.
+Annotation below: "Only 1 in 90 organizations have scaled AI beyond pilots"
+Clean, minimal, institutional aesthetic. No gradients, no decorative elements.
+```
+
+**Use case:** Change management presentations, strategic recommendations, board reports
+
+---
+
+### 3. Before/After Comparison
+
+**Scenario:** Demonstrate training impact on diagnostic accuracy
+
+**Prompt:**
+
+```
+Create a professional consulting-style before/after comparison chart in landscape 16:9 format.
+White background, black text. Serif headline in bold: "AI-Assisted Training Drives 58% Improvement in Diagnostic Accuracy"
+Two vertical bars side by side:
+- Left bar (grey #6B7280): 50% - labeled "Before Training"
+- Right bar (navy #15296B): 78.8% - labeled "After Training"
+Curved arrow between bars with improvement metric: "+28.8 points"
+Y-axis with clear scale from 0 to 100%
+Annotation box: "RCT study with 200 physicians, 20-hour training program"
+Clean, minimal, institutional aesthetic. No gradients, no decorative elements.
+```
+
+**Use case:** ROI presentations, program evaluation, impact reports
+
+---
+
+### 4. Market Share / Adoption Rate
+
+**Scenario:** Show medical school AI curriculum adoption
+
+**Prompt:**
+
+```
+Create a professional consulting-style market share visualization in landscape 16:9 format.
+White background, black text. Serif headline in bold: "Three-Quarters of US Medical Schools Have Adopted AI Curriculum"
+Left side: Donut chart with 77% in navy (#15296B), 23% in light grey (#D1D5DB)
+Center of donut: "77%" in large text
+Right side: Key statistics in large text:
+- "77% Adopted AI curriculum"
+- "23% No formal AI training"
+- "150+ Medical schools surveyed"
+Legend with color-coded boxes below chart
+Clean, minimal, institutional aesthetic. No gradients, no decorative elements.
+```
+
+**Use case:** Market analysis, competitive intelligence, sector reports
+
+---
+
+### 5. Investment / Scale Infographic
+
+**Scenario:** Compare healthcare AI investments
+
+**Prompt:**
+
+```
+Create a professional consulting-style investment comparison infographic in landscape 16:9 format.
+White background, black text. Serif headline in bold: "Healthcare AI Investment: Scale vs. Scope"
+Horizontal layout with vertical divider in center
+Left section - Kaiser Permanente:
+- Hospital icon in royal blue
+- "40 hospitals" in large text
+- "600+ facilities" below
+- "Integrated care network" in smaller text
+Right section - Mayo Clinic:
+- Research icon in royal blue
+- "$1B+ invested" in large text
+- "200+ AI projects" below
+- "Research-focused approach" in smaller text
+Hairline divider between sections
+Clean, minimal, institutional aesthetic. No gradients, no decorative elements.
+```
+
+**Use case:** Investment memos, strategic partnerships, M&A analysis
+
+---
+
+### 6. Timeline Visualization
+
+**Scenario:** Show 2025 medical education AI milestones
+
+**Prompt:**
+
+```
+Create a professional consulting-style timeline visualization in landscape 16:9 format.
+White background, black text. Serif headline in bold: "2025: The Year AI Integration Became Standard in Medical Education"
+Horizontal timeline with three circular nodes in navy (#15296B)
+Event 1: Icon above, "AAMC Guidelines" above line, "July 2025" below line
+Event 2: Icon above, "Stanford Curriculum Launch" above line, "September 2025" below line
+Event 3: Icon above, "AMA Certification" above line, "November 2025" below line
+Connecting line in royal blue between nodes
+Clean sans-serif labels
+Clean, minimal, institutional aesthetic. No gradients, no decorative elements.
+```
+
+**Use case:** Project planning, roadmap presentations, historical analysis
+
+---
+
+### 7. Comparison / Contrast Diagram
+
+**Scenario:** Compare US vs. Japan AI adoption in healthcare
+
+**Prompt:**
+
+```
+Create a professional consulting-style comparison diagram in landscape 16:9 format.
+White background, black text. Serif headline in bold: "AI in Healthcare: The US-Japan Implementation Gap"
+Split design with vertical divider in center
+Left side - US/Global Leaders:
+- Header: "United States"
+- Bullet points with icons in royal blue:
+  - "72% of hospitals using AI"
+  - "77% of medical schools with AI curriculum"
+  - "$1B+ in research funding"
+Right side - Japan:
+- Header: "Japan"
+- Question marks and sparse data:
+  - "Status unclear"
+  - "Limited public data"
+  - "Regulatory framework under development"
+High contrast between data-rich left and sparse right
+Clean, minimal, institutional aesthetic. No gradients, no decorative elements.
+```
+
+**Use case:** Market entry analysis, competitive positioning, regional strategy
+
+---
+
+### 8. Strategic Framework (2×2 Matrix)
+
+**Scenario:** Position GenAI video model competitors
+
+**Prompt:**
+
+```
+Create a professional consulting-style 2×2 strategic framework in landscape 16:9 format.
+White background, black text. Serif headline in bold: "GenAI Video Market: Technical Leaders Face Ecosystem Challenges"
+X-axis: "Market Share & Ecosystem" (Low to High)
+Y-axis: "Technical Capability" (Low to High)
+Thin vector lines for grid in light grey
+Four quadrants with labels:
+- Top-left: "Innovators" (Seedance 2.0, Kling AI)
+- Top-right: "Leaders" (empty)
+- Bottom-left: "Challengers" (Luma Dream Machine)
+- Bottom-right: "Fast Followers" (Runway Gen-3, Pika 2.0)
+Position markers as circles with company names
+Clean, minimal, institutional aesthetic. No gradients, no decorative elements.
+```
+
+**Use case:** Strategic planning, competitive analysis, portfolio review
+
+---
+
+### 9. Competitive Benchmarking Table
+
+**Scenario:** Compare GenAI video models across dimensions
+
+**Prompt:**
+
+```
+Create a professional consulting-style competitive benchmarking table in landscape 16:9 format.
+White background, black text. Serif headline in bold: "GenAI Video Models: Technical Benchmarking Reveals Clear Leaders"
+Multi-row, multi-column table with hairline borders in light grey (#D1D5DB)
+Columns: Model | Architecture | Temporal Consistency | Prompt Adherence | Overall Score
+Rows:
+- Seedance 2.0 | DiT-based | 9.2/10 | 8.8/10 | 9.0/10
+- Kling AI | Proprietary | 8.9/10 | 8.5/10 | 8.7/10
+- Runway Gen-3 | Diffusion | 8.1/10 | 8.9/10 | 8.5/10
+- Pika 2.0 | Hybrid | 7.8/10 | 8.2/10 | 8.0/10
+- Luma Dream | Transformer | 7.5/10 | 7.9/10 | 7.7/10
+Color coding: Top scores in navy (#15296B), others in black
+Numeric alignment, clear hierarchy
+Clean, minimal, institutional aesthetic. No gradients, no decorative elements.
+```
+
+**Use case:** Vendor selection, technology assessment, procurement decisions
+
+---
+
+### 10. Waterfall Chart
+
+**Scenario:** Show revenue bridge from Q1 to Q4
+
+**Prompt:**
+
+```
+Create a professional consulting-style waterfall chart in landscape 16:9 format.
+White background, black text. Serif headline in bold: "Q4 Revenue Growth Driven by Enterprise Expansion"
+Horizontal bars showing incremental changes:
+- Starting bar: "Q1 Revenue: $10M" (navy #15296B)
+- Positive bar: "+$3M New Customers" (navy #15296B)
+- Positive bar: "+$2M Expansion" (navy #15296B)
+- Negative bar: "-$0.5M Churn" (grey #6B7280)
+- Ending bar: "Q4 Revenue: $14.5M" (navy #15296B)
+Connecting lines between bars in light grey
+Clear labels for each step
+Y-axis from $0 to $15M
+Clean, minimal, institutional aesthetic. No gradients, no decorative elements.
+```
+
+**Use case:** Financial reporting, variance analysis, performance reviews
+
+---
+
+### 11. Cover Slide
+
+**Scenario:** Create opening slide for strategic presentation
+
+**Prompt:**
+
+```
+Create a professional consulting-style cover slide in landscape 16:9 format.
+Navy background (#15296B), flat — no gradient.
+Large serif font title in white (#FFFFFF), centered: "The Future of AI in Healthcare"
+Subtitle in smaller sans-serif font, light grey (#E5E7EB): "Strategic Implications for 2026"
+Metadata at bottom in small text: "February 2026 | Executive Board Review | Confidential"
+No decorative marks (no kicker lines, no gold/metallic accents)
+Minimal graphics — focus on elegant typography
+Clean, institutional, boardroom-ready aesthetic.
+```
+
+**Use case:** Executive presentations, board meetings, client deliverables
+
+---
+
+## Structural Slide Examples
+
+Deck furniture — dividers, agendas, text slides, closings, quotes, and back covers. Real JSON spec templates for all six are in [prompt-templates.md](references/prompt-templates.md); the prompts below are the equivalent for agents that only take a text description.
+
+### 12. Section Divider
+
+**Scenario:** Open the "How to win" act of a strategy deck
+
+**Prompt:**
+
+```
+Create a professional consulting-style section divider slide in landscape 16:9 format.
+Navy background (#15296B), flat, full bleed.
+Small-caps label above the title: "SECTION 02"
+Large serif title in white: "How to win"
+Subtitle in light grey (#E5E7EB): "Where we compete and why we take share"
+No decorative marks — the small-caps label and title carry the hierarchy.
+Optional section rail near the bottom: "01 Context", "02 How to win" (bold white), "03 Roadmap" (light grey, 55% opacity)
+Clean, institutional, boardroom-ready aesthetic. No gradients.
+```
+
+**Use case:** Marking act boundaries in a strategy or board deck
+
+---
+
+### 13. Agenda
+
+**Scenario:** Orient the reader before the first content slide
+
+**Prompt:**
+
+```
+Create a professional consulting-style agenda slide in landscape 16:9 format.
+White background, black text, standard header with serif headline: "Three questions decide this investment"
+Numbered rows on hairline dividers: 01 Context, 02 Options, 03 Recommendation
+Each row: bold title on the left, one-line detail on the right
+Highlight the current row (if revisiting mid-deck) with a light navy tint and navy title text
+Clean, minimal, institutional aesthetic.
+```
+
+**Use case:** Deck openings, or a progress-marking "you are here" slide mid-deck
+
+---
+
+### 14. Bullet List (Action-Title Text Slide)
+
+**Scenario:** State the constraints before the next chart
+
+**Prompt:**
+
+```
+Create a professional consulting-style text slide in landscape 16:9 format.
+White background, black text, standard header with serif headline: "Three constraints shape the rollout"
+Bulleted list with small navy square markers, sans-serif text, generous line spacing
+One or two supporting sub-points per bullet, indented, smaller grey text
+At most one bullet emphasized in bold navy-blue text
+Clean, minimal, institutional aesthetic. No icons, no decorative elements.
+```
+
+**Use case:** Stating risks, context, or constraints that are true but not yet a chart
+
+---
+
+### 15. Closing (Key Takeaways / Next Steps)
+
+**Scenario:** Close the deck with the decision ask
+
+**Prompt:**
+
+```
+Create a professional consulting-style closing slide in landscape 16:9 format.
+White background, black text, standard header with serif headline: "Decide the pilot now, scale in Q3"
+Two columns: left "KEY TAKEAWAYS" with 2-3 numbered points; right "NEXT STEPS" with action, owner, and timing per row
+Bottom annotation line in bold blue: "Decision requested today: approve the Q2 pilot"
+Clean, minimal, institutional aesthetic.
+```
+
+**Use case:** Ending a deck with takeaways, owned next steps, and an explicit ask
+
+---
+
+### 16. Quote
+
+**Scenario:** Ground a claim in a customer's own words
+
+**Prompt:**
+
+```
+Create a professional consulting-style quote slide in landscape 16:9 format.
+White background, black text, standard header with serif headline: "Customers already describe the switch as done"
+Oversized light-navy-tinted quotation mark above-left of the quote block (the only decorative element)
+Large serif quote text: "We moved 80% of volume in six weeks — the old tool is a backup now."
+Attribution below in bold grey with an em-dash: "— COO, mid-market logistics customer"
+Small grey context line: "Interview, February 2026"
+Clean, minimal, institutional aesthetic. One quote only, no closing quotation mark.
+```
+
+**Use case:** Grounding a claim in a verbatim, attributable customer or stakeholder statement
+
+---
+
+### 17. End Cover (Back Cover)
+
+**Scenario:** Close a deck with a way to follow up
+
+**Prompt:**
+
+```
+Create a professional consulting-style closing cover slide in landscape 16:9 format.
+Navy background (#15296B), flat, full bleed, no decorative marks.
+Large serif title in white, centered: "Thank you"
+Subtitle in light grey: "Questions and discussion"
+Contact lines in light grey below: "Strategy Office", "strategy@example.com"
+Presenter and date meta line, classification marker, same slots as a cover slide.
+Minimal graphics — the quietest slide in the deck.
+```
+
+**Use case:** The final slide of a deck — a closing mark, not a second closing argument
+
+---
+
+## Real-World Scenarios
+
+### Scenario 1: Quarterly Business Review
+
+**Objective:** Present Q4 performance to executive team
+
+**Visualizations needed:**
+
+1. Cover slide with presentation title
+2. Time-series growth chart showing quarterly revenue
+3. Waterfall chart explaining revenue drivers
+4. Before/after comparison showing KPI improvements
+5. Gap visualization showing target vs. actual performance
+
+**Workflow:**
+
+```
+/strategy-consulting-visualization Create a cover slide for Q4 2025 Business Review
+
+/strategy-consulting-visualization Create a time-series chart showing quarterly revenue from Q1 to Q4
+
+/strategy-consulting-visualization Create a waterfall chart showing revenue bridge from Q1 ($10M) to Q4 ($14.5M)
+
+/strategy-consulting-visualization Create a before/after comparison showing customer satisfaction improvement from 72% to 89%
+
+/strategy-consulting-visualization Create a gap visualization comparing Q4 target (95%) vs. actual (89%)
+```
+
+---
+
+### Scenario 2: Market Entry Analysis
+
+**Objective:** Evaluate entering the Japanese healthcare AI market
+
+**Visualizations needed:**
+
+1. Comparison diagram (US vs. Japan market maturity)
+2. Strategic framework (competitive positioning)
+3. Timeline (regulatory milestones)
+4. Investment infographic (required resources)
+
+**Workflow:**
+
+```
+/strategy-consulting-visualization Create a comparison diagram showing US (mature, $5B market, 70% adoption) vs. Japan (emerging, $500M market, 15% adoption)
+
+/strategy-consulting-visualization Create a 2×2 strategic framework positioning our company and 4 competitors on market share vs. technical capability
+
+/strategy-consulting-visualization Create a timeline showing Japan regulatory approval process from Q1 2026 to Q4 2027
+
+/strategy-consulting-visualization Create an investment infographic comparing required investment for US expansion ($2M) vs. Japan entry ($8M)
+```
+
+---
+
+### Scenario 3: Technology Assessment
+
+**Objective:** Select GenAI video generation platform for marketing
+
+**Visualizations needed:**
+
+1. Competitive benchmarking table
+2. Strategic framework (positioning)
+3. Before/after comparison (expected improvement)
+
+**Workflow:**
+
+```
+/strategy-consulting-visualization Create a competitive benchmarking table comparing 5 GenAI video models across architecture, consistency, prompt adherence, and pricing
+
+/strategy-consulting-visualization Create a 2×2 framework positioning these models on technical capability vs. ecosystem maturity
+
+/strategy-consulting-visualization Create a before/after comparison showing expected video production time reduction from 40 hours to 8 hours
+```
+
+---
+
+## Advanced Techniques
+
+### Batch Generation
+
+When creating multiple visualizations for a single presentation:
+
+1. **Plan the narrative flow** first
+2. **Generate all visualizations** in sequence
+3. **Maintain consistency** across all charts
+4. **Review as a set** before finalizing
+
+### Customization
+
+You can customize the standard templates by:
+
+- Adjusting color intensity (lighter or darker blues)
+- Modifying font sizes for different contexts
+- Adding specific data points relevant to your analysis
+- Incorporating your organization's branding (while maintaining the consulting aesthetic)
+
+### Integration with Other Skills
+
+Combine with other agent skills for enhanced workflows:
+
+```
+# Use with design-sensei for accessibility review
+/design-sensei Review this strategy consulting-style visualization for accessibility
+
+# Use with paper-presentation-slides for academic context
+/paper-presentation-slides Incorporate this consulting-style chart into an academic presentation
+```
+
+---
+
+## Tips for Best Results
+
+1. **Be specific with data:** Provide exact numbers, labels, and annotations
+2. **State the insight:** Always include a hypothesis-driven headline
+3. **Choose the right type:** Match visualization type to your data and message
+4. **Maintain consistency:** Use the same aspect ratio and color palette across a set
+5. **Test and iterate:** Generate, review, and refine as needed
+
+---
+
+For more information, see:
+
+- [README.md](README.md) - Overview and installation
+- [SKILL.md](SKILL.md) - Complete skill documentation
+- [INSTALLATION.md](INSTALLATION.md) - Installation guide

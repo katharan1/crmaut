@@ -1,0 +1,43 @@
+:root {
+  /* Shared website palette. Slide artwork retains its own presentation theme. */
+  --accent: #15296B;
+  --accent-hover: #101F52;
+  --ink: #202327;
+  --muted: #626773;
+  --border: #D8DCE3;
+  --canvas: #FFFFFF;
+  --surface: #ffffff;
+  --surface-soft: #F3F4F6;
+  --surface-raised: #F8F9FB;
+  --surface-hover: #E8EBF1;
+  --stage: #ECEEF2;
+  --dark: #101827;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --navy: var(--accent);
+  --blue: var(--accent);
+  --grey-700: #414957;
+  --grey-500: var(--muted);
+  --grey-300: var(--border);
+  --fill: var(--surface-soft);
+  --tint: var(--surface-soft);
+  --risk: #b91c1c;
+  --paper: var(--surface);
+
+  --serif:
+    Georgia, "Times New Roman", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial,
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  --u: 8px;
+  --measure: 72rem;
+
+  --shadow-card:
+    0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(21, 41, 107, 0.08);
+}
+
+/* Explicit Japanese font avoids broken system-font fallback in iOS WebKit. */
+:root:lang(ja) { --sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", -apple-system, sans-serif; }
+#lang-toggle[hreflang="ja"] { font-family: "Hiragino Sans", "Yu Gothic", sans-serif; }
+:lang(ja) button, :lang(ja) input, :lang(ja) textarea, :lang(ja) select { font-family:var(--sans); }

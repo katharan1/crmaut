@@ -1,0 +1,68 @@
+{
+  "pattern": "small_multiples",
+  "headline": "Adoption grows across every segment",
+  "subline": "Workflow adoption · Q1–Q4 · % of accounts, shared scale",
+  "unit": "%",
+  "columns": 3,
+  "charts": [
+    {
+      "label": "Financial services",
+      "values": [
+        22,
+        35,
+        51,
+        68
+      ]
+    },
+    {
+      "label": "Technology",
+      "values": [
+        30,
+        44,
+        58,
+        71
+      ]
+    },
+    {
+      "label": "Manufacturing",
+      "values": [
+        15,
+        24,
+        39,
+        55
+      ]
+    },
+    {
+      "label": "Retail",
+      "values": [
+        18,
+        29,
+        41,
+        57
+      ]
+    },
+    {
+      "label": "Healthcare",
+      "values": [
+        8,
+        12,
+        19,
+        28
+      ],
+      "emphasis": true
+    },
+    {
+      "label": "Public sector",
+      "values": [
+        10,
+        18,
+        30,
+        44
+      ]
+    }
+  ],
+  "annotation": "Healthcare reaches 28%; investigate the adoption gap before expanding rollout.",
+  "source": "Source: illustrative segment data; not a real company.",
+  "page_number": 6,
+  "theme": "executive"
+}

@@ -1,0 +1,41 @@
+{
+  "pattern": "process_flow",
+  "headline": "Integration is the onboarding bottleneck",
+  "subline": "Five stages \u00b7 One accountable owner per stage",
+  "steps": [
+    {
+      "label": "Contract",
+      "detail": "Confirm scope",
+      "owner": "Sales",
+      "duration": "Same day"
+    },
+    {
+      "label": "Kickoff",
+      "detail": "Agree success criteria",
+      "owner": "CS",
+      "duration": "3 days"
+    },
+    {
+      "label": "Integration",
+      "detail": "Connect systems",
+      "owner": "Platform",
+      "duration": "21-day queue"
+    },
+    {
+      "label": "Training",
+      "detail": "Enable workflows",
+      "owner": "CS",
+      "duration": "5 days"
+    },
+    {
+      "label": "Go-live",
+      "detail": "Review readiness",
+      "owner": "CS + client",
+      "duration": "2 days"
+    }
+  ],
+  "highlight": 2,
+  "annotation": "Resolve the integration queue before increasing onboarding volume.",
+  "source": "Source: illustrative workflow; durations include queue time.",
+  "theme": "executive"
+}

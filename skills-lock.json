@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "strategy-consulting-visualization": {
+      "source": "kgraph57/mckinsey-style-visualization-skill",
+      "commit": "2e7981a622232006c100e088ded89c72709895da",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "8d75ad7f0c817c9a6f8e2a52aa72f062531d70800a480293ce376bd2c2be862e"
+    }
+  }
+}

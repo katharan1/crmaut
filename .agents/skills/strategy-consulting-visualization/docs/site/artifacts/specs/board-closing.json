@@ -1,0 +1,30 @@
+{
+  "pattern": "closing",
+  "headline": "Close the capacity gap before raising growth targets",
+  "takeaways": [
+    "ARR grew 50%, led by enterprise acquisition",
+    "Adoption increased in all six segments",
+    "Capacity covers 60% of signed commitments"
+  ],
+  "next_steps": [
+    {
+      "action": "Cost the capacity gap",
+      "owner": "Operations",
+      "timing": "Within 2 weeks"
+    },
+    {
+      "action": "Prioritize SSO and bulk export",
+      "owner": "Product",
+      "timing": "Q4 planning"
+    },
+    {
+      "action": "Review funding and delivery milestones",
+      "owner": "Board",
+      "timing": "Next meeting"
+    }
+  ],
+  "call_to_action": "Decision today: commission a costed capacity plan for Q4.",
+  "page_number": 8,
+  "source": "Source: illustrative board decision; funding amount not yet specified.",
+  "theme": "executive"
+}

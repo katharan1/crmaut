@@ -1,0 +1,127 @@
+[
+  {
+    "file": "adoption-before-after.svg",
+    "pattern": "before_after",
+    "headline": "The AI workflow program lifted adoption 46 points and cut onboarding time nearly in half"
+  },
+  {
+    "file": "adoption-trend.svg",
+    "pattern": "time_series",
+    "headline": "AI workflow adoption rose 46 points in four quarters, creating a scalable operating base"
+  },
+  {
+    "file": "arr-waterfall.svg",
+    "pattern": "waterfall",
+    "headline": "Enterprise growth lifts ARR from $10M to $15M"
+  },
+  {
+    "file": "board-closing.svg",
+    "pattern": "closing",
+    "headline": "Close the capacity gap before raising growth targets"
+  },
+  {
+    "file": "board-deck-cover.svg",
+    "pattern": "cover",
+    "headline": "Growth needs capacity."
+  },
+  {
+    "file": "capacity-gap.svg",
+    "pattern": "gap",
+    "headline": "Implementation capacity covers only 60% of the enterprise onboarding pipeline"
+  },
+  {
+    "file": "customer-quote.svg",
+    "pattern": "quote",
+    "headline": "Customers already describe the switch as done"
+  },
+  {
+    "file": "deal-size-distribution.svg",
+    "pattern": "distribution",
+    "headline": "Most deals close below $50k; the tail funds the roadmap"
+  },
+  {
+    "file": "deck-end-cover.svg",
+    "pattern": "end_cover",
+    "headline": "Make room for growth."
+  },
+  {
+    "file": "eng-incident-flow.svg",
+    "pattern": "process_flow",
+    "headline": "Detection to mitigation took 62 minutes; 47 of them were spent finding the owner"
+  },
+  {
+    "file": "executive-summary.svg",
+    "pattern": "summary_strip",
+    "headline": "Build capacity for the next growth phase"
+  },
+  {
+    "file": "hr-talent-scorecard.svg",
+    "pattern": "kpi_scorecard",
+    "headline": "Hiring is on plan, but engineering attrition has crossed the risk threshold"
+  },
+  {
+    "file": "jp-board-summary.svg",
+    "pattern": "summary_strip",
+    "headline": "次四半期の成長に向け、導入能力を増強する"
+  },
+  {
+    "file": "marketing-channel-heatmap.svg",
+    "pattern": "heatmap",
+    "headline": "Paid search wins SMB volume, but enterprise leads come from events and referrals"
+  },
+  {
+    "file": "onboarding-flow.svg",
+    "pattern": "process_flow",
+    "headline": "Integration is the onboarding bottleneck"
+  },
+  {
+    "file": "phase-divider.svg",
+    "pattern": "section_divider",
+    "headline": "Growth, then capacity."
+  },
+  {
+    "file": "pmo-rollout-gantt.svg",
+    "pattern": "gantt",
+    "headline": "Sequence six workstreams around two decision gates"
+  },
+  {
+    "file": "pricing-retention-scatter.svg",
+    "pattern": "scatter",
+    "headline": "Supported cohorts show higher retention"
+  },
+  {
+    "file": "product-priority-two-by-two.svg",
+    "pattern": "two_by_two",
+    "headline": "Prioritize SSO and bulk export for enterprise"
+  },
+  {
+    "file": "research-outcomes-before-after.svg",
+    "pattern": "before_after",
+    "headline": "The intervention group improved on all three endpoints; confirm with the full cohort"
+  },
+  {
+    "file": "rollout-constraints.svg",
+    "pattern": "bullet_list",
+    "headline": "Three constraints shape the rollout"
+  },
+  {
+    "file": "sales-pipeline-funnel.svg",
+    "pattern": "funnel",
+    "headline": "Qualification is the largest conversion bottleneck"
+  },
+  {
+    "file": "segment-adoption-multiples.svg",
+    "pattern": "small_multiples",
+    "headline": "Adoption grows across every segment"
+  },
+  {
+    "file": "strategy-agenda.svg",
+    "pattern": "agenda",
+    "headline": "Three questions for the Q4 decision"
+  },
+  {
+    "file": "vendor-benchmark.svg",
+    "pattern": "benchmark_table",
+    "headline": "Vendor B leads on integration and support"
+  }
+]

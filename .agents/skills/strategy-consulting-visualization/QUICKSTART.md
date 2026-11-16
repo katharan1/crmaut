@@ -1,0 +1,141 @@
+# Quick Start
+
+Get started with Strategy Consulting Visualization Skill in five minutes.
+
+## Install
+
+### Recommended (Skills CLI — Claude Code, Cursor, Codex, and 70+ agents)
+
+```bash
+npx skills add kgraph57/mckinsey-style-visualization-skill
+```
+
+### Alternative (Claude Code clone install)
+
+```bash
+git clone https://github.com/kgraph57/mckinsey-style-visualization-skill.git ~/.claude/skills/strategy-consulting-visualization
+```
+
+Clone the complete repository: `SKILL.md` relies on the bundled `references/`,
+`scripts/`, and `templates/`. Downloading only that file will not install a
+working renderer or the deck templates. For a Git-free installation, see the
+[ZIP download instructions](INSTALLATION.md#download-without-git).
+
+Run the commands below from the installed skill directory:
+
+```bash
+cd ~/.claude/skills/strategy-consulting-visualization
+```
+
+## Validate the Package
+
+From a cloned copy of the repository:
+
+```bash
+python3 -m unittest discover -s tests
+python3 scripts/validate_skill.py
+```
+
+Expected:
+
+```text
+OK: skill package passed validation
+```
+
+## Fastest Path to a Complete Deck
+
+Skip writing specs from scratch — scaffold a ready-made archetype and fill in real data:
+
+```bash
+python3 scripts/scaffold_deck.py --list
+python3 scripts/scaffold_deck.py board-update -o my-deck
+# edit my-deck/specs/*.json with real data
+python3 scripts/build_html_deck.py --manifest my-deck/deck.json -o my-deck/deck.html
+```
+
+Six archetypes ship: `board-update`, `strategy-recommendation`, `project-status`, `market-entry`, `sales-proposal`, and `board-update-ja` (Japanese). See the [README template gallery](README.md#template-gallery) for what each one contains.
+
+## Explicit Interactive / Dynamic Deck
+
+An ordinary deck or “animated deck” uses the classic command above. If the
+request explicitly asks for state, clickable evidence, recalculation,
+what-if/scenario controls, drill-down, a slider, or an auto-demo, build the
+classic artifact first and then the companion:
+
+```bash
+python3 scripts/build_html_deck.py --manifest examples/interactive-deck/deck.json -o deck.html
+python3 scripts/build_interactive_deck.py --manifest examples/interactive-deck/deck.json -o deck.interactive.html
+```
+
+Open `deck.html` for the distributable baseline and `deck.interactive.html` for
+the presenter-operated version. Printing uses the declared static state. Start
+from the fully illustrative [Project Relay example](examples/interactive-deck/README.md),
+then read [interaction selection](references/interaction-selection.md) before
+adding a scene. Report both output paths and every manual check not performed.
+
+## Fastest Path to a Report Document
+
+For a document instead of a deck, write Markdown and build it straight to a self-contained, print-to-A4 HTML report:
+
+```bash
+python3 scripts/build_html_report.py my-report.md -o my-report.html --lang en
+```
+
+Start from a template in `templates/reports/` (`board-pre-read.md`, `one-pager.md`, `proposal-memo.md`), or see the committed [examples/demo-report.html](examples/demo-report.html).
+
+## Fastest Path to a Speaker Script
+
+Add a top-level `"notes"` field (a string, or a list of paragraphs) to any slide spec — the renderer ignores it — then build the same deck manifest into a print-first, one-slide-per-page podium script:
+
+```bash
+python3 scripts/build_speaker_script.py --manifest my-deck/deck.json -o my-deck/script.html --lang en
+```
+
+See the committed [examples/demo-script.html](examples/demo-script.html).
+
+## Fastest Path to a Deck-as-an-Article Page
+
+Same `notes` field, read top-to-bottom instead: every slide followed by its narration as prose, like an M3-series web article.
+
+```bash
+python3 scripts/build_html_article.py --manifest my-deck/deck.json -o my-deck/article.html --lang en
+```
+
+See the committed [examples/demo-article.html](examples/demo-article.html).
+
+## First Prompt
+
+```text
+Use the strategy consulting visualization skill to create a waterfall slide spec showing ARR growth from $10M in Q1 to $15M in Q4, with +$3M from enterprise customers, +$2.5M from expansion, and -$0.5M from churn.
+```
+
+If the input is vague, use this safer prompt:
+
+```text
+Use the strategy consulting visualization skill. First identify the reader and decision, then choose the simplest useful visual. Challenge assumptions, avoid overclaiming, and include expert review notes.
+Here is the raw material:
+[paste notes, metrics, prose, or process]
+```
+
+## Common Requests
+
+```text
+Create a board-ready 2x2 market map positioning competitors by technical capability and enterprise adoption.
+```
+
+```text
+Turn these operating metrics into a five-slide executive summary with data assumptions and a quality check.
+```
+
+```text
+Create a competitive benchmarking table for five AI vendors across accuracy, cost, integration maturity, and risk.
+```
+
+## Next Steps
+
+- Read [README.md](README.md) for the product overview.
+- Review [EXAMPLES.md](EXAMPLES.md) for usage scenarios.
+- Review [references/presenter-operation.md](references/presenter-operation.md) before presenting an interactive companion.
+- Use [references/expert-review-loop.md](references/expert-review-loop.md) before publishing public or high-stakes visuals.
+- Open [MARKETPLACE.md](MARKETPLACE.md) for listing copy.
+- Inspect [references/quality-rubric.md](references/quality-rubric.md) before publishing proof assets.

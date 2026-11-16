@@ -1,0 +1,22 @@
+{
+  "pattern": "agenda",
+  "headline": "Three questions for the Q4 decision",
+  "items": [
+    {
+      "title": "Growth",
+      "detail": "What drove the $5M ARR increase?"
+    },
+    {
+      "title": "Adoption",
+      "detail": "Where does rollout need more support?"
+    },
+    {
+      "title": "Capacity",
+      "detail": "What must we fund before we scale?"
+    }
+  ],
+  "current": 1,
+  "page_number": 2,
+  "source": "Illustrative data — sample deck outline.",
+  "theme": "executive"
+}

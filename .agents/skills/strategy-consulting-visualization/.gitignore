@@ -1,0 +1,55 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+__pycache__/
+*.pyc
+
+# Generated proof assets
+outputs/
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# Interactive-deck audit and browser evidence are reproducible local outputs.
+/test-results/
+/output/
+/.playwright-cli/
+!assets/readme/decision-story.png
+!docs/demo/poster.png
+
+# Landing site OGP image (committed intentionally)
+!docs/site/og.png
+
+# Downloadable PDF examples generated from HTML
+!templates/reference-layouts/decision-brief.pdf
+!examples/demo-deck.pdf
+!examples/interactive-deck/deck.pdf
+!docs/site/artifacts/reference-layouts/decision-brief.pdf
+!docs/site/artifacts/demo-deck.pdf
+!docs/site/artifacts/project-relay.pdf
+
+!docs/site/decision-brief-preview.png
+!tests/e2e/baselines/chromium-linux/
+!tests/e2e/baselines/chromium-linux/**/*.png
