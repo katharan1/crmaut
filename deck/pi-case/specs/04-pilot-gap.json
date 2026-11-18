@@ -1,0 +1,35 @@
+{
+  "pattern": "before_after",
+  "headline": "Rollout gets half of the pilot's results",
+  "subline": "Pilot with targeted communication vs rollout today, % of clients",
+  "before_label": "Pilot",
+  "after_label": "Rollout",
+  "unit": "%",
+  "pairs": [
+    {
+      "label": "Enrolled",
+      "before": 24.6,
+      "after": 13.0,
+      "before_text": "24.6%",
+      "after_text": "13%",
+      "delta_text": "−11.6 pp (53% of pilot)"
+    },
+    {
+      "label": "Chose a reward",
+      "before": 63.0,
+      "after": 34.3,
+      "before_text": "63%",
+      "after_text": "34.3%",
+      "delta_text": "−28.7 pp (54% of pilot)"
+    }
+  ],
+  "annotation": "The pilot playbook is the cheapest Go Big lever; P3 finds what made the difference.",
+  "page_number": 4,
+  "source": "Source: case study brief; rollout enrolment = silent start (13%), reward choice = rollout today (34.3%).",
+  "notes": [
+    "Same programme, two very different results. With targeted communication in the Hradec Králové pilot, 24.6 percent of clients enrolled; with the silent start only 13. In the pilot 63 percent chose a reward; in the rollout today 34.",
+    "On both measures the rollout gets about half of what the pilot did. That is not a product problem, it is execution: communication, timing, how the reward is presented.",
+    "So the cheapest lever for Go Big is to understand exactly what made the pilot work and copy it. That is priority 3. One caveat I will check: whether pilot clients were selected differently."
+  ],
+  "theme": "executive"
+}

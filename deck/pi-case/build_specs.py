@@ -21,17 +21,26 @@ add("02-users", {"pattern":"summary_strip","headline":"P&I serves three users, a
 
 add("03-metrics", {"pattern":"kpi_scorecard","headline":"North Star must grow 4.5x, clients only 2.1x",
  "subline":"Key metrics from the brief · today vs target",
- "columns":3,
+ "columns":2,
  "metrics":[
   {"label":"NORTH STAR: NET LEVEL-UPS","value":"28k","target":"125k by 30 Jun","trend":"x4.5","status":"risk"},
   {"label":"CLIENTS IN PROGRAMME","value":"598k","target":"1.25M by 30 Jun","trend":"x2.1"},
   {"label":"LEVEL DROPS SINCE 1 OCT","value":"22.6k","trend":"balance-driven","status":"risk"},
-  {"label":"ENROLMENT: PILOT","value":"24.6%","trend":"vs 13% silent"},
-  {"label":"REWARD CHOSEN: ROLLOUT","value":"34.3%","trend":"vs 63% pilot","status":"risk"},
   {"label":"CM3 PROFITABILITY","value":"Not yet","trend":"per Finance","status":"risk"}],
  "annotation":"Growth must come from existing clients climbing faster and dropping less.",
  "page_number":3,"source":"Source: case study brief; North Star counted since the silent launch.",
- "notes":["The key numbers from the brief. The North Star must grow 4.5 times, from 28 thousand to 125 thousand net level-ups, while the client base only doubles. So the share of clients who level up must more than double, from about 5 to 10 percent.","22.6 thousand clients dropped a level since October, largely because points follow account balances, and the savings rate moves with the level.","The targeted pilot enrolled 24.6 percent against 13 at the silent start, and reward choice fell from 63 percent in the pilot to 34 in the rollout. Execution matters.","And Finance says the programme is not yet profitable. For share of wallet and value-for-money NPS we have targets but no baseline, which is why one source of truth comes first."]})
+ "notes":["The key numbers from the brief. The North Star must grow 4.5 times, from 28 thousand to 125 thousand net level-ups, while the client base only doubles. So the share of clients who level up must more than double, from about 5 to 10 percent.","22.6 thousand clients dropped a level since October, largely because points follow account balances, and the savings rate moves with the level.","And Finance says the programme is not yet profitable. For share of wallet and value-for-money NPS we have targets but no baseline, which is why one source of truth comes first."]})
+
+add("04-pilot-gap", {"pattern":"before_after","headline":"Rollout gets half of the pilot's results",
+ "subline":"Pilot with targeted communication vs rollout today, % of clients",
+ "before_label":"Pilot","after_label":"Rollout",
+ "unit":"%",
+ "pairs":[
+  {"label":"Enrolled","before":24.6,"after":13.0,"before_text":"24.6%","after_text":"13%","delta_text":"−11.6 pp (53% of pilot)"},
+  {"label":"Chose a reward","before":63.0,"after":34.3,"before_text":"63%","after_text":"34.3%","delta_text":"−28.7 pp (54% of pilot)"}],
+ "annotation":"The pilot playbook is the cheapest Go Big lever; P3 finds what made the difference.",
+ "page_number":4,"source":"Source: case study brief; rollout enrolment = silent start (13%), reward choice = rollout today (34.3%).",
+ "notes":["Same programme, two very different results. With targeted communication in the Hradec Králové pilot, 24.6 percent of clients enrolled; with the silent start only 13. In the pilot 63 percent chose a reward; in the rollout today 34.","On both measures the rollout gets about half of what the pilot did. That is not a product problem, it is execution: communication, timing, how the reward is presented.","So the cheapest lever for Go Big is to understand exactly what made the pilot work and copy it. That is priority 3. One caveat I will check: whether pilot clients were selected differently."]})
 
 add("02-answer", {"pattern":"summary_strip","headline":"P&I should make the numbers trustworthy before scaling AI",
  "subline":"The proposal in one page · Five priorities in three moves",
@@ -41,15 +50,6 @@ add("02-answer", {"pattern":"summary_strip","headline":"P&I should make the numb
   {"metric":"Act","claim":"Give squads targets for Go Big","proof":"P4 Go Big segments. P5 Weekly at-risk list.","implication":"Every list carries a holdout, so impact is proven."}],
  "focus_block":0,"page_number":2,"source":SRC,
  "notes":"Here is the answer up front. Five priorities, grouped into three moves: clarity, learn, act. The thread through all of them: we cannot grow a North Star 4.5 times if we do not trust what it measures. Brain comes right after, on top of trusted data. Personas are already nearly finished; we use Go Big to validate them."})
-
-add("03-situation", {"pattern":"summary_strip","headline":"The North Star must grow 4.5x on a base that is partly noise",
- "subline":"Three signals from the brief",
- "blocks":[
-  {"metric":"4.5x","claim":"North Star gap","proof":"28k to 125k net level-ups by 30 June, while clients grow only 2.1x (598k to 1.25M).","implication":"Existing clients must climb faster and drop less."},
-  {"metric":"22.6k","claim":"Level drops since 1 Oct","proof":"Balance-linked points make clients bounce across levels.","implication":"Part of the North Star is noise."},
-  {"metric":"2x","claim":"Pilot vs silent start","proof":"Targeted communication: 24.6% vs 13% enrolment; 63% vs 34% reward choice.","implication":"Execution, not product, made the gap."}],
- "focus_block":1,"annotation":"Finance does not yet see CM3 value, so proving impact matters as much as growth.","page_number":3,"source":"Source: case study brief; 28k counted since the silent launch.",
- "notes":["The North Star has to grow 4.5x while the client base only doubles. So growth cannot come from enrolment alone; existing clients must level up faster and drop less.","The most important signal is the drops. Because points depend on balances, every 500k CZK or a closed term deposit moves points. Clients near a threshold bounce up and down without changing behaviour, and their savings rate bounces with them. So part of our North Star is balance noise.","The pilot shows execution matters: targeted communication almost doubled enrolment. And Finance does not yet see the value, which makes proof a survival issue for the programme."]})
 
 add("04-filter", {"pattern":"funnel","headline":"Five filters narrow 30 areas to 5 priorities",
  "subline":"Number of areas left after each filter",

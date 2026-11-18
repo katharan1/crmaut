@@ -2,7 +2,7 @@
   "pattern": "kpi_scorecard",
   "headline": "North Star must grow 4.5x, clients only 2.1x",
   "subline": "Key metrics from the brief · today vs target",
-  "columns": 3,
+  "columns": 2,
   "metrics": [
     {
       "label": "NORTH STAR: NET LEVEL-UPS",
@@ -24,17 +24,6 @@
       "status": "risk"
     },
     {
-      "label": "ENROLMENT: PILOT",
-      "value": "24.6%",
-      "trend": "vs 13% silent"
-    },
-    {
-      "label": "REWARD CHOSEN: ROLLOUT",
-      "value": "34.3%",
-      "trend": "vs 63% pilot",
-      "status": "risk"
-    },
-    {
       "label": "CM3 PROFITABILITY",
       "value": "Not yet",
       "trend": "per Finance",
@@ -47,7 +36,6 @@
   "notes": [
     "The key numbers from the brief. The North Star must grow 4.5 times, from 28 thousand to 125 thousand net level-ups, while the client base only doubles. So the share of clients who level up must more than double, from about 5 to 10 percent.",
     "22.6 thousand clients dropped a level since October, largely because points follow account balances, and the savings rate moves with the level.",
-    "The targeted pilot enrolled 24.6 percent against 13 at the silent start, and reward choice fell from 63 percent in the pilot to 34 in the rollout. Execution matters.",
     "And Finance says the programme is not yet profitable. For share of wallet and value-for-money NPS we have targets but no baseline, which is why one source of truth comes first."
   ],
   "theme": "executive"
