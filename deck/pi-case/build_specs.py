@@ -42,6 +42,18 @@ add("04-pilot-gap", {"pattern":"before_after","headline":"Rollout gets half of t
  "page_number":4,"source":"Source: case study brief; rollout enrolment = silent start (13%), reward choice = rollout today (34.3%).",
  "notes":["Same programme, two very different results. With targeted communication in the Hradec Králové pilot, 24.6 percent of clients enrolled; with the silent start only 13. In the pilot 63 percent chose a reward; in the rollout today 34.","On both measures the rollout gets about half of what the pilot did. That is not a product problem, it is execution: communication, timing, how the reward is presented.","So the cheapest lever for Go Big is to understand exactly what made the pilot work and copy it. That is priority 3. One caveat I will check: whether pilot clients were selected differently."]})
 
+add("04-filter", {"pattern":"process_flow","headline":"Four filters narrow 30 areas to 5 priorities",
+ "subline":"How the priorities were chosen · areas left after each step",
+ "steps":[
+  {"label":"Ownership","detail":"Does P&I own it?","owner":"30 → 25"},
+  {"label":"Timing","detail":"Needed by 30 June?","owner":"25 → 14"},
+  {"label":"Overlap","detail":"Merge the same job","owner":"14 → 9"},
+  {"label":"Impact x effort","detail":"Value vs capacity","owner":"9 → 5"},
+  {"label":"Validate","detail":"Check with squads","owner":"Week 3"}],
+ "annotation":"Owned by others: 4, 9, 14, 19, 30. Later: 2, 6, 13, 17, 21–23, 25, 27–29.",
+ "page_number":5,"source":"Source: P&I assessment of the 30 areas in the brief.",
+ "notes":["Criteria, in knock-out order. One: does P&I own the outcome? The savings calculator, reward selection and native entry are squad Klient's; new scoring rules are the council's decision; CRM implementation is the CRM team's. P&I feeds them evidence.","Two: cost of delay. What must exist before Go Big or 30 June? Fénix has a floating deadline, agentic CRM and the self-learning Brain need foundations first.","Three: merge overlaps. Segment definitions and new money vs transfers are part of one metric truth; the dashboard is its output; young clients are one segment.","Four: impact on North Star and CM3, times feasibility with five analysts and our dependency on other teams."]})
+
 add("02-answer", {"pattern":"benchmark_table","headline":"Trusted numbers first, then action before Go Big",
  "subline":"Five priorities · Clarity (P1–P2), Learn (P3), Equip (P4–P5)",
  "columns":["Delivers","Serves","Ready"],
@@ -54,19 +66,6 @@ add("02-answer", {"pattern":"benchmark_table","headline":"Trusted numbers first,
  "annotation":"Every segment and list ships with a holdout to prove impact.",
  "page_number":5,"source":SRC,
  "notes":["Here is my answer: five priorities, in three moves.","Clarity first. P1 is one metric truth for the North Star, SoW and CM3, readable by people and by AI. P2 measures how much of the level drops is balance noise and gives the concept council evidence to fix the rules.","Learn. P3 finds out why the pilot got twice the results, ready in December so it shapes Go Big.","Equip. P4 gives squads and campaigns data-driven segments for Go Big, and P5 gives bankers a weekly list of clients about to drop a level or move money out.","Everything lands before Go Big, and every segment and list carries a holdout group, so we prove impact from the first day. Brain and personas build on top of this."]})
-
-add("04-filter", {"pattern":"funnel","headline":"Five filters narrow 30 areas to 5 priorities",
- "subline":"Number of areas left after each filter",
- "unit":"",
- "stages":[
-  {"label":"All areas in the brief","value":30},
-  {"label":"P&I owns the outcome","value":25},
-  {"label":"Needed before 30 June","value":14},
-  {"label":"After merging overlaps","value":9},
-  {"label":"Top impact x feasibility","value":5}],
- "annotation":"Out first: UX and rule decisions owned by others (4, 9, 14, 19, 30); later: 2, 6, 13, 17, 21-23, 25, 27-29.",
- "page_number":4,"source":"Source: P&I assessment of the 30 areas; merges listed on the next page.",
- "notes":["Criteria, in knock-out order. One: does P&I own the outcome? The savings calculator, reward selection and native entry are squad Klient's; new scoring rules are the council's decision; CRM implementation is the CRM team's. P&I feeds them evidence.","Two: cost of delay. What must exist before Go Big or 30 June? Fénix has a floating deadline, agentic CRM and the self-learning Brain need foundations first.","Three: merge overlaps. Segment definitions and new money vs transfers are part of one metric truth; the dashboard is its output; young clients are one segment.","Four: impact on North Star and CM3, times feasibility with five analysts and our dependency on other teams."]})
 
 add("05-scoring", {"pattern":"heatmap","headline":"The top 5 score highest on impact and feasibility",
  "subline":"Leading workstreams scored 1 (low) to 3 (high) per criterion",
