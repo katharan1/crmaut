@@ -9,6 +9,17 @@ def add(name, spec):
 add("01-cover", {"pattern":"cover","title":"Performance & Intelligence","subtitle":"Turning domain data into decisions: the first six months of Level Up Advisory","presenter":"PM proposal, P&I squad","date":"November 2026","classification":"Internal — case study",
  "notes":"I'll walk you through how I would run P&I from 1 December: what we start with, why, how we measure success, and how we make it stick. Ten minutes, then questions."})
 
+add("02-users", {"pattern":"summary_strip","headline":"P&I serves three users, and one is AI",
+ "subline":"Who P&I serves, what they need, and which product serves them",
+ "blocks":[
+  {"metric":"Decide","claim":"Squads, leadership, Finance, council","proof":"Need one truth, new opportunities and proof of value.","implication":"Reporting, insights, personas"},
+  {"metric":"Act","claim":"Clients in George, bankers in FIT+","proof":"Need the one right next step at the right time.","implication":"Brain, at-risk list, segments"},
+  {"metric":"AI","claim":"Brain, agentic CRM, AI assistants","proof":"Need data and rules they can read, plus guardrails.","implication":"Metric API, decision log, evaluation harness"}],
+ "focus_block":2,
+ "annotation":"Design principle: one truth for people and machines, and any model can be swapped.",
+ "page_number":2,"source":"Source: case study brief; P&I proposal.",
+ "notes":["Before priorities, who are we building for? Three users.","First, people who decide: the squads, domain leadership, Finance and the concept council. They need one truth, opportunities and proof of value. We serve them with reporting, insights and personas.","Second, people who act: clients in George and bankers in FIT+ and at branches. They need one right next step at the right time. That is Brain, the at-risk list and the segments.","Third, and new: AI itself. Brain, agentic CRM and AI assistants consume our data too. So everything we build must be readable by machines: metric definitions available through an API, every recommendation and its outcome logged, and an evaluation harness so we can test quality and compliance and switch models without rebuilding. These are design principles for how we build the top 5, not an extra workstream."]})
+
 add("02-answer", {"pattern":"summary_strip","headline":"P&I should make the numbers trustworthy before scaling AI",
  "subline":"The proposal in one page · Five priorities in three moves",
  "blocks":[
@@ -168,6 +179,10 @@ add("14-backup-personas", {"pattern":"process_flow","headline":"Personas earn a 
  "page_number":14,"source":SRC,
  "notes":["If asked about personas: the tool is nearly finished. We build personas for the Go Big segments, pre-test the messages in January, then compare what they predicted with what actually happened in the holdout groups.","Only if the predictions are close do we use personas to pre-test every campaign. Either way, they complement real client interviews, never replace them."]})
 
+import re
+slides=[(f"{i+1:02d}-"+re.sub(r"^\d+-","",n), s) for i,(n,s) in enumerate(slides)]
+for i,(n,sp) in enumerate(slides):
+    if "page_number" in sp: sp["page_number"]=i+1
 os.makedirs("specs", exist_ok=True)
 paths=[]
 for n,s in slides:

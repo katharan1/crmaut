@@ -3,18 +3,19 @@
   "description": "P&I squad PM case study, Level Up Advisory",
   "slides": [
     "specs/01-cover.json",
-    "specs/02-answer.json",
-    "specs/03-situation.json",
-    "specs/04-filter.json",
-    "specs/05-scoring.json",
-    "specs/06-loop.json",
-    "specs/07-roadmap.json",
-    "specs/08-team.json",
-    "specs/09-missing.json",
-    "specs/10-info.json",
-    "specs/11-kpis.json",
-    "specs/12-governance.json",
-    "specs/13-closing.json",
-    "specs/14-backup-personas.json"
+    "specs/02-users.json",
+    "specs/03-answer.json",
+    "specs/04-situation.json",
+    "specs/05-filter.json",
+    "specs/06-scoring.json",
+    "specs/07-loop.json",
+    "specs/08-roadmap.json",
+    "specs/09-team.json",
+    "specs/10-missing.json",
+    "specs/11-info.json",
+    "specs/12-kpis.json",
+    "specs/13-governance.json",
+    "specs/14-closing.json",
+    "specs/15-backup-personas.json"
   ]
 }
