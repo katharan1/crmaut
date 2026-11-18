@@ -1,7 +1,7 @@
 {
   "pattern": "heatmap",
-  "headline": "The top 5 score highest on impact and feasibility",
-  "subline": "Leading workstreams scored 1 (low) to 3 (high) per criterion",
+  "headline": "The top 5 score highest on the criteria",
+  "subline": "Backup · leading workstreams scored 1 (low) to 3 (high) per criterion",
   "unit": "",
   "rows": [
     "P1 Metric truth",
@@ -15,10 +15,10 @@
   ],
   "columns": [
     "North Star",
-    "Proof / CM3",
-    "Time-critical",
-    "Unlocks others",
-    "Feasible now"
+    "Proof",
+    "Delay cost",
+    "Unlocks",
+    "Feasibility"
   ],
   "values": [
     [
@@ -78,9 +78,9 @@
       3
     ]
   ],
-  "annotation": "Personas run alongside: the tool is nearly finished and Go Big validates it.",
-  "page_number": 7,
-  "source": "Source: P&I judgement based on the brief; to be validated with squad leads in week 2.",
+  "annotation": "Brain v1 waits on feasibility; personas run alongside the top 5.",
+  "page_number": 16,
+  "source": "Source: P&I judgement based on the brief; to be validated with squad leads in week 3.",
   "notes": [
     "These are the nine workstreams after merging, scored on five criteria. The top five are all three-heavy on time-criticality and feasibility.",
     "Brain v1 has the highest potential North Star impact, but nothing is in development and George releases depend on Vienna, so it scores low on feasibility before Go Big. It starts in February in FIT+, on the segments we build now.",

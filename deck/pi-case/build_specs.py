@@ -42,17 +42,18 @@ add("04-pilot-gap", {"pattern":"before_after","headline":"Rollout gets half of t
  "page_number":4,"source":"Source: case study brief; rollout enrolment = silent start (13%), reward choice = rollout today (34.3%).",
  "notes":["Same programme, two very different results. With targeted communication in the Hradec Králové pilot, 24.6 percent of clients enrolled; with the silent start only 13. In the pilot 63 percent chose a reward; in the rollout today 34.","On both measures the rollout gets about half of what the pilot did. That is not a product problem, it is execution: communication, timing, how the reward is presented.","So the cheapest lever for Go Big is to understand exactly what made the pilot work and copy it. That is priority 3. One caveat I will check: whether pilot clients were selected differently."]})
 
-add("04-filter", {"pattern":"process_flow","headline":"Four filters narrow 30 areas to 5 priorities",
- "subline":"How the priorities were chosen · areas left after each step",
- "steps":[
-  {"label":"Ownership","detail":"Does P&I own it?","owner":"30 → 25"},
-  {"label":"Timing","detail":"Needed by 30 June?","owner":"25 → 14"},
-  {"label":"Overlap","detail":"Merge the same job","owner":"14 → 9"},
-  {"label":"Impact x effort","detail":"Value vs capacity","owner":"9 → 5"},
-  {"label":"Validate","detail":"Check with squads","owner":"Week 3"}],
- "annotation":"Owned by others: 4, 9, 14, 19, 30. Later: 2, 6, 13, 17, 21–23, 25, 27–29.",
- "page_number":5,"source":"Source: P&I assessment of the 30 areas in the brief.",
- "notes":["Criteria, in knock-out order. One: does P&I own the outcome? The savings calculator, reward selection and native entry are squad Klient's; new scoring rules are the council's decision; CRM implementation is the CRM team's. P&I feeds them evidence.","Two: cost of delay. What must exist before Go Big or 30 June? Fénix has a floating deadline, agentic CRM and the self-learning Brain need foundations first.","Three: merge overlaps. Segment definitions and new money vs transfers are part of one metric truth; the dashboard is its output; young clients are one segment.","Four: impact on North Star and CM3, times feasibility with five analysts and our dependency on other teams."]})
+add("04-criteria", {"pattern":"benchmark_table","headline":"Five criteria decide what P&I does first",
+ "subline":"Gate first: does P&I own the outcome? Then each area is scored 1–3 per criterion",
+ "columns":["Question","Information"],
+ "rows":[
+  {"label":"North Star","values":["Lifts net level-ups?","Level, drop and pilot data"]},
+  {"label":"Proof of value","values":["Helps prove SoW and CM3?","Finance CM3 method"]},
+  {"label":"Cost of delay","values":["Does delay hurt Go Big?","Go Big plan and calendar"]},
+  {"label":"Unlocks others","values":["Does other work need it?","Dependency map, squads"]},
+  {"label":"Feasibility","values":["Can we deliver it now?","Team skills, partner plans"]}],
+ "annotation":"The same criteria rank every new request, not just these 30 areas.",
+ "page_number":5,"source":"Source: P&I prioritisation framework; scores validated with squads in week 3.",
+ "notes":["How I decided. First one gate: does P&I own the outcome? If another squad or the concept council owns it, like the savings calculator or new scoring rules, P&I supplies evidence but does not lead.","Then every area is scored one to three on five criteria. North Star impact: does it add net level-ups or stop drops? Proof of value: does it help us show SoW and CM3 to Finance? Cost of delay: does waiting past Go Big cost us? Unlocks others: does other work depend on it? And feasibility: can our team and our partner teams deliver it now?","Each criterion has a source: the level and drop data, Finance's CM3 method, the Go Big plan, interviews with the squads, and partner capacity plans. I validate the scores with the squads in week three.","And this is not a one-off: the same criteria rank every new request that comes to P&I."]})
 
 add("02-answer", {"pattern":"benchmark_table","headline":"Trusted numbers first, then action before Go Big",
  "subline":"Five priorities · Clarity (P1–P2), Learn (P3), Equip (P4–P5)",
@@ -66,16 +67,6 @@ add("02-answer", {"pattern":"benchmark_table","headline":"Trusted numbers first,
  "annotation":"Every segment and list ships with a holdout to prove impact.",
  "page_number":5,"source":SRC,
  "notes":["Here is my answer: five priorities, in three moves.","Clarity first. P1 is one metric truth for the North Star, SoW and CM3, readable by people and by AI. P2 measures how much of the level drops is balance noise and gives the concept council evidence to fix the rules.","Learn. P3 finds out why the pilot got twice the results, ready in December so it shapes Go Big.","Equip. P4 gives squads and campaigns data-driven segments for Go Big, and P5 gives bankers a weekly list of clients about to drop a level or move money out.","Everything lands before Go Big, and every segment and list carries a holdout group, so we prove impact from the first day. Brain and personas build on top of this."]})
-
-add("05-scoring", {"pattern":"heatmap","headline":"The top 5 score highest on impact and feasibility",
- "subline":"Leading workstreams scored 1 (low) to 3 (high) per criterion",
- "unit":"",
- "rows":["P1 Metric truth","P2 Volatility","P3 Pilot learnings","P4 Segments","P5 At-risk list","Finance report","Brain v1","Personas"],
- "columns":["North Star","Proof / CM3","Time-critical","Unlocks others","Feasible now"],
- "values":[[2,3,3,3,3],[3,2,3,2,3],[2,1,3,3,3],[3,1,3,2,2],[3,2,2,1,3],[1,3,1,1,2],[3,2,1,2,1],[1,1,2,1,3]],
- "annotation":"Personas run alongside: the tool is nearly finished and Go Big validates it.",
- "page_number":5,"source":"Source: P&I judgement based on the brief; to be validated with squad leads in week 2.",
- "notes":["These are the nine workstreams after merging, scored on five criteria. The top five are all three-heavy on time-criticality and feasibility.","Brain v1 has the highest potential North Star impact, but nothing is in development and George releases depend on Vienna, so it scores low on feasibility before Go Big. It starts in February in FIT+, on the segments we build now.","The Finance report needs the one metric truth first, so it follows in Q1. The collaboration model is how we work, which I cover in the governance part."]})
 
 add("06-loop", {"pattern":"process_flow","headline":"The top 5 build the P&I loop from the bottom up",
  "subline":"The P&I loop · P&I recommends, squads decide",
@@ -194,6 +185,17 @@ add("14-backup-personas", {"pattern":"process_flow","headline":"Personas earn a 
  "annotation":"Personas complement real client interviews; they never replace them.",
  "page_number":14,"source":SRC,
  "notes":["If asked about personas: the tool is nearly finished. We build personas for the Go Big segments, pre-test the messages in January, then compare what they predicted with what actually happened in the holdout groups.","Only if the predictions are close do we use personas to pre-test every campaign. Either way, they complement real client interviews, never replace them."]})
+
+add("05-scoring", {"pattern":"heatmap","headline":"The top 5 score highest on the criteria",
+ "subline":"Backup · leading workstreams scored 1 (low) to 3 (high) per criterion",
+ "unit":"",
+ "rows":["P1 Metric truth","P2 Volatility","P3 Pilot learnings","P4 Segments","P5 At-risk list","Finance report","Brain v1","Personas"],
+ "columns":["North Star","Proof","Delay cost","Unlocks","Feasibility"],
+ "values":[[2,3,3,3,3],[3,2,3,2,3],[2,1,3,3,3],[3,1,3,2,2],[3,2,2,1,3],[1,3,1,1,2],[3,2,1,2,1],[1,1,2,1,3]],
+ "annotation":"Brain v1 waits on feasibility; personas run alongside the top 5.",
+ "page_number":5,"source":"Source: P&I judgement based on the brief; to be validated with squad leads in week 3.",
+ "notes":["These are the nine workstreams after merging, scored on five criteria. The top five are all three-heavy on time-criticality and feasibility.","Brain v1 has the highest potential North Star impact, but nothing is in development and George releases depend on Vienna, so it scores low on feasibility before Go Big. It starts in February in FIT+, on the segments we build now.","The Finance report needs the one metric truth first, so it follows in Q1. The collaboration model is how we work, which I cover in the governance part."]})
+
 
 import re
 slides=[(f"{i+1:02d}-"+re.sub(r"^\d+-","",n), s) for i,(n,s) in enumerate(slides)]

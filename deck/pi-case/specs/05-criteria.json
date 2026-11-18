@@ -1,0 +1,56 @@
+{
+  "pattern": "benchmark_table",
+  "headline": "Five criteria decide what P&I does first",
+  "subline": "Gate first: does P&I own the outcome? Then each area is scored 1–3 per criterion",
+  "columns": [
+    "Question",
+    "Information"
+  ],
+  "rows": [
+    {
+      "label": "North Star",
+      "values": [
+        "Lifts net level-ups?",
+        "Level, drop and pilot data"
+      ]
+    },
+    {
+      "label": "Proof of value",
+      "values": [
+        "Helps prove SoW and CM3?",
+        "Finance CM3 method"
+      ]
+    },
+    {
+      "label": "Cost of delay",
+      "values": [
+        "Does delay hurt Go Big?",
+        "Go Big plan and calendar"
+      ]
+    },
+    {
+      "label": "Unlocks others",
+      "values": [
+        "Does other work need it?",
+        "Dependency map, squads"
+      ]
+    },
+    {
+      "label": "Feasibility",
+      "values": [
+        "Can we deliver it now?",
+        "Team skills, partner plans"
+      ]
+    }
+  ],
+  "annotation": "The same criteria rank every new request, not just these 30 areas.",
+  "page_number": 5,
+  "source": "Source: P&I prioritisation framework; scores validated with squads in week 3.",
+  "notes": [
+    "How I decided. First one gate: does P&I own the outcome? If another squad or the concept council owns it, like the savings calculator or new scoring rules, P&I supplies evidence but does not lead.",
+    "Then every area is scored one to three on five criteria. North Star impact: does it add net level-ups or stop drops? Proof of value: does it help us show SoW and CM3 to Finance? Cost of delay: does waiting past Go Big cost us? Unlocks others: does other work depend on it? And feasibility: can our team and our partner teams deliver it now?",
+    "Each criterion has a source: the level and drop data, Finance's CM3 method, the Go Big plan, interviews with the squads, and partner capacity plans. I validate the scores with the squads in week three.",
+    "And this is not a one-off: the same criteria rank every new request that comes to P&I."
+  ],
+  "theme": "executive"
+}
