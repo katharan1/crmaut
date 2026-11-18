@@ -12,13 +12,12 @@ add("01-cover", {"pattern":"cover","title":"Performance & Intelligence","subtitl
 add("02-users", {"pattern":"summary_strip","headline":"P&I serves three users, and one is AI",
  "subline":"Who P&I serves, what they need, and which product serves them",
  "blocks":[
-  {"metric":"Decide","claim":"Squads, leadership, Finance, council","proof":"Need one truth, new opportunities and proof of value.","implication":"Reporting, insights, personas"},
-  {"metric":"Act","claim":"Clients in George, bankers in FIT+","proof":"Need the one right next step at the right time.","implication":"Brain, at-risk list, segments"},
+  {"metric":"Decide","claim":"Squads, leadership, Finance, council","proof":"Need one truth, new opportunities and proof of value.","implication":"Reporting, insights, opportunities"},
+  {"metric":"Act","claim":"Clients in George, bankers in FIT+","proof":"Need the right next step and the right message.","implication":"Brain, segments, at-risk list, personas"},
   {"metric":"AI","claim":"Brain, agentic CRM, AI assistants","proof":"Need data and rules they can read, plus guardrails.","implication":"Metric API, decision log, evaluation harness"}],
- "focus_block":2,
  "annotation":"Design principle: one truth for people and machines, and any model can be swapped.",
  "page_number":2,"source":"Source: case study brief; P&I proposal.",
- "notes":["Before priorities, who are we building for? Three users.","First, people who decide: the squads, domain leadership, Finance and the concept council. They need one truth, opportunities and proof of value. We serve them with reporting, insights and personas.","Second, people who act: clients in George and bankers in FIT+ and at branches. They need one right next step at the right time. That is Brain, the at-risk list and the segments.","Third, and new: AI itself. Brain, agentic CRM and AI assistants consume our data too. So everything we build must be readable by machines: metric definitions available through an API, every recommendation and its outcome logged, and an evaluation harness so we can test quality and compliance and switch models without rebuilding. These are design principles for how we build the top 5, not an extra workstream."]})
+ "notes":["Before priorities, who are we building for? Three users.","First, people who decide: the squads, domain leadership, Finance and the concept council. They need one truth, opportunities and proof of value. We serve them with reporting, insights and regular opportunity finding.","Second, people who act: clients in George and bankers in FIT+ and at branches. They need the right next step and the right message. That is Brain, the segments, the at-risk list, and personas, which test the message before it reaches real clients.","Third, and new: AI itself. Brain, agentic CRM and AI assistants consume our data too. So everything we build must be readable by machines: metric definitions available through an API, every recommendation and its outcome logged, and an evaluation harness so we can test quality and compliance and switch models without rebuilding. These are design principles for how we build the top 5, not an extra workstream."]})
 
 add("02-answer", {"pattern":"summary_strip","headline":"P&I should make the numbers trustworthy before scaling AI",
  "subline":"The proposal in one page · Five priorities in three moves",
