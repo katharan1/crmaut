@@ -4,18 +4,19 @@
   "slides": [
     "specs/01-cover.json",
     "specs/02-users.json",
-    "specs/03-answer.json",
-    "specs/04-situation.json",
-    "specs/05-filter.json",
-    "specs/06-scoring.json",
-    "specs/07-loop.json",
-    "specs/08-roadmap.json",
-    "specs/09-team.json",
-    "specs/10-missing.json",
-    "specs/11-info.json",
-    "specs/12-kpis.json",
-    "specs/13-governance.json",
-    "specs/14-closing.json",
-    "specs/15-backup-personas.json"
+    "specs/03-metrics.json",
+    "specs/04-answer.json",
+    "specs/05-situation.json",
+    "specs/06-filter.json",
+    "specs/07-scoring.json",
+    "specs/08-loop.json",
+    "specs/09-roadmap.json",
+    "specs/10-team.json",
+    "specs/11-missing.json",
+    "specs/12-info.json",
+    "specs/13-kpis.json",
+    "specs/14-governance.json",
+    "specs/15-closing.json",
+    "specs/16-backup-personas.json"
   ]
 }

@@ -19,6 +19,23 @@ add("02-users", {"pattern":"summary_strip","headline":"P&I serves three users, a
  "page_number":2,"source":"Source: case study brief; P&I proposal.",
  "notes":["Before priorities, who are we building for? Three users.","First, people who decide: the squads, domain leadership, Finance and the concept council. They need one truth, opportunities and proof of value. We serve them with reporting, insights and regular opportunity finding.","Second, people who act: clients in George and bankers in FIT+ and at branches. They need the right next step and the right message. That is Brain, the segments, the at-risk list, and personas, which test the message before it reaches real clients.","Third, and new: AI itself. Brain, agentic CRM and AI assistants consume our data too. So everything we build must be readable by machines: metric definitions available through an API, every recommendation and its outcome logged, and an evaluation harness so we can test quality and compliance and switch models without rebuilding. These are design principles for how we build the top 5, not an extra workstream."]})
 
+add("03-metrics", {"pattern":"kpi_scorecard","headline":"North Star must grow 4.5x, clients only 2.1x",
+ "subline":"Every metric in the brief · today vs 30 June 2027",
+ "columns":3,
+ "metrics":[
+  {"label":"NORTH STAR: NET LEVEL-UPS","value":"28k","target":"125k by 30 Jun","trend":"x4.5","status":"risk"},
+  {"label":"CLIENTS IN PROGRAMME","value":"598k","target":"1.25M by 30 Jun","trend":"x2.1"},
+  {"label":"NORTH STAR / CLIENTS","value":"4.7%","target":"10% by 30 Jun","trend":"x2.1","status":"risk"},
+  {"label":"LEVEL DROPS SINCE 1 OCT","value":"22.6k","trend":"balance-driven","status":"risk"},
+  {"label":"ENROLMENT: PILOT","value":"24.6%","trend":"vs 13% silent"},
+  {"label":"REWARD CHOSEN: ROLLOUT","value":"34.3%","trend":"vs 63% pilot","status":"risk"},
+  {"label":"CM3 PROFITABILITY","value":"Not yet","trend":"per Finance","status":"risk"},
+  {"label":"SHARE OF WALLET","value":"n/a","trend":"no baseline"},
+  {"label":"VALUE-FOR-MONEY NPS","value":"n/a","trend":"no baseline"}],
+ "annotation":"Growth must come from existing clients climbing faster and dropping less.",
+ "page_number":3,"source":"Source: case study brief; North Star counted since the silent launch; share = North Star / clients.",
+ "notes":["All the numbers from the brief on one page. Top row is the target: the North Star must grow 4.5 times, from 28 thousand to 125 thousand net level-ups, while the client base only doubles. So the share of clients who level up must more than double, from 4.7 to 10 percent.","Middle row is behaviour. 22.6 thousand clients dropped a level since October, largely because points follow account balances. The targeted pilot enrolled 24.6 percent against 13 percent at the silent start, and reward choice fell from 63 percent in the pilot to 34 in the rollout.","Bottom row is value. Finance says the programme is not yet profitable, and for share of wallet and value-for-money NPS the brief gives no baseline. That is exactly why one source of truth is my first priority."]})
+
 add("02-answer", {"pattern":"summary_strip","headline":"P&I should make the numbers trustworthy before scaling AI",
  "subline":"The proposal in one page · Five priorities in three moves",
  "blocks":[
