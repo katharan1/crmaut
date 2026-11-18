@@ -57,16 +57,16 @@ add("04-criteria", {"pattern":"benchmark_table","headline":"Five criteria decide
 
 add("02-answer", {"pattern":"benchmark_table","headline":"Trusted numbers first, then action before Go Big",
  "subline":"Five priorities · Clarity (P1–P2), Learn (P3), Equip (P4–P5)",
- "columns":["Delivers","Serves","Ready"],
+ "columns":["Why","Delivers","Depends on","Ready"],
  "rows":[
-  {"label":"P1 Metric truth","values":["One North Star, SoW, CM3","Decide, AI","January"]},
-  {"label":"P2 Volatility","values":["Noise vs real drops","Council","January"]},
-  {"label":"P3 Pilot lessons","values":["What made the pilot work","Decide, Act","December"]},
-  {"label":"P4 Segments","values":["Go Big targets and triggers","Act","Mid-January"]},
-  {"label":"P5 At-risk list","values":["Weekly list for bankers","Act","January"]}],
+  {"label":"P1 Metric truth","values":["No baseline for SoW, NPS","North Star, SoW, CM3","Finance, all squads","Jan"]},
+  {"label":"P2 Volatility","values":["22.6k drops, partly noise","Noise vs real drops","Concept council","Jan"]},
+  {"label":"P3 Pilot lessons","values":["Rollout at half of pilot","What made pilot work","Pilot owners","Dec"]},
+  {"label":"P4 Segments","values":["Go Big needs targets","Targets and triggers","DG&E campaigns","Mid-Jan"]},
+  {"label":"P5 At-risk list","values":["Drops cut savings rate","Weekly list for bankers","Bankéř squad, branches","Jan"]}],
  "annotation":"Every segment and list ships with a holdout to prove impact.",
  "page_number":5,"source":SRC,
- "notes":["Here is my answer: five priorities, in three moves.","Clarity first. P1 is one metric truth for the North Star, SoW and CM3, readable by people and by AI. P2 measures how much of the level drops is balance noise and gives the concept council evidence to fix the rules.","Learn. P3 finds out why the pilot got twice the results, ready in December so it shapes Go Big.","Equip. P4 gives squads and campaigns data-driven segments for Go Big, and P5 gives bankers a weekly list of clients about to drop a level or move money out.","Everything lands before Go Big, and every segment and list carries a holdout group, so we prove impact from the first day. Brain and personas build on top of this."]})
+ "notes":["Here is my answer: five priorities in three moves, and each one answers a finding we just saw.","Clarity. P1, one metric truth, because today we have targets for SoW and NPS but no baseline; it needs Finance and all squads to agree on definitions. P2, because part of the 22.6 thousand drops is balance noise; we give the concept council the evidence, they decide on the rules.","Learn. P3, because the rollout gets half of what the pilot did; with the pilot owners we find out why, by December, so it shapes Go Big.","Equip. P4, because Go Big needs targets: segments and triggers delivered through Digital Growth and Engagement's campaigns. P5, because every drop costs a client their savings rate: a weekly list for bankers, through squad Bankéř and the branches.","Everything is ready before Go Big, and every segment and list carries a holdout group, so we prove impact from day one."]})
 
 add("06-loop", {"pattern":"process_flow","headline":"The top 5 build the P&I loop from the bottom up",
  "subline":"The P&I loop · P&I recommends, squads decide",
