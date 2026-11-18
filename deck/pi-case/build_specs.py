@@ -38,7 +38,7 @@ add("04-pilot-gap", {"pattern":"before_after","headline":"Rollout gets half of t
  "pairs":[
   {"label":"Enrolled","before":24.6,"after":13.0,"before_text":"24.6%","after_text":"13%","delta_text":"−11.6 pp (53% of pilot)"},
   {"label":"Chose a reward","before":63.0,"after":34.3,"before_text":"63%","after_text":"34.3%","delta_text":"−28.7 pp (54% of pilot)"}],
- "annotation":"The pilot playbook is the cheapest Go Big lever; P3 finds what made the difference.",
+ "annotation":"The pilot playbook is the cheapest Go Big lever; P2 finds what made the difference.",
  "page_number":4,"source":"Source: case study brief; rollout enrolment = silent start (13%), reward choice = rollout today (34.3%).",
  "notes":["Same programme, two very different results. With targeted communication in the Hradec Králové pilot, 24.6 percent of clients enrolled; with the silent start only 13. In the pilot 63 percent chose a reward; in the rollout today 34.","On both measures the rollout gets about half of what the pilot did. That is not a product problem, it is execution: communication, timing, how the reward is presented.","So the cheapest lever for Go Big is to understand exactly what made the pilot work and copy it. That is priority 3. One caveat I will check: whether pilot clients were selected differently."]})
 
@@ -55,49 +55,49 @@ add("04-criteria", {"pattern":"benchmark_table","headline":"Five criteria decide
  "page_number":5,"source":"Source: P&I prioritisation framework; scores validated with squads in week 3.",
  "notes":["How I decided. First one gate: does P&I own the outcome? If another squad or the concept council owns it, like the savings calculator or new scoring rules, P&I supplies evidence but does not lead.","Then every area is scored one to three on five criteria. North Star impact: does it add net level-ups or stop drops? Proof of value: does it help us show SoW and CM3 to Finance? Cost of delay: does waiting past Go Big cost us? Unlocks others: does other work depend on it? And feasibility: can our team and our partner teams deliver it now?","Each criterion has a source: the level and drop data, Finance's CM3 method, the Go Big plan, interviews with the squads, and partner capacity plans. I validate the scores with the squads in week three.","And this is not a one-off: the same criteria rank every new request that comes to P&I."]})
 
-add("02-answer", {"pattern":"benchmark_table","headline":"Trusted numbers first, then action before Go Big",
- "subline":"Q1 · Clarity (P1–P2), Learn (P3), Equip (P4–P5)",
+add("02-answer", {"pattern":"benchmark_table","headline":"Four building blocks, with Brain built on top",
+ "subline":"Q1 · Five areas from the brief: P1–P4 feed Brain (P5)",
  "columns":["Why","Delivers","Depends on","Ready"],
  "rows":[
-  {"label":"P1 Metric truth (1,11,16,26)","values":["No baseline for SoW, NPS","North Star, SoW, CM3","Finance, all squads","Jan"]},
-  {"label":"P2 Volatility (8,9)","values":["22.6k drops, partly noise","Noise vs real drops","Concept council","Jan"]},
-  {"label":"P3 Pilot lessons (18,20)","values":["Rollout at half of pilot","What made pilot work","Pilot owners","Dec"]},
-  {"label":"P4 Segments (10,24)","values":["Go Big needs targets","Targets and triggers","DG&E campaigns","Mid-Jan"]},
-  {"label":"P5 At-risk list (3)","values":["Drops cut savings rate","Weekly list for bankers","Bankéř squad, branches","Jan"]}],
- "annotation":"Every segment and list ships with a holdout to prove impact.",
- "page_number":5,"source":"Source: case study brief; numbers in brackets are the areas from the brief's list of 30.",
- "notes":["Here is my answer: five priorities in three moves, and each one answers a finding we just saw.","Clarity. P1, one metric truth, because today we have targets for SoW and NPS but no baseline; it needs Finance and all squads to agree on definitions. P2, because part of the 22.6 thousand drops is balance noise; we give the concept council the evidence, they decide on the rules.","Learn. P3, because the rollout gets half of what the pilot did; with the pilot owners we find out why, by December, so it shapes Go Big.","Equip. P4, because Go Big needs targets: segments and triggers delivered through Digital Growth and Engagement's campaigns. P5, because every drop costs a client their savings rate: a weekly list for bankers, through squad Bankéř and the branches.","Everything is ready before Go Big, and every segment and list carries a holdout group, so we prove impact from day one."]})
+  {"label":"P1 Metric truth (1)","values":["No baseline, noisy drops","One clean North Star","Finance, all squads","Jan"]},
+  {"label":"P2 Pilot lessons (18)","values":["Rollout at half of pilot","What made pilot work","Pilot owners","Dec"]},
+  {"label":"P3 Segments (10)","values":["Go Big needs targets","Targets and triggers","DG&E campaigns","Mid-Jan"]},
+  {"label":"P4 At-risk list (3)","values":["Drops cut savings rate","Weekly list for bankers","Bankéř squad, branches","Jan"]},
+  {"label":"P5 Brain v1 (7)","values":["Longest lead time","One next step per client","Bankéř squad, George","FIT+ Mar"]}],
+ "annotation":"P1–P4 are Brain's data and first rules; each ships with a holdout.",
+ "page_number":6,"source":"Source: case study brief; numbers in brackets are the areas from the brief's list of 30.",
+ "notes":["My five areas from the list: 1, 18, 10, 3 and 7. Four building blocks, and Brain built on top of them.","Area 1, one metric truth, because today we have targets for SoW and NPS but no baseline, and part of the 22.6 thousand drops is balance noise. It delivers one clean North Star, and the evidence the concept council needs to fix the rules. It needs Finance and all squads to agree.","Area 18, pilot lessons, because the rollout gets half of what the pilot did. Ready in December, so it shapes Go Big, and it is the first evidence of what actually moves clients.","Area 10, segments and triggers for Go Big, through Digital Growth and Engagement's campaigns. These become Brain's first rules.","Area 3, a weekly at-risk list for bankers: Brain's first next-best-action use case.","And area 7, Brain v1 itself, because it has the longest lead time: George goes through Vienna. We design it and the decision log in December, and it goes live in FIT+ in March, built from the four blocks. Every segment and list carries a holdout group, so we prove impact from day one."]})
 
-add("07-roadmap", {"pattern":"gantt","headline":"The top 5 land before Go Big; Brain follows",
+add("07-roadmap", {"pattern":"gantt","headline":"Blocks land before Go Big, Brain in March",
  "subline":"P&I roadmap, December 2026 to June 2027",
  "periods":["Dec","Jan","Feb","Mar","Apr","May","Jun"],
  "bars":[
   {"label":"P1 Metric truth","start":0,"end":1,"highlight":True,"note":"foundation"},
-  {"label":"P2 Volatility","start":0,"end":1,"note":"to council"},
-  {"label":"P3 Pilot learnings","start":0,"end":0},
-  {"label":"P4 Go Big segments","start":0,"end":1},
-  {"label":"P5 At-risk list","start":1,"end":6,"note":"weekly, with holdout"},
+  {"label":"P2 Pilot lessons","start":0,"end":0},
+  {"label":"P3 Go Big segments","start":0,"end":1},
+  {"label":"P4 At-risk list","start":1,"end":6,"note":"weekly, with holdout"},
+  {"label":"P5 Brain v1","start":0,"end":6,"note":"design, FIT+ in Mar, then George"},
+  {"label":"Rules evidence","start":0,"end":1,"note":"to council"},
   {"label":"Finance SoW / CM3","start":2,"end":6,"note":"monthly"},
-  {"label":"Brain v1 in FIT+","start":2,"end":6,"note":"rules first, then George"},
   {"label":"Personas: Go Big test","start":0,"end":1,"note":"pre-test"},
   {"label":"Personas: validation","start":2,"end":3,"note":"vs holdouts"}],
  "gates":[{"label":"Go Big 1 Feb","period":1},{"label":"30 Jun","period":6}],
  "annotation":"P1 rests on one reporting lead and one data engineer; their time is the critical path.",
  "page_number":7,"source":"Source: P&I plan; dates depend on partner-team capacity.",
- "notes":["Everything in the top 5 lands before Go Big on 1 February. Pilot learnings in December feed the Go Big segments in January.","After Go Big, the Finance report runs monthly on the new definitions, and Brain v1 starts in FIT+ with rules from the Go Big segments, then moves to George once Vienna capacity is secured. Personas are nearly finished: in January we pre-test the Go Big messages on them, and in February and March we compare their predictions with the real holdout results. Only if they predict well do we use them to pre-test every campaign.","The critical path is P1: it rests on one reporting lead and one data engineer. Protecting their time is my first ask."]})
+ "notes":["The four building blocks land before Go Big on 1 February. Pilot lessons in December feed the Go Big segments in January.","Brain v1 starts in December with design and the decision log, goes live in FIT+ in March on the rules from the segments and the at-risk model, then moves to George once Vienna capacity is secured. The rules evidence from P1 goes to the concept council in January. After Go Big the Finance report runs monthly. Personas pre-test the Go Big messages in January and are validated against the holdouts in February and March.","The critical path is P1: it rests on one reporting lead and one data engineer. Protecting their time is my first ask."]})
 
 add("08-team", {"pattern":"benchmark_table","headline":"Six people cover the top 5 as personas wrap up",
  "subline":"P&I team allocation · AI engineers move from personas to modelling",
  "columns":["Dec–Jan","From Feb"],
  "rows":[
-  {"label":"Data eng. + reporting","values":["P1 truth, dashboard, P2 data","Finance report, Brain data"]},
-  {"label":"AI engineer A","values":["P2 volatility, P3 pilot","Holdouts, experiments"]},
-  {"label":"AI engineer B","values":["P4 segments (Klient)","Brain v1 rules"]},
-  {"label":"AI engineer C","values":["Personas, then P5 (Bankéř)","Brain v1 in FIT+"]},
+  {"label":"Data eng. + reporting","values":["P1 truth, dashboard","Finance report, Brain data"]},
+  {"label":"AI engineer A","values":["P1 noise analysis, P2 pilot","Holdouts, experiments"]},
+  {"label":"AI engineer B","values":["P3 segments (Klient)","P5 Brain rules"]},
+  {"label":"AI engineer C","values":["P4 at-risk (Bankéř), P5","P5 Brain in FIT+"]},
   {"label":"AI engineer D","values":["Personas: Go Big pre-test","Persona validation"]}],
  "annotation":"Reporting is the thinnest skill; AI engineers learn the reporting stack in Q1.",
  "page_number":8,"source":"Source: planned team of six; personas project closing in the coming weeks.",
- "notes":["This is the real team: four AI engineers from the synthetic personas project, one reporting lead from financial health and one data engineer from Level Up.","The persona tool is nearly finished, so the AI engineers move onto the modelling work in the top 5: volatility simulation, pilot uplift, segments and the at-risk model. P4 and P5 are the first building blocks of Brain, so they are building Brain from day one.","One engineer finishes personas and uses them on Go Big. The thinnest skill is reporting: one person. That is a single point of failure, so the AI engineers learn the reporting stack in Q1."]})
+ "notes":["This is the real team: four AI engineers from the synthetic personas project, one reporting lead from financial health and one data engineer from Level Up.","The persona tool is nearly finished, so the AI engineers move onto the modelling work in the top 5: the noise analysis, pilot uplift, segments, the at-risk model and Brain itself. They are building Brain from day one.","One engineer finishes personas and uses them on Go Big. The thinnest skill is reporting: one person. That is a single point of failure, so the AI engineers learn the reporting stack in Q1."]})
 
 add("09-missing", {"pattern":"bullet_list","headline":"The list lacks a way to prove what P&I changes",
  "subline":"Q3 · What I would add to the list, and why",
@@ -154,14 +154,14 @@ add("12-governance", {"pattern":"bullet_list","headline":"Shared rules stop prio
 add("06-loop", {"pattern":"process_flow","headline":"The top 5 is the first turn of a learning loop",
  "subline":"Beyond the brief · P&I vision: every turn makes the next decision better",
  "steps":[
-  {"label":"Measure","detail":"One truth for people and AI","owner":"P1, P2","duration":"Dec–Jan"},
-  {"label":"Find","detail":"Pilot, segments, risks","owner":"P3–P5","duration":"Dec–Jan"},
-  {"label":"Decide","detail":"Brain picks one next step","owner":"Brain v1","duration":"From Feb"},
+  {"label":"Measure","detail":"One truth for people and AI","owner":"P1","duration":"Dec–Jan"},
+  {"label":"Find","detail":"Pilot, segments, risks","owner":"P2–P4","duration":"Dec–Jan"},
+  {"label":"Decide","detail":"Brain picks one next step","owner":"P5 Brain","duration":"From Mar"},
   {"label":"Act","detail":"Squads, bankers, campaigns","owner":"Squads","duration":"Feb+"},
   {"label":"Prove & learn","detail":"Holdouts feed back","owner":"P&I, Finance","duration":"By 30 Jun"}],
  "annotation":"After 30 June: Brain learns from its results, and the loop moves to other domains.",
  "page_number":13,"source":SRC,
- "notes":["Where this is heading. P&I is not a reporting team; it is a learning loop. Measure, find, decide, act, prove, and back to measure.","The top 5 builds the first turn: P1 and P2 measure, P3 to P5 find. Brain v1 decides from February. The squads, bankers and campaigns act; P&I recommends, they decide. Holdouts prove what worked and feed back into the next turn.","By 30 June the first full turn is complete. After that, Brain learns from the results of its own recommendations, and because the loop is built on one truth that people and AI can read, it can be copied to other domains of the bank."]})
+ "notes":["Where this is heading. P&I is not a reporting team; it is a learning loop. Measure, find, decide, act, prove, and back to measure.","The top 5 builds the first turn: P1 measures, P2 to P4 find, and P5, Brain, decides from March. The squads, bankers and campaigns act; P&I recommends, they decide. Holdouts prove what worked and feed back into the next turn.","By 30 June the first full turn is complete. After that, Brain learns from the results of its own recommendations, and because the loop is built on one truth that people and AI can read, it can be copied to other domains of the bank."]})
 
 add("13-closing", {"pattern":"closing","headline":"Three decisions let P&I start on 1 December",
  "takeaways":["Trusted numbers first: remove balance noise","Act before Go Big with pilot-proven segments","Holdouts let P&I prove value to Finance"],
@@ -188,15 +188,14 @@ add("14-backup-personas", {"pattern":"process_flow","headline":"Personas earn a 
  "notes":["If asked about personas: the tool is nearly finished. We build personas for the Go Big segments, pre-test the messages in January, then compare what they predicted with what actually happened in the holdout groups.","Only if the predictions are close do we use personas to pre-test every campaign. Either way, they complement real client interviews, never replace them."]})
 
 add("05-scoring", {"pattern":"heatmap","headline":"The top 5 score highest on the criteria",
- "subline":"Backup · leading workstreams scored 1 (low) to 3 (high) per criterion",
+ "subline":"Backup · leading areas scored 1 (low) to 3 (high) per criterion",
  "unit":"",
- "rows":["P1 Metric truth","P2 Volatility","P3 Pilot learnings","P4 Segments","P5 At-risk list","Finance report","Brain v1","Personas"],
+ "rows":["P1 Truth (1)","P2 Pilot (18)","P3 Segments (10)","P4 At-risk (3)","P5 Brain v1 (7)","New rules (9)","Finance report (5)","Personas (12)"],
  "columns":["North Star","Proof","Delay cost","Unlocks","Feasibility"],
- "values":[[2,3,3,3,3],[3,2,3,2,3],[2,1,3,3,3],[3,1,3,2,2],[3,2,2,1,3],[1,3,1,1,2],[3,2,1,2,1],[1,1,2,1,3]],
- "annotation":"Brain v1 waits on feasibility; personas run alongside the top 5.",
- "page_number":5,"source":"Source: P&I judgement based on the brief; to be validated with squad leads in week 3.",
- "notes":["These are the nine workstreams after merging, scored on five criteria. The top five are all three-heavy on time-criticality and feasibility.","Brain v1 has the highest potential North Star impact, but nothing is in development and George releases depend on Vienna, so it scores low on feasibility before Go Big. It starts in February in FIT+, on the segments we build now.","The Finance report needs the one metric truth first, so it follows in Q1. The collaboration model is how we work, which I cover in the governance part."]})
-
+ "values":[[2,3,3,3,3],[2,1,3,3,3],[3,1,3,2,2],[3,2,2,1,3],[3,2,3,2,2],[3,1,2,1,1],[1,3,1,1,2],[1,1,2,1,3]],
+ "annotation":"New rules are the council's call; P1 gives it the evidence.",
+ "page_number":16,"source":"Source: P&I judgement based on the brief; to be validated with squad leads in week 3.",
+ "notes":["The leading areas scored on the five criteria. The top five are strongest on cost of delay and feasibility.","Brain scores high on cost of delay because George releases go through Vienna; with four AI engineers, it is feasible to start the design now.","New rules, area 9, would have big impact, but the concept council owns that decision, so P&I feeds it evidence through P1. The Finance report needs the one metric truth first, so it follows in February."]})
 
 import re
 slides=[(f"{i+1:02d}-"+re.sub(r"^\d+-","",n), s) for i,(n,s) in enumerate(slides)]

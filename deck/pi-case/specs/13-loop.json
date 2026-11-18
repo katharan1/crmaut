@@ -6,20 +6,20 @@
     {
       "label": "Measure",
       "detail": "One truth for people and AI",
-      "owner": "P1, P2",
+      "owner": "P1",
       "duration": "Dec–Jan"
     },
     {
       "label": "Find",
       "detail": "Pilot, segments, risks",
-      "owner": "P3–P5",
+      "owner": "P2–P4",
       "duration": "Dec–Jan"
     },
     {
       "label": "Decide",
       "detail": "Brain picks one next step",
-      "owner": "Brain v1",
-      "duration": "From Feb"
+      "owner": "P5 Brain",
+      "duration": "From Mar"
     },
     {
       "label": "Act",
@@ -39,7 +39,7 @@
   "source": "Source: case study brief (Nov 2026); P&I proposal.",
   "notes": [
     "Where this is heading. P&I is not a reporting team; it is a learning loop. Measure, find, decide, act, prove, and back to measure.",
-    "The top 5 builds the first turn: P1 and P2 measure, P3 to P5 find. Brain v1 decides from February. The squads, bankers and campaigns act; P&I recommends, they decide. Holdouts prove what worked and feed back into the next turn.",
+    "The top 5 builds the first turn: P1 measures, P2 to P4 find, and P5, Brain, decides from March. The squads, bankers and campaigns act; P&I recommends, they decide. Holdouts prove what worked and feed back into the next turn.",
     "By 30 June the first full turn is complete. After that, Brain learns from the results of its own recommendations, and because the loop is built on one truth that people and AI can read, it can be copied to other domains of the bank."
   ],
   "theme": "executive"

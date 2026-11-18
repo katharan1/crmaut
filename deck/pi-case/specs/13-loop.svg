@@ -8,8 +8,7 @@
   <text x="98.0" y="392.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">One truth</text>
   <text x="98.0" y="421.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">for people</text>
   <text x="98.0" y="450.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">and AI</text>
-  <text x="98.0" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P1, P2 ·</text>
-  <text x="98.0" y="523.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Dec–Jan</text>
+  <text x="98.0" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P1 · Dec–Jan</text>
   <path d="M 292.8 378.0 L 299.8 384.0 L 292.8 390.0" fill="none" stroke="#6B7280" stroke-width="2"/>
   <rect x="308.8" y="224.0" width="204.8" height="3.0" fill="#D1D5DB" stroke="none"/>
   <text x="326.8" y="258.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="28" fill="#000000" font-weight="normal" text-anchor="start">02</text>
@@ -17,7 +16,7 @@
   <text x="326.8" y="392.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Pilot,</text>
   <text x="326.8" y="421.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">segments,</text>
   <text x="326.8" y="450.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">risks</text>
-  <text x="326.8" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P3–P5 ·</text>
+  <text x="326.8" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P2–P4 ·</text>
   <text x="326.8" y="523.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Dec–Jan</text>
   <path d="M 521.6 378.0 L 528.6 384.0 L 521.6 390.0" fill="none" stroke="#6B7280" stroke-width="2"/>
   <rect x="537.6" y="224.0" width="204.8" height="3.0" fill="#D1D5DB" stroke="none"/>
@@ -26,8 +25,8 @@
   <text x="555.6" y="392.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Brain picks</text>
   <text x="555.6" y="421.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">one next</text>
   <text x="555.6" y="450.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">step</text>
-  <text x="555.6" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Brain v1 ·</text>
-  <text x="555.6" y="523.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">From Feb</text>
+  <text x="555.6" y="494.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P5 Brain ·</text>
+  <text x="555.6" y="523.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">From Mar</text>
   <path d="M 750.4000000000001 378.0 L 757.4000000000001 384.0 L 750.4000000000001 390.0" fill="none" stroke="#6B7280" stroke-width="2"/>
   <rect x="766.4" y="224.0" width="204.8" height="3.0" fill="#D1D5DB" stroke="none"/>
   <text x="784.4" y="258.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="28" fill="#000000" font-weight="normal" text-anchor="start">04</text>

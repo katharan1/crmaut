@@ -1,7 +1,7 @@
 {
   "pattern": "benchmark_table",
-  "headline": "Trusted numbers first, then action before Go Big",
-  "subline": "Q1 · Clarity (P1–P2), Learn (P3), Equip (P4–P5)",
+  "headline": "Four building blocks, with Brain built on top",
+  "subline": "Q1 · Five areas from the brief: P1–P4 feed Brain (P5)",
   "columns": [
     "Why",
     "Delivers",
@@ -10,25 +10,16 @@
   ],
   "rows": [
     {
-      "label": "P1 Metric truth (1,11,16,26)",
+      "label": "P1 Metric truth (1)",
       "values": [
-        "No baseline for SoW, NPS",
-        "North Star, SoW, CM3",
+        "No baseline, noisy drops",
+        "One clean North Star",
         "Finance, all squads",
         "Jan"
       ]
     },
     {
-      "label": "P2 Volatility (8,9)",
-      "values": [
-        "22.6k drops, partly noise",
-        "Noise vs real drops",
-        "Concept council",
-        "Jan"
-      ]
-    },
-    {
-      "label": "P3 Pilot lessons (18,20)",
+      "label": "P2 Pilot lessons (18)",
       "values": [
         "Rollout at half of pilot",
         "What made pilot work",
@@ -37,7 +28,7 @@
       ]
     },
     {
-      "label": "P4 Segments (10,24)",
+      "label": "P3 Segments (10)",
       "values": [
         "Go Big needs targets",
         "Targets and triggers",
@@ -46,24 +37,34 @@
       ]
     },
     {
-      "label": "P5 At-risk list (3)",
+      "label": "P4 At-risk list (3)",
       "values": [
         "Drops cut savings rate",
         "Weekly list for bankers",
         "Bankéř squad, branches",
         "Jan"
       ]
+    },
+    {
+      "label": "P5 Brain v1 (7)",
+      "values": [
+        "Longest lead time",
+        "One next step per client",
+        "Bankéř squad, George",
+        "FIT+ Mar"
+      ]
     }
   ],
-  "annotation": "Every segment and list ships with a holdout to prove impact.",
+  "annotation": "P1–P4 are Brain's data and first rules; each ships with a holdout.",
   "page_number": 6,
   "source": "Source: case study brief; numbers in brackets are the areas from the brief's list of 30.",
   "notes": [
-    "Here is my answer: five priorities in three moves, and each one answers a finding we just saw.",
-    "Clarity. P1, one metric truth, because today we have targets for SoW and NPS but no baseline; it needs Finance and all squads to agree on definitions. P2, because part of the 22.6 thousand drops is balance noise; we give the concept council the evidence, they decide on the rules.",
-    "Learn. P3, because the rollout gets half of what the pilot did; with the pilot owners we find out why, by December, so it shapes Go Big.",
-    "Equip. P4, because Go Big needs targets: segments and triggers delivered through Digital Growth and Engagement's campaigns. P5, because every drop costs a client their savings rate: a weekly list for bankers, through squad Bankéř and the branches.",
-    "Everything is ready before Go Big, and every segment and list carries a holdout group, so we prove impact from day one."
+    "My five areas from the list: 1, 18, 10, 3 and 7. Four building blocks, and Brain built on top of them.",
+    "Area 1, one metric truth, because today we have targets for SoW and NPS but no baseline, and part of the 22.6 thousand drops is balance noise. It delivers one clean North Star, and the evidence the concept council needs to fix the rules. It needs Finance and all squads to agree.",
+    "Area 18, pilot lessons, because the rollout gets half of what the pilot did. Ready in December, so it shapes Go Big, and it is the first evidence of what actually moves clients.",
+    "Area 10, segments and triggers for Go Big, through Digital Growth and Engagement's campaigns. These become Brain's first rules.",
+    "Area 3, a weekly at-risk list for bankers: Brain's first next-best-action use case.",
+    "And area 7, Brain v1 itself, because it has the longest lead time: George goes through Vienna. We design it and the decision log in December, and it goes live in FIT+ in March, built from the four blocks. Every segment and list carries a holdout group, so we prove impact from day one."
   ],
   "theme": "executive"
 }
