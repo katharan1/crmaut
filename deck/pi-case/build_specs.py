@@ -123,19 +123,18 @@ add("10-info", {"pattern":"benchmark_table","headline":"Five unknowns close with
  "page_number":10,"source":SRC,
  "notes":["What I do not know yet, and how I close it. The biggest is how much of the drops is balance movement: that is a data decomposition my team can do in two weeks.","Then partner capacity: George in Vienna, FIT+, CRM, data engineering. I need their planning cycles, because our dependencies sit there.","Finance's CM3 method, the pilot design to check for selection bias, and what squads and branches actually need. By week 3 I re-run the scoring with real data."]})
 
-add("11-kpis", {"pattern":"kpi_scorecard","headline":"P&I is judged by what others do with its output",
- "subline":"Squad KPIs per user type · targets set after the December baseline",
- "columns":3,
- "metrics":[
-  {"label":"DECIDE: OUTPUTS ACTED ON","value":"≥70%","target":"decided within 2 weeks"},
-  {"label":"ACT: EXTRA LEVEL-UPS","value":"≥10k","target":"vs holdout, by 30 Jun"},
-  {"label":"AI: METRICS VIA API","value":"100%","target":"North Star, SoW, CM3"},
-  {"label":"DECIDE: SQUAD SATISFACTION","value":"≥8/10","target":"quarterly survey"},
-  {"label":"ACT: DROPS PREVENTED","value":"≥5k","target":"vs holdout, at-risk list"},
-  {"label":"AI: MODEL SWAP TIME","value":"<1 week","target":"with tests passing"}],
- "annotation":"P&I contributes to the North Star; these KPIs measure that contribution.",
- "page_number":11,"source":"Source: proposed targets; illustrative until baselined in December.",
- "notes":["How I know if P&I succeeds. We recommend and squads decide, so we are judged on what others do with our work, not on how many reports we ship. One pair of KPIs per user type.","People who decide: at least 70 percent of our outputs lead to a decision within two weeks, and squads rate us 8 out of 10 or better.","People who act: extra level-ups and prevented drops, always measured against holdout groups, so we only claim what we caused. My proposal is at least 10 thousand and 5 thousand by 30 June.","AI: the North Star, SoW and CM3 are available through an API, and we can swap a model in under a week with tests passing.","Targets are proposals; I set them after the December baseline."]})
+add("11-kpis", {"pattern":"benchmark_table","headline":"P&I is judged on nine hard, automated metrics",
+ "subline":"Squad KPIs · one dashboard, refreshed daily · proposed targets for 30 June",
+ "columns":["Hard metric","Target"],
+ "rows":[
+  {"label":"Impact","values":["Extra net level-ups vs holdout","≥10k"]},
+  {"label":"NBA engine","values":["Level-up uplift vs holdout; client coverage","+3 pp; ≥90%"]},
+  {"label":"Personas","values":["Prediction error; campaigns pre-tested","≤20%; ≥80%"]},
+  {"label":"Data trust","values":["Wrong level changes; data freshness","≤0.1%; T+1"]},
+  {"label":"Adoption","values":["At-risk clients contacted; opportunities live","≥60%; ≥50%"]}],
+ "annotation":"Every metric comes from a log or a holdout, never from opinion.",
+ "page_number":11,"source":"Source: proposed targets, set against the December baseline; sources: level data, Brain decision log, campaign results, CRM, backlog.",
+ "notes":["How you can judge P&I objectively: nine metrics on one dashboard, refreshed daily. Each comes from a log, a holdout group or a system, never from a survey.","Impact: extra net level-ups from our actions, measured against holdout groups. At least 10 thousand by June, about a tenth of the gap to 125 thousand.","The NBA engine, Brain: uplift, meaning the level-up rate within 90 days of clients who got a recommendation versus a holdout, target plus 3 percentage points. And coverage: at least 90 percent of active clients have a valid next step in George or FIT+.","Synthetic personas: prediction error, how far persona predictions are from the real campaign response, at most 20 percent. And at least 80 percent of campaigns pre-tested before launch.","Data trust: at most 0.1 percent of level changes found wrong in daily reconciliation, and data fresh by the next day.","Adoption: at least 60 percent of at-risk clients contacted by a banker within a week, and at least half of the opportunities we hand to squads live within a quarter.","Targets are proposals; I set them against the December baseline. We fail if Brain shows no uplift over its holdout, or if we cannot show what we caused."]})
 
 add("12-governance", {"pattern":"benchmark_table","headline":"Explicit rules keep the priorities alive",
  "subline":"Q5 · How the priorities happen and hold with many stakeholders",
