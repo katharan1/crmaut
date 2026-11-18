@@ -10,7 +10,7 @@
   ],
   "rows": [
     {
-      "label": "P1 Metric truth",
+      "label": "P1 Metric truth (1,11,16,26)",
       "values": [
         "No baseline for SoW, NPS",
         "North Star, SoW, CM3",
@@ -19,7 +19,7 @@
       ]
     },
     {
-      "label": "P2 Volatility",
+      "label": "P2 Volatility (8,9)",
       "values": [
         "22.6k drops, partly noise",
         "Noise vs real drops",
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "label": "P3 Pilot lessons",
+      "label": "P3 Pilot lessons (18,20)",
       "values": [
         "Rollout at half of pilot",
         "What made pilot work",
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "label": "P4 Segments",
+      "label": "P4 Segments (10,24)",
       "values": [
         "Go Big needs targets",
         "Targets and triggers",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "label": "P5 At-risk list",
+      "label": "P5 At-risk list (3)",
       "values": [
         "Drops cut savings rate",
         "Weekly list for bankers",
@@ -57,7 +57,7 @@
   ],
   "annotation": "Every segment and list ships with a holdout to prove impact.",
   "page_number": 6,
-  "source": "Source: case study brief (Nov 2026); P&I proposal.",
+  "source": "Source: case study brief; numbers in brackets are the areas from the brief's list of 30.",
   "notes": [
     "Here is my answer: five priorities in three moves, and each one answers a finding we just saw.",
     "Clarity. P1, one metric truth, because today we have targets for SoW and NPS but no baseline; it needs Finance and all squads to agree on definitions. P2, because part of the 22.6 thousand drops is balance noise; we give the concept council the evidence, they decide on the rules.",
