@@ -1,30 +1,63 @@
 {
-  "pattern": "summary_strip",
-  "headline": "P&I should make the numbers trustworthy before scaling AI",
-  "subline": "The proposal in one page · Five priorities in three moves",
-  "blocks": [
+  "pattern": "benchmark_table",
+  "headline": "Trusted numbers first, then action before Go Big",
+  "subline": "Five priorities · Clarity (P1–P2), Learn (P3), Equip (P4–P5)",
+  "columns": [
+    "Delivers",
+    "Serves",
+    "Ready"
+  ],
+  "rows": [
     {
-      "metric": "Clarity",
-      "claim": "One truth, minus the noise",
-      "proof": "P1 One metric truth. P2 Evidence on balance-driven drops.",
-      "implication": "Everyone steers on the same, honest number."
+      "label": "P1 Metric truth",
+      "values": [
+        "One North Star, SoW, CM3",
+        "Decide, AI",
+        "January"
+      ]
     },
     {
-      "metric": "Learn",
-      "claim": "Copy what already worked",
-      "proof": "P3 Why the pilot nearly doubled enrolment.",
-      "implication": "Go Big starts from a proven playbook."
+      "label": "P2 Volatility",
+      "values": [
+        "Noise vs real drops",
+        "Council",
+        "January"
+      ]
     },
     {
-      "metric": "Act",
-      "claim": "Give squads targets for Go Big",
-      "proof": "P4 Go Big segments. P5 Weekly at-risk list.",
-      "implication": "Every list carries a holdout, so impact is proven."
+      "label": "P3 Pilot lessons",
+      "values": [
+        "What made the pilot work",
+        "Decide, Act",
+        "December"
+      ]
+    },
+    {
+      "label": "P4 Segments",
+      "values": [
+        "Go Big targets and triggers",
+        "Act",
+        "Mid-January"
+      ]
+    },
+    {
+      "label": "P5 At-risk list",
+      "values": [
+        "Weekly list for bankers",
+        "Act",
+        "January"
+      ]
     }
   ],
-  "focus_block": 0,
+  "annotation": "Every segment and list ships with a holdout to prove impact.",
   "page_number": 5,
   "source": "Source: case study brief (Nov 2026); P&I proposal.",
-  "notes": "Here is the answer up front. Five priorities, grouped into three moves: clarity, learn, act. The thread through all of them: we cannot grow a North Star 4.5 times if we do not trust what it measures. Brain comes right after, on top of trusted data. Personas are already nearly finished; we use Go Big to validate them.",
+  "notes": [
+    "Here is my answer: five priorities, in three moves.",
+    "Clarity first. P1 is one metric truth for the North Star, SoW and CM3, readable by people and by AI. P2 measures how much of the level drops is balance noise and gives the concept council evidence to fix the rules.",
+    "Learn. P3 finds out why the pilot got twice the results, ready in December so it shapes Go Big.",
+    "Equip. P4 gives squads and campaigns data-driven segments for Go Big, and P5 gives bankers a weekly list of clients about to drop a level or move money out.",
+    "Everything lands before Go Big, and every segment and list carries a holdout group, so we prove impact from the first day. Brain and personas build on top of this."
+  ],
   "theme": "executive"
 }

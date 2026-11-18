@@ -42,14 +42,18 @@ add("04-pilot-gap", {"pattern":"before_after","headline":"Rollout gets half of t
  "page_number":4,"source":"Source: case study brief; rollout enrolment = silent start (13%), reward choice = rollout today (34.3%).",
  "notes":["Same programme, two very different results. With targeted communication in the Hradec Králové pilot, 24.6 percent of clients enrolled; with the silent start only 13. In the pilot 63 percent chose a reward; in the rollout today 34.","On both measures the rollout gets about half of what the pilot did. That is not a product problem, it is execution: communication, timing, how the reward is presented.","So the cheapest lever for Go Big is to understand exactly what made the pilot work and copy it. That is priority 3. One caveat I will check: whether pilot clients were selected differently."]})
 
-add("02-answer", {"pattern":"summary_strip","headline":"P&I should make the numbers trustworthy before scaling AI",
- "subline":"The proposal in one page · Five priorities in three moves",
- "blocks":[
-  {"metric":"Clarity","claim":"One truth, minus the noise","proof":"P1 One metric truth. P2 Evidence on balance-driven drops.","implication":"Everyone steers on the same, honest number."},
-  {"metric":"Learn","claim":"Copy what already worked","proof":"P3 Why the pilot nearly doubled enrolment.","implication":"Go Big starts from a proven playbook."},
-  {"metric":"Act","claim":"Give squads targets for Go Big","proof":"P4 Go Big segments. P5 Weekly at-risk list.","implication":"Every list carries a holdout, so impact is proven."}],
- "focus_block":0,"page_number":2,"source":SRC,
- "notes":"Here is the answer up front. Five priorities, grouped into three moves: clarity, learn, act. The thread through all of them: we cannot grow a North Star 4.5 times if we do not trust what it measures. Brain comes right after, on top of trusted data. Personas are already nearly finished; we use Go Big to validate them."})
+add("02-answer", {"pattern":"benchmark_table","headline":"Trusted numbers first, then action before Go Big",
+ "subline":"Five priorities · Clarity (P1–P2), Learn (P3), Equip (P4–P5)",
+ "columns":["Delivers","Serves","Ready"],
+ "rows":[
+  {"label":"P1 Metric truth","values":["One North Star, SoW, CM3","Decide, AI","January"]},
+  {"label":"P2 Volatility","values":["Noise vs real drops","Council","January"]},
+  {"label":"P3 Pilot lessons","values":["What made the pilot work","Decide, Act","December"]},
+  {"label":"P4 Segments","values":["Go Big targets and triggers","Act","Mid-January"]},
+  {"label":"P5 At-risk list","values":["Weekly list for bankers","Act","January"]}],
+ "annotation":"Every segment and list ships with a holdout to prove impact.",
+ "page_number":5,"source":SRC,
+ "notes":["Here is my answer: five priorities, in three moves.","Clarity first. P1 is one metric truth for the North Star, SoW and CM3, readable by people and by AI. P2 measures how much of the level drops is balance noise and gives the concept council evidence to fix the rules.","Learn. P3 finds out why the pilot got twice the results, ready in December so it shapes Go Big.","Equip. P4 gives squads and campaigns data-driven segments for Go Big, and P5 gives bankers a weekly list of clients about to drop a level or move money out.","Everything lands before Go Big, and every segment and list carries a holdout group, so we prove impact from the first day. Brain and personas build on top of this."]})
 
 add("04-filter", {"pattern":"funnel","headline":"Five filters narrow 30 areas to 5 priorities",
  "subline":"Number of areas left after each filter",
