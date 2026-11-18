@@ -137,19 +137,18 @@ add("11-kpis", {"pattern":"kpi_scorecard","headline":"P&I is judged by what othe
  "page_number":11,"source":"Source: proposed targets; illustrative until baselined in December.",
  "notes":["How I know if P&I succeeds. We recommend and squads decide, so we are judged on what others do with our work, not on how many reports we ship. One pair of KPIs per user type.","People who decide: at least 70 percent of our outputs lead to a decision within two weeks, and squads rate us 8 out of 10 or better.","People who act: extra level-ups and prevented drops, always measured against holdout groups, so we only claim what we caused. My proposal is at least 10 thousand and 5 thousand by 30 June.","AI: the North Star, SoW and CM3 are available through an API, and we can swap a model in under a week with tests passing.","Targets are proposals; I set them after the December baseline."]})
 
-add("12-governance", {"pattern":"bullet_list","headline":"Shared rules stop priorities from eroding",
- "subline":"Q5 · How the priorities hold with many stakeholders",
- "columns":2,
- "bullets":[
-  {"text":"One domain priority forum","sub":["Monthly; public P&I backlog"],"emphasis":True},
-  {"text":"Explicit capacity rule","sub":["60% plan, 25% requests, 15% buffer"]},
-  {"text":"Named contacts per squad","sub":["Klient and Bankéř; one intake"]},
-  {"text":"Book partner capacity early","sub":["George, FIT+, CRM planning"]},
-  {"text":"One metric tree in all OKRs","sub":["Squads and Finance steer alike"]},
-  {"text":"Early wins build credibility","sub":["Pilot learnings, at-risk list"]}],
- "annotation":"New requests are welcome; they compete openly for the same capacity.",
+add("12-governance", {"pattern":"benchmark_table","headline":"Explicit rules keep the priorities alive",
+ "subline":"Q5 · How the priorities happen and hold with many stakeholders",
+ "columns":["How it works","Rhythm"],
+ "rows":[
+  {"label":"Stakeholders","values":["Domain lead sets order; council owns logic","Monthly forum"]},
+  {"label":"Requests","values":["One intake, scored on the five criteria","Weekly triage"]},
+  {"label":"Capacity","values":["60/25/15 split; partner capacity booked early","Quarterly planning"]},
+  {"label":"Adoption","values":["Named contact per squad; outputs co-built","Ongoing"]},
+  {"label":"Sustaining","values":["Track % capacity on top 5 and outputs used","Quarterly re-score"]}],
+ "annotation":"New requests are welcome, but each one openly displaces another.",
  "page_number":12,"source":SRC,
- "notes":["How the priorities survive many stakeholders. One forum with the domain lead decides the order; the P&I backlog is public, so a new request visibly displaces something else.","Capacity is explicit: 60% on priorities, 25% on requests, 15% buffer. Two AI engineers are named contacts: the one on segments for squad Klient, the one on the at-risk list for squad Bankéř. They take requests and work on priorities for that squad.","Every permanent report needs an owner and the decision it serves. Our needs from George, FIT+ and CRM go into their planning early. All squads use the same metric tree in their OKRs. And early wins buy credibility to say no later."]})
+ "notes":["How I make sure the priorities happen and hold. Five mechanisms, one for each part of the problem.","Many stakeholders: clear decision rights. The domain lead sets the order in a monthly forum, the concept council owns the logic of levels and points, and P&I recommends. So conflicts have a place to be decided, not argued in corridors.","Different requests: one intake, and every request is scored on the same five criteria as the top 5, in a weekly triage. The backlog is public, so everyone sees why something waits.","Limited capacity: 60 percent of our time on the priorities, 25 on requests, 15 buffer. What we need from George, FIT+ and CRM goes into their quarterly planning early, as agreed commitments.","Getting it used: each squad has a named contact in P&I, and we build outputs together with the squads, so they own them. Early wins by January earn the credibility to say no later.","Keeping it going: I track how much capacity really goes to the top 5 and how many outputs are acted on, and we re-score the priorities every quarter. A new request is always welcome, but it openly displaces something else."]})
 
 add("06-loop", {"pattern":"process_flow","headline":"The top 5 is the first turn of a learning loop",
  "subline":"Beyond the brief · P&I vision: every turn makes the next decision better",
