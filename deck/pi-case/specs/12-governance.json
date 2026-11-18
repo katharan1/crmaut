@@ -1,6 +1,7 @@
 {
   "pattern": "bullet_list",
-  "headline": "Shared rules for capacity keep the priorities from eroding",
+  "headline": "Shared rules stop priorities from eroding",
+  "subline": "Q5 · How the priorities hold with many stakeholders",
   "columns": 2,
   "bullets": [
     {
@@ -42,7 +43,7 @@
     }
   ],
   "annotation": "New requests are welcome; they compete openly for the same capacity.",
-  "page_number": 13,
+  "page_number": 12,
   "source": "Source: case study brief (Nov 2026); P&I proposal.",
   "notes": [
     "How the priorities survive many stakeholders. One forum with the domain lead decides the order; the P&I backlog is public, so a new request visibly displaces something else.",

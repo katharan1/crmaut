@@ -43,7 +43,7 @@ add("04-pilot-gap", {"pattern":"before_after","headline":"Rollout gets half of t
  "notes":["Same programme, two very different results. With targeted communication in the Hradec Králové pilot, 24.6 percent of clients enrolled; with the silent start only 13. In the pilot 63 percent chose a reward; in the rollout today 34.","On both measures the rollout gets about half of what the pilot did. That is not a product problem, it is execution: communication, timing, how the reward is presented.","So the cheapest lever for Go Big is to understand exactly what made the pilot work and copy it. That is priority 3. One caveat I will check: whether pilot clients were selected differently."]})
 
 add("04-criteria", {"pattern":"benchmark_table","headline":"Five criteria decide what P&I does first",
- "subline":"Gate first: does P&I own the outcome? Then each area is scored 1–3 per criterion",
+ "subline":"Q2 · Gate first: does P&I own it? Then score each area 1–3 per criterion",
  "columns":["Question","Information"],
  "rows":[
   {"label":"North Star","values":["Lifts net level-ups?","Level, drop and pilot data"]},
@@ -56,7 +56,7 @@ add("04-criteria", {"pattern":"benchmark_table","headline":"Five criteria decide
  "notes":["How I decided. First one gate: does P&I own the outcome? If another squad or the concept council owns it, like the savings calculator or new scoring rules, P&I supplies evidence but does not lead.","Then every area is scored one to three on five criteria. North Star impact: does it add net level-ups or stop drops? Proof of value: does it help us show SoW and CM3 to Finance? Cost of delay: does waiting past Go Big cost us? Unlocks others: does other work depend on it? And feasibility: can our team and our partner teams deliver it now?","Each criterion has a source: the level and drop data, Finance's CM3 method, the Go Big plan, interviews with the squads, and partner capacity plans. I validate the scores with the squads in week three.","And this is not a one-off: the same criteria rank every new request that comes to P&I."]})
 
 add("02-answer", {"pattern":"benchmark_table","headline":"Trusted numbers first, then action before Go Big",
- "subline":"Five priorities · Clarity (P1–P2), Learn (P3), Equip (P4–P5)",
+ "subline":"Q1 · Clarity (P1–P2), Learn (P3), Equip (P4–P5)",
  "columns":["Why","Delivers","Depends on","Ready"],
  "rows":[
   {"label":"P1 Metric truth","values":["No baseline for SoW, NPS","North Star, SoW, CM3","Finance, all squads","Jan"]},
@@ -67,19 +67,6 @@ add("02-answer", {"pattern":"benchmark_table","headline":"Trusted numbers first,
  "annotation":"Every segment and list ships with a holdout to prove impact.",
  "page_number":5,"source":SRC,
  "notes":["Here is my answer: five priorities in three moves, and each one answers a finding we just saw.","Clarity. P1, one metric truth, because today we have targets for SoW and NPS but no baseline; it needs Finance and all squads to agree on definitions. P2, because part of the 22.6 thousand drops is balance noise; we give the concept council the evidence, they decide on the rules.","Learn. P3, because the rollout gets half of what the pilot did; with the pilot owners we find out why, by December, so it shapes Go Big.","Equip. P4, because Go Big needs targets: segments and triggers delivered through Digital Growth and Engagement's campaigns. P5, because every drop costs a client their savings rate: a weekly list for bankers, through squad Bankéř and the branches.","Everything is ready before Go Big, and every segment and list carries a holdout group, so we prove impact from day one."]})
-
-add("06-loop", {"pattern":"process_flow","headline":"The top 5 build the P&I loop from the bottom up",
- "subline":"The P&I loop · P&I recommends, squads decide",
- "steps":[
-  {"label":"Measure","detail":"P1 Metric truth, P2 Volatility","owner":"P&I","duration":"Dec–Jan"},
-  {"label":"Find","detail":"P3 Pilot, P4 Segments, P5 At-risk","owner":"P&I","duration":"Dec–Jan"},
-  {"label":"Decide","detail":"Brain v1 + personas","owner":"P&I","duration":"From Feb"},
-  {"label":"Act","detail":"Campaigns, branches, George","owner":"Squads, DG&E","duration":"Go Big"},
-  {"label":"Prove & learn","detail":"Holdouts on level-ups, SoW, CM3","owner":"P&I, Finance","duration":"From Feb"}],
- "highlight":0,
- "annotation":"Results flow back into Measure; one full turn of the loop is complete before 30 June.",
- "page_number":6,"source":SRC,
- "notes":["This is how the three pillars fit together: a loop. Measure, find, decide, act, prove, and back.","The top 5 deliberately sit at the start: you cannot close the loop without trusted measurement. Act belongs to the squads; P&I recommends, they decide.","Prove is not a separate project: every segment and every at-risk list ships with a holdout group. That is the experimentation framework missing from the list, built in from day one. The same loop can later be copied to other domains."]})
 
 add("07-roadmap", {"pattern":"gantt","headline":"The top 5 land before Go Big; Brain follows",
  "subline":"P&I roadmap, December 2026 to June 2027",
@@ -113,17 +100,18 @@ add("08-team", {"pattern":"benchmark_table","headline":"Six people cover the top
  "notes":["This is the real team: four AI engineers from the synthetic personas project, one reporting lead from financial health and one data engineer from Level Up.","The persona tool is nearly finished, so the AI engineers move onto the modelling work in the top 5: volatility simulation, pilot uplift, segments and the at-risk model. P4 and P5 are the first building blocks of Brain, so they are building Brain from day one.","One engineer finishes personas and uses them on Go Big. The thinnest skill is reporting: one person. That is a single point of failure, so the AI engineers learn the reporting stack in Q1."]})
 
 add("09-missing", {"pattern":"bullet_list","headline":"The list lacks a way to prove what P&I changes",
+ "subline":"Q3 · What I would add to the list, and why",
  "bullets":[
-  {"text":"Experimentation framework with holdout groups","sub":["Without it, SoW and CM3 gains cannot be attributed to the programme"],"emphasis":True},
-  {"text":"North Star driver tree and forecast","sub":["Enrolment x activation x level-up rate minus drops: is 125k reachable?"]},
-  {"text":"Analysis of level volatility, not just data quality","sub":["How much of the 22.6k drops is balance movement, not behaviour"]},
-  {"text":"AI compliance: GDPR and the AI Act","sub":["Banker notes, Brain and personas need a legal basis before scale"]}],
- "annotation":"I would add the first three to P&I's scope now; compliance runs alongside Brain v1.",
+  {"text":"Experimentation framework with holdout groups","sub":["Without it, SoW and CM3 gains cannot be attributed"],"emphasis":True},
+  {"text":"North Star driver tree and forecast","sub":["Enrolment x level-up rate minus drops: is 125k reachable?"]},
+  {"text":"AI foundations: metric API, decision log, testing","sub":["Includes GDPR and AI Act checks before Brain scales"]},
+  {"text":"Go Big monitoring in the first weeks","sub":["Volume doubles; data and drops must be watched daily"]}],
+ "annotation":"All four run inside the top 5; none needs a separate team.",
  "page_number":9,"source":SRC,
- "notes":["Four things I would add. First and most important: a way to prove impact. Holdout groups for every campaign and list. Without that, we will never convince Finance.","Second, a driver tree that shows whether 125k is reachable and which lever gets us there.","Third, the list has data quality and new rules, but not the question in between: how much of the drops is pure balance movement. That is the evidence the council needs.","Fourth, AI compliance. Banker notes in particular are personal data."]})
+ "notes":["Four things I would add to the list. First and most important: a way to prove impact. Holdout groups for every campaign and list; without them we will never convince Finance that SoW and CM3 moved because of us.","Second, a North Star driver tree: enrolment, level-up rate and drops. It tells us whether 125 thousand is reachable and which lever gets us there.","Third, the AI foundations from the users slide: metrics available through an API, every recommendation and its outcome logged, and testing, including GDPR and the AI Act, before Brain scales.","Fourth, monitoring in the first weeks of Go Big, when volume doubles. None of these needs a separate team; they are built into the top 5."]})
 
 add("10-info", {"pattern":"benchmark_table","headline":"Five unknowns close within three weeks",
- "subline":"What I still need to know, and how I will get it",
+ "subline":"Q4 · What I still need to know, and how I will get it",
  "columns":["How I get it","By"],
  "rows":[
   {"label":"Balance drops","values":["Split drops by point type","Week 2"]},
@@ -136,20 +124,21 @@ add("10-info", {"pattern":"benchmark_table","headline":"Five unknowns close with
  "notes":["What I do not know yet, and how I close it. The biggest is how much of the drops is balance movement: that is a data decomposition my team can do in two weeks.","Then partner capacity: George in Vienna, FIT+, CRM, data engineering. I need their planning cycles, because our dependencies sit there.","Finance's CM3 method, the pilot design to check for selection bias, and what squads and branches actually need. By week 3 I re-run the scoring with real data."]})
 
 add("11-kpis", {"pattern":"kpi_scorecard","headline":"P&I is judged by what others do with its output",
- "subline":"Proposed squad KPIs; targets set after the December baseline",
+ "subline":"Squad KPIs per user type · targets set after the December baseline",
  "columns":3,
  "metrics":[
-  {"label":"ONE NORTH STAR NUMBER","value":"100%","target":"squads + Finance by Feb","trend":"Measure"},
-  {"label":"NOISE IN LEVEL DROPS","value":"−50%","target":"after rule change","trend":"Measure"},
-  {"label":"OUTPUTS ACTED ON","value":"≥70%","target":"decided within 2 weeks","trend":"Find"},
-  {"label":"INCREMENTAL LEVEL-UPS","value":"≥10k","target":"vs holdout, by 30 Jun","trend":"Prove"},
-  {"label":"DROPS PREVENTED","value":"≥5k","target":"vs holdout, at-risk list","trend":"Prove"},
-  {"label":"SQUAD SATISFACTION","value":"≥8/10","target":"quarterly survey","trend":"Trust"}],
- "annotation":"P&I contributes to the North Star; it does not own it. These KPIs measure that contribution.",
- "page_number":11,"source":"Source: proposed targets; illustrative until baselined.",
- "notes":["P&I recommends and squads decide, so we are judged on what others do with our work, not on how many reports we ship.","Measure: one number for the North Star used by everyone, and less noise in level drops. Find: share of our outputs that lead to a decision. Prove: incremental level-ups and prevented drops, measured against holdouts. Trust: how satisfied the squads are with us.","Targets are proposals; I would set them after the December baseline."]})
+  {"label":"DECIDE: OUTPUTS ACTED ON","value":"≥70%","target":"decided within 2 weeks"},
+  {"label":"ACT: EXTRA LEVEL-UPS","value":"≥10k","target":"vs holdout, by 30 Jun"},
+  {"label":"AI: METRICS VIA API","value":"100%","target":"North Star, SoW, CM3"},
+  {"label":"DECIDE: SQUAD SATISFACTION","value":"≥8/10","target":"quarterly survey"},
+  {"label":"ACT: DROPS PREVENTED","value":"≥5k","target":"vs holdout, at-risk list"},
+  {"label":"AI: MODEL SWAP TIME","value":"<1 week","target":"with tests passing"}],
+ "annotation":"P&I contributes to the North Star; these KPIs measure that contribution.",
+ "page_number":11,"source":"Source: proposed targets; illustrative until baselined in December.",
+ "notes":["How I know if P&I succeeds. We recommend and squads decide, so we are judged on what others do with our work, not on how many reports we ship. One pair of KPIs per user type.","People who decide: at least 70 percent of our outputs lead to a decision within two weeks, and squads rate us 8 out of 10 or better.","People who act: extra level-ups and prevented drops, always measured against holdout groups, so we only claim what we caused. My proposal is at least 10 thousand and 5 thousand by 30 June.","AI: the North Star, SoW and CM3 are available through an API, and we can swap a model in under a week with tests passing.","Targets are proposals; I set them after the December baseline."]})
 
-add("12-governance", {"pattern":"bullet_list","headline":"Shared rules for capacity keep the priorities from eroding",
+add("12-governance", {"pattern":"bullet_list","headline":"Shared rules stop priorities from eroding",
+ "subline":"Q5 · How the priorities hold with many stakeholders",
  "columns":2,
  "bullets":[
   {"text":"One domain priority forum","sub":["Monthly; public P&I backlog"],"emphasis":True},
@@ -162,11 +151,23 @@ add("12-governance", {"pattern":"bullet_list","headline":"Shared rules for capac
  "page_number":12,"source":SRC,
  "notes":["How the priorities survive many stakeholders. One forum with the domain lead decides the order; the P&I backlog is public, so a new request visibly displaces something else.","Capacity is explicit: 60% on priorities, 25% on requests, 15% buffer. Two AI engineers are named contacts: the one on segments for squad Klient, the one on the at-risk list for squad Bankéř. They take requests and work on priorities for that squad.","Every permanent report needs an owner and the decision it serves. Our needs from George, FIT+ and CRM go into their planning early. All squads use the same metric tree in their OKRs. And early wins buy credibility to say no later."]})
 
+add("06-loop", {"pattern":"process_flow","headline":"The top 5 is the first turn of a learning loop",
+ "subline":"Beyond the brief · P&I vision: every turn makes the next decision better",
+ "steps":[
+  {"label":"Measure","detail":"One truth for people and AI","owner":"P1, P2","duration":"Dec–Jan"},
+  {"label":"Find","detail":"Pilot, segments, risks","owner":"P3–P5","duration":"Dec–Jan"},
+  {"label":"Decide","detail":"Brain picks one next step","owner":"Brain v1","duration":"From Feb"},
+  {"label":"Act","detail":"Squads, bankers, campaigns","owner":"Squads","duration":"Feb+"},
+  {"label":"Prove & learn","detail":"Holdouts feed back","owner":"P&I, Finance","duration":"By 30 Jun"}],
+ "annotation":"After 30 June: Brain learns from its results, and the loop moves to other domains.",
+ "page_number":13,"source":SRC,
+ "notes":["Where this is heading. P&I is not a reporting team; it is a learning loop. Measure, find, decide, act, prove, and back to measure.","The top 5 builds the first turn: P1 and P2 measure, P3 to P5 find. Brain v1 decides from February. The squads, bankers and campaigns act; P&I recommends, they decide. Holdouts prove what worked and feed back into the next turn.","By 30 June the first full turn is complete. After that, Brain learns from the results of its own recommendations, and because the loop is built on one truth that people and AI can read, it can be copied to other domains of the bank."]})
+
 add("13-closing", {"pattern":"closing","headline":"Three decisions let P&I start on 1 December",
  "takeaways":["Trusted numbers first: remove balance noise","Act before Go Big with pilot-proven segments","Holdouts let P&I prove value to Finance"],
  "next_steps":[
   {"action":"Confirm the top 5 priorities","owner":"Domain lead","timing":"This week"},
-  {"action":"Protect reporting and data eng. for P1","owner":"Head of Product","timing":"By 1 Dec"},
+  {"action":"Protect P1 reporting and data eng.","owner":"Head of Product","timing":"By 1 Dec"},
   {"action":"Put balance rules on council agenda","owner":"Domain lead","timing":"January"}],
  "call_to_action":"Decision requested: confirm the top 5 and the capacity behind them.",
  "page_number":13,"source":SRC,

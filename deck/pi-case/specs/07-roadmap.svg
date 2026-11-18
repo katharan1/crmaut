@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="The top 5 land before Go Big; Brain follows">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <text x="80.0" y="96.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="40" fill="#000000" font-weight="bold" text-anchor="start">The top 5 land before Go Big; Brain follows</text>
+  <text x="80.0" y="136.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#6B7280" font-weight="normal" text-anchor="start">P&amp;I roadmap, December 2026 to June 2027</text>
+  <text x="392.1" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Dec</text>
+  <line x1="330.0" y1="222.0" x2="330.0" y2="534.0" stroke="#D1D5DB"/>
+  <text x="516.4" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Jan</text>
+  <line x1="454.3" y1="222.0" x2="454.3" y2="534.0" stroke="#D1D5DB"/>
+  <text x="640.7" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Feb</text>
+  <line x1="578.6" y1="222.0" x2="578.6" y2="534.0" stroke="#D1D5DB"/>
+  <text x="765.0" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Mar</text>
+  <line x1="702.9" y1="222.0" x2="702.9" y2="534.0" stroke="#D1D5DB"/>
+  <text x="889.3" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Apr</text>
+  <line x1="827.1" y1="222.0" x2="827.1" y2="534.0" stroke="#D1D5DB"/>
+  <text x="1013.6" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">May</text>
+  <line x1="951.4" y1="222.0" x2="951.4" y2="534.0" stroke="#D1D5DB"/>
+  <text x="1137.9" y="208.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#6B7280" font-weight="600" text-anchor="middle">Jun</text>
+  <line x1="1075.7" y1="222.0" x2="1075.7" y2="534.0" stroke="#D1D5DB"/>
+  <line x1="1200.0" y1="222.0" x2="1200.0" y2="534.0" stroke="#D1D5DB"/>
+  <line x1="80.0" y1="222.0" x2="1200.0" y2="222.0" stroke="#374151"/>
+  <text x="80.0" y="246.3" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P1 Metric truth</text>
+  <rect x="333.0" y="227.3" width="242.6" height="24.0" fill="#15296B" stroke="none"/>
+  <text x="341.0" y="246.3" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#FFFFFF" font-weight="normal" text-anchor="start">foundation</text>
+  <line x1="80.0" y1="256.7" x2="1200.0" y2="256.7" stroke="#D1D5DB"/>
+  <text x="80.0" y="281.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P2 Volatility</text>
+  <rect x="333.0" y="262.0" width="242.6" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <text x="341.0" y="281.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">to council</text>
+  <line x1="80.0" y1="291.3" x2="1200.0" y2="291.3" stroke="#D1D5DB"/>
+  <text x="80.0" y="315.7" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P3 Pilot learnings</text>
+  <rect x="333.0" y="296.7" width="118.3" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <line x1="80.0" y1="326.0" x2="1200.0" y2="326.0" stroke="#D1D5DB"/>
+  <text x="80.0" y="350.3" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P4 Go Big segments</text>
+  <rect x="333.0" y="331.3" width="242.6" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <line x1="80.0" y1="360.7" x2="1200.0" y2="360.7" stroke="#D1D5DB"/>
+  <text x="80.0" y="385.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">P5 At-risk list</text>
+  <rect x="457.3" y="366.0" width="739.7" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <text x="465.3" y="385.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">weekly, with holdout</text>
+  <line x1="80.0" y1="395.3" x2="1200.0" y2="395.3" stroke="#D1D5DB"/>
+  <text x="80.0" y="419.7" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Finance SoW / CM3</text>
+  <rect x="581.6" y="400.7" width="615.4" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <text x="589.6" y="419.7" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">monthly</text>
+  <line x1="80.0" y1="430.0" x2="1200.0" y2="430.0" stroke="#D1D5DB"/>
+  <text x="80.0" y="454.3" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Brain v1 in FIT+</text>
+  <rect x="581.6" y="435.3" width="615.4" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <text x="589.6" y="454.3" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">rules first, then George</text>
+  <line x1="80.0" y1="464.7" x2="1200.0" y2="464.7" stroke="#D1D5DB"/>
+  <text x="80.0" y="489.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Personas: Go Big test</text>
+  <rect x="333.0" y="470.0" width="242.6" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <text x="341.0" y="489.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">pre-test</text>
+  <line x1="80.0" y1="499.3" x2="1200.0" y2="499.3" stroke="#D1D5DB"/>
+  <text x="80.0" y="523.7" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">Personas: validation</text>
+  <rect x="581.6" y="504.7" width="242.6" height="24.0" fill="#D1D5DB" stroke="none"/>
+  <text x="589.6" y="523.7" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#374151" font-weight="normal" text-anchor="start">vs holdouts</text>
+  <line x1="80.0" y1="534.0" x2="1200.0" y2="534.0" stroke="#D1D5DB"/>
+  <path d="M 578.6 538.0 L 586.6 546.0 L 578.6 554.0 L 570.6 546.0 Z" fill="#15296B"/>
+  <text x="578.6" y="582.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="middle">Go Big 1 Feb</text>
+  <path d="M 1200.0 538.0 L 1208.0 546.0 L 1200.0 554.0 L 1192.0 546.0 Z" fill="#15296B"/>
+  <text x="1200.0" y="582.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="22" fill="#15296B" font-weight="600" text-anchor="middle">30 Jun</text>
+  <text x="80.0" y="630.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>P1 rests on one reporting lead and one data engineer; their time is the critical path.</title>P1 rests on one reporting lead and one data engineer; their time is the</text>
+  <text x="80.0" y="660.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="24" fill="#15296B" font-weight="600" text-anchor="start"><title>P1 rests on one reporting lead and one data engineer; their time is the critical path.</title>critical path.</text>
+  <text x="80.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="start">Source: P&amp;I plan; dates depend on partner-team capacity.</text>
+  <text x="1200.0" y="692.0" font-family="'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif" font-size="13" fill="#6B7280" font-weight="normal" text-anchor="end">7</text>
+</svg>
